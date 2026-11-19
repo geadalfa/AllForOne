@@ -1,0 +1,35 @@
+{
+  "name": "allforone",
+  "displayName": "AllForOne",
+  "version": "1.0.0",
+  "description": "One install. Every capability. A self-updating Qoder plugin with public skills, knowledge, deterministic tools, a built-in MCP server, local memory scaffolding, and curated upstream packs.",
+  "author": {
+    "name": "AllForOne Contributors"
+  },
+  "homepage": "https://github.com/geadalfa/AllForOne",
+  "repository": "https://github.com/geadalfa/AllForOne",
+  "license": "MIT",
+  "logo": "./assets/logo.png",
+  "keywords": [
+    "qoder-plugin",
+    "agent-skills",
+    "knowledge-base",
+    "mcp",
+    "self-updating",
+    "engineering",
+    "security",
+    "design"
+  ],
+  "category": "Workflow",
+  "tags": [
+    "skills",
+    "knowledge",
+    "mcp",
+    "automation",
+    "quality-gates",
+    "privacy"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "hooks": "./hooks/hooks.json"
+}

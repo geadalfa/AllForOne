@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "ttlHours": 24,
+  "upstreams": [
+    {
+      "id": "anti-slop",
+      "repo": "https://github.com/miqdadbadjuber/anti-slop.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["frontend", "creative"],
+      "description": "Rules and six skills that remove generic AI UI, copy, and code.",
+      "install": {
+        "type": "qoder-plugin",
+        "pluginPath": ".qoder-plugin/plugin.json"
+      }
+    },
+    {
+      "id": "konoha",
+      "repo": "https://github.com/andycungkrinx91/konoha.git",
+      "branch": "master",
+      "license": "Apache-2.0",
+      "profiles": ["engineering", "automation"],
+      "description": "Bounded-tool MCP server with specialist agents, skill retrieval, and QA loops.",
+      "requires": "Node.js 24+ for node:sqlite",
+      "install": {
+        "type": "reference",
+        "mcp": {
+          "package": "konoha-mcp",
+          "note": "Run `npx -y konoha-mcp init` and register the server manually; it is not auto-enabled because it starts a local runtime."
+        }
+      }
+    },
+    {
+      "id": "claude-trading-skills",
+      "repo": "https://github.com/tradermonty/claude-trading-skills.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["finance", "data"],
+      "description": "Keyless trading analysis, sizing, risk gates, and review skills.",
+      "vendored": true,
+      "install": {
+        "type": "reference",
+        "note": "A curated keyless subset is already shipped with AllForOne. The clone is kept for upstream tracking and licensing."
+      }
+    },
+    {
+      "id": "claude-bughunter",
+      "repo": "https://github.com/elementalsouls/Claude-BugHunter.git",
+      "branch": "main",
+      "license": "MIT (code) / CC BY 4.0 (prose)",
+      "profiles": ["security"],
+      "description": "Defensive security review corpus. AllForOne ships only the static defensive subset.",
+      "vendored": true,
+      "install": {
+        "type": "reference",
+        "note": "Offensive-only classes are never installed. Active testing requires written authorization."
+      }
+    },
+    {
+      "id": "gbrain",
+      "repo": "https://github.com/garrytan/gbrain.git",
+      "branch": "master",
+      "license": "MIT",
+      "profiles": ["research", "llm"],
+      "description": "Agent brain conventions and asset-hygiene patterns.",
+      "install": {
+        "type": "reference",
+        "note": "Runtime is intentionally not installed; only the public conventions are used."
+      }
+    },
+    {
+      "id": "humanizer-id",
+      "repo": "https://github.com/apissaj/humanizer-id.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["writing"],
+      "description": "Indonesian human-writing rules across academic, business, legal, and technical registers.",
+      "install": {
+        "type": "skills",
+        "root": "skills",
+        "all": true
+      }
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["frontend", "creative"],
+      "description": "UI/UX design intelligence with palettes, type pairings, charts, and stack guidance.",
+      "install": {
+        "type": "reference",
+        "note": "Install the Qoder Marketplace plugin for the full runtime; the clone is for offline reference."
+      }
+    },
+    {
+      "id": "reality-check",
+      "repo": "https://github.com/microsoft/amplifier-smart-tool-reality-check.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["engineering", "research"],
+      "description": "Evidence-first tool evaluation: verify that a tool exists and works before proposing it.",
+      "install": {
+        "type": "skills",
+        "root": "skills",
+        "all": true
+      }
+    },
+    {
+      "id": "superpowers",
+      "repo": "https://github.com/obra/superpowers.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["engineering"],
+      "description": "Core workflow skills: TDD, debugging, planning, review, and verification.",
+      "install": {
+        "type": "reference",
+        "note": "The Qoder Marketplace plugin is the supported runtime; this clone is for reference and update tracking."
+      }
+    },
+    {
+      "id": "ha-mcp",
+      "repo": "https://github.com/homeassistant-ai/ha-mcp.git",
+      "branch": "master",
+      "license": "MIT",
+      "profiles": ["automation"],
+      "description": "Home Assistant MCP server, staged for users who already run Home Assistant.",
+      "install": {
+        "type": "reference",
+        "note": "Not auto-enabled. It needs a Home Assistant instance and token, and exposes destructive tools."
+      }
+    },
+    {
+      "id": "paper-orchestra",
+      "repo": "https://github.com/google-research/paper-orchestra.git",
+      "branch": "main",
+      "license": "Apache-2.0",
+      "profiles": ["research"],
+      "description": "Multi-agent research-writing pipeline patterns and evaluation harness.",
+      "install": {
+        "type": "reference",
+        "note": "Reference only; generation is not enabled by AllForOne."
+      }
+    },
+    {
+      "id": "ruview",
+      "repo": "https://github.com/ruvnet/RuView.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["research"],
+      "description": "WiFi CSI sensing notes and simulation setup.",
+      "install": {
+        "type": "reference",
+        "note": "Reference only; real sensing needs ESP32-S3/C6 hardware."
+      }
+    }
+  ]
+}

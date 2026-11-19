@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "allforone": {
+      "command": "${QODER_NODE_RUNTIME}",
+      "args": [
+        "${QODER_PLUGIN_ROOT}/bin/mcp-server.mjs"
+      ],
+      "timeout": 30000
+    }
+  }
+}

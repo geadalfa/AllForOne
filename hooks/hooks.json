@@ -1,0 +1,19 @@
+{
+  "description": "Injects a compact AllForOne bootstrap at session start and starts the daily cached update check in the background.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "name": "allforone-session-start",
+            "command": "\"${QODER_NODE_RUNTIME}\" \"${QODER_PLUGIN_ROOT}/bin/allforone.mjs\" hook session-start",
+            "timeout": 20,
+            "statusMessage": "AllForOne: loading capabilities and daily update state"
+          }
+        ]
+      }
+    ]
+  }
+}

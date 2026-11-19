@@ -1,0 +1,40 @@
+{
+  "name": "allforone",
+  "version": "1.0.0",
+  "description": "Self-updating Qoder capability pack with skills, knowledge, tools, MCP, local memory, and upstream repositories.",
+  "type": "module",
+  "bin": {
+    "allforone": "bin/allforone.mjs"
+  },
+  "files": [
+    ".qoder-plugin/",
+    ".mcp.json",
+    "assets/",
+    "bin/",
+    "commands/",
+    "hooks/",
+    "knowledge/",
+    "lib/",
+    "memory/",
+    "profiles.json",
+    "skills/",
+    "tools/",
+    "upstreams/",
+    "AGENTS.md",
+    "LICENSE",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "licenses/",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node scripts/validate.mjs",
+    "privacy": "node scripts/privacy-scan.mjs",
+    "pack": "node scripts/build-zip.mjs"
+  },
+  "license": "MIT"
+}

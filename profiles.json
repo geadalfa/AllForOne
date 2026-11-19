@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "core": [
+    "allforone",
+    "allforone-knowledge",
+    "allforone-memory",
+    "plan-first",
+    "verify-before-done",
+    "systematic-debugging",
+    "no-invented-code",
+    "spec-driven-development",
+    "token-efficient-reconnaissance",
+    "human-technical-writing",
+    "privacy-publish-gate",
+    "exact-output-protocol",
+    "knowledge-ingestion",
+    "agent-asset-hygiene"
+  ],
+  "profiles": {
+    "engineering": [
+      "repo-architecture-mentor",
+      "polyglot-code-intelligence",
+      "zero-regression-refactoring",
+      "software-qa-and-ui-testing",
+      "omp-agent-harness",
+      "konoha-agentic-workflow",
+      "reverse-engineer-anything",
+      "github-release-sync"
+    ],
+    "frontend": [
+      "anti-slop-ui-design",
+      "display-color-calibration",
+      "document-ocr-and-conversion"
+    ],
+    "security": [
+      "bughunter-defensive-review"
+    ],
+    "finance": [
+      "financial-etf-advisory",
+      "holistic-financial-advisor",
+      "backtest-expert",
+      "data-quality-checker",
+      "drawdown-circuit-breaker",
+      "dual-axis-skill-reviewer",
+      "edge-strategy-reviewer",
+      "futures-position-sizer",
+      "market-breadth-analyzer",
+      "position-sizer",
+      "pre-trade-discipline-gate",
+      "trader-memory-core",
+      "uptrend-analyzer",
+      "weekly-performance-digest"
+    ],
+    "writing": [
+      "corporate-diplomacy-and-career-acceleration"
+    ],
+    "research": [
+      "app-opportunity-lab",
+      "noted-workspace-engine",
+      "reverse-engineer-anything",
+      "flashmind-persistent-memory"
+    ],
+    "automation": [
+      "automated-game-modding",
+      "mfg-unlock-installer",
+      "windows-gaming-optimizer",
+      "omp-agent-harness",
+      "konoha-agentic-workflow",
+      "github-release-sync"
+    ],
+    "documents": [
+      "document-ocr-and-conversion",
+      "macos-dmg-builder"
+    ],
+    "creative": [
+      "bailian-cli",
+      "bailian-docs-llm-wiki",
+      "bailian-gen",
+      "bailian-model-recommend",
+      "bailian-web-search",
+      "bailian-protocol",
+      "bailian-knowledge",
+      "bailian-managed-agent",
+      "bailian-finetune",
+      "bailian-memory",
+      "bailian-sandbox",
+      "bailian-train-deploy"
+    ],
+    "llm": [
+      "llm-weight-ablation-and-steering",
+      "flashmind-persistent-memory"
+    ],
+    "data": [
+      "data-quality-checker",
+      "dual-axis-skill-reviewer"
+    ]
+  },
+  "coreKnowledge": [
+    "anti_vibe_coding_engineering_protocol.md",
+    "disciplined_software_engineering_framework.md",
+    "spec_driven_development_and_token_compression.md",
+    "software_qa_and_testing_discipline.md",
+    "human_writing_and_technical_prose.md",
+    "web_content_extraction_protocol.md",
+    "knowledge_ingestion_automation.md",
+    "agents_md_open_standard_specification.md"
+  ],
+  "knowledge": {
+    "engineering": [
+      "polyglot_architecture_and_graph_code_intelligence.md",
+      "pagesource_web_resource_capture.md",
+      "microsoft_reality_check_smart_tool_analysis.md"
+    ],
+    "frontend": [
+      "ui_ux_anti_slop_design_engineering.md",
+      "ui_ux_pro_max_skill_analysis.md",
+      "cross_platform_uiux_qa_security_playbook.md"
+    ],
+    "security": [
+      "cross_platform_uiux_qa_security_playbook.md"
+    ],
+    "finance": [
+      "finance_economics_macro_micro_map.md",
+      "financial_market_and_etf_intelligence.md",
+      "holistic_financial_agent_intelligence.md",
+      "claude_trading_skills_toolkit.md"
+    ],
+    "writing": [
+      "corporate_communication_and_career_diplomacy.md",
+      "humanizer_id_indonesian_academic_editing.md"
+    ],
+    "research": [
+      "app_opportunity_lab_playbook.md",
+      "gbrain_agent_brain_patterns.md",
+      "reading_habit_psychology.md",
+      "psychology_mental_health_and_modern_problems.md"
+    ],
+    "automation": [
+      "ha_mcp_home_assistant_automation.md",
+      "ruview_wifi_csi_sensing.md"
+    ],
+    "documents": [
+      "high_precision_ocr_and_document_conversion.md",
+      "macos_native_dmg_app_development.md",
+      "windows_desktop_app_engineering.md"
+    ],
+    "creative": [
+      "ui_ux_anti_slop_design_engineering.md"
+    ],
+    "llm": [
+      "gbrain_agent_brain_patterns.md"
+    ],
+    "data": [
+      "software_qa_and_testing_discipline.md"
+    ]
+  }
+}
