@@ -25,7 +25,9 @@
     "README.md",
     "THIRD_PARTY_NOTICES.md",
     "licenses/",
-    "SECURITY.md"
+    "SECURITY.md",
+    "NOTICE",
+    "assets/README.md"
   ],
   "engines": {
     "node": ">=18"
@@ -36,5 +38,5 @@
     "privacy": "node scripts/privacy-scan.mjs",
     "pack": "node scripts/build-zip.mjs"
   },
-  "license": "MIT"
+  "license": "PolyForm-Noncommercial-1.0.0"
 }

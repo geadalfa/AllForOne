@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-AllForOne's original code and prose are MIT licensed. The following components keep their own licenses.
+AllForOne's original code and prose are licensed under the PolyForm Noncommercial License 1.0.0. The following components keep their own licenses.
 
 ## Vendored skills
 
@@ -33,7 +33,12 @@ These are cloned into the AllForOne state directory when the matching profile or
 
 ## Media
 
-The README embeds a GIF from *My Hero Academia*. The character and footage are © Kohei Horikoshi / Shueisha / Bones. The GIF is embedded from Tenor for identification and is not covered by the MIT license. If the rights holder objects, the embed will be removed.
+The README uses two pieces of fan media:
+
+- `assets/banner.png` and `assets/logo.png`, edited from “Armored All Might vs. All For One” on the My Hero Academia Fandom wiki: <https://static.wikia.nocookie.net/bokunoheroacademia/images/0/0e/Armored_All_Might_Vs._All_For_One.png>. The edit adds a dark gradient, a split accent line, the ALL FOR ONE wordmark, and a square crop.
+- A GIF embedded from Tenor: <https://media.tenor.com/04fBdqc9oAkAAAAC/mha-my-hero-academia.gif>.
+
+Character and footage rights belong to Kohei Horikoshi / Shueisha / Bones. The media is used for identification and is not covered by the PolyForm Noncommercial license. If the rights holder objects, the media will be removed.
 
 ## Community skills
 

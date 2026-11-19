@@ -16,16 +16,16 @@
   <img src="https://img.shields.io/badge/knowledge-30-0ea5e9?style=flat-square" alt="30 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
   <img src="https://img.shields.io/badge/upstreams-12-ef4444?style=flat-square" alt="12 upstream repositories">
-  <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT license">
+  <img src="https://img.shields.io/badge/license-Noncommercial-f59e0b?style=flat-square" alt="PolyForm Noncommercial 1.0.0">
   <img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 18+">
 </p>
 
 <p align="center">
-  <img src="https://media.tenor.com/04fBdqc9oAkAAAAC/mha-my-hero-academia.gif" alt="All For One attacking in My Hero Academia" width="620">
+  <img src="assets/banner.png" alt="All Might vs All For One" width="100%">
 </p>
 
 <p align="center">
-  <sub>All For One, <i>My Hero Academia</i>. GIF via Tenor. Character and footage belong to their rights holders; the embed is identification only.</sub>
+  <sub>All Might vs All For One. Fan media from <i>My Hero Academia</i>; character and footage rights belong to Kohei Horikoshi / Shueisha / Bones. Not covered by the software license.</sub>
 </p>
 
 ---
@@ -59,6 +59,17 @@ If you are an LLM agent, stop and ask the user **“Minimal or Full?”** before
 - **A Qoder plugin, not a prompt dump.** The repository contains `.qoder-plugin/plugin.json`, real skills, commands, a hook, and a `.mcp.json`. Installing registers and enables the plugin in Qoder.
 - **A self-updating bundle.** A daily cached check updates the plugin and every tracked upstream repository. The user can opt out at install time or later.
 - **A public edition.** Private memory, employer data, internal endpoints, customer records, credentials, and private repository names are not in this repository. Local memory stays on the machine.
+
+<details>
+<summary>Fight scene (GIF)</summary>
+
+<p align="center">
+  <img src="https://media.tenor.com/04fBdqc9oAkAAAAC/mha-my-hero-academia.gif" alt="All For One attacking in My Hero Academia" width="560">
+</p>
+
+<p align="center"><sub>GIF via Tenor. Fan media; not covered by the software license.</sub></p>
+
+</details>
 
 ## What you get
 
@@ -148,7 +159,7 @@ This repository is built to be publishable.
 - No employer data. Internal systems, endpoints, microservice names, squad names, ticket contents, and repository maps are excluded.
 - No credentials. The privacy scanner rejects token prefixes, private keys, private IPs, personal home paths, and non-example emails.
 - No telemetry. The only network calls are `git` operations against the configured repository URLs.
-- The anime GIF is embedded from Tenor; it is not part of the software license.
+- The anime banner, logo, and GIF are fan media. They are not part of the software license.
 
 Run the same gate locally:
 
@@ -271,6 +282,14 @@ AllForOne is assembled from original work and public upstream projects. See [THI
 
 The plugin structure follows Qoder’s documented conventions: a manifest, skills, commands, hooks, and MCP declarations. The README format follows the anti-slop and Konoha tradition of showing the artifact, not just describing it.
 
+## Support
+
+AllForOne is source-available and noncommercial. Donations are welcome and do not grant a commercial license. The maintainer has not published a payment link in this repository yet; open an issue if you want to support the project.
+
 ## License
 
-MIT for AllForOne’s original code and prose. Third-party components keep their licenses.
+AllForOne's original code and prose are source-available under the **PolyForm Noncommercial License 1.0.0**. You may use, modify, and share them for noncommercial purposes. Commercial use, resale, or paid distribution is not permitted.
+
+This is not an OSI open-source license, because it restricts commercial use. Third-party components keep their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `licenses/`.
+
+The My Hero Academia artwork in the README is fan media. It is not covered by the software license.

@@ -18,6 +18,15 @@ test('manifest and package versions match', () => {
   assert.equal(manifest.hooks, './hooks/hooks.json');
 });
 
+test('license is PolyForm Noncommercial 1.0.0', () => {
+  const manifest = json('.qoder-plugin/plugin.json');
+  const pkg = json('package.json');
+  assert.equal(manifest.license, 'PolyForm-Noncommercial-1.0.0');
+  assert.equal(pkg.license, 'PolyForm-Noncommercial-1.0.0');
+  assert.match(read('LICENSE'), /PolyForm Noncommercial License 1\.0\.0/);
+  assert.match(read('NOTICE'), /Commercial use, resale, or paid distribution/);
+});
+
 test('every skill has matching frontmatter', () => {
   const skills = fs
     .readdirSync(path.join(ROOT, 'skills'), { withFileTypes: true })
