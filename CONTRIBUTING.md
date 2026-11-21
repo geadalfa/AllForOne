@@ -1,8 +1,9 @@
 # Contributing
 
-## Pull requests only
+## Pull requests for external contributors
 
-- `main` is protected. Direct pushes are disabled.
+- `main` is protected. External contributions must open a pull request; direct pushes are reserved for repository maintainers.
+- The repository owner can commit directly to `main`.
 - Fork the repository or create a branch, then open a pull request against `main`.
 - Keep each pull request scoped and describe the user-visible effect.
 

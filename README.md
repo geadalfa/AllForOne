@@ -466,7 +466,7 @@ npm run pack
 
 ## Contributing
 
-`main` is protected. Direct pushes are disabled; open a pull request from a fork or a branch. CI runs `npm test`, `npm run validate`, and `npm run privacy` (including history). Use a GitHub noreply identity tied to your own account, never another person's noreply address. See [CONTRIBUTING.md](CONTRIBUTING.md).
+`main` is protected. External contributions must open a pull request from a fork or a branch; the repository maintainer can commit directly. CI runs `npm test`, `npm run validate`, and `npm run privacy` (including history). Use a GitHub noreply identity tied to your own account, never another person's noreply address. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Uninstall
 
