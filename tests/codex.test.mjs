@@ -6,6 +6,10 @@ import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import { ROOT, VERSION } from '../lib/constants.mjs';
 import { prepareCodexMarketplace } from '../lib/codex.mjs';
+import { resolveKnowledge, resolveSkills } from '../lib/profiles.mjs';
+
+const FULL_PACKAGE = path.join(ROOT, 'plugins', 'full');
+const QODER_FULL = { root: ROOT, mode: 'full' };
 
 function isolated(t) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'allforone host test '));
@@ -119,19 +123,74 @@ test('Codex installs each repository marketplace edition with its declared skill
   const added = codex('plugin', 'marketplace', 'add', ROOT);
   assert.equal(added.status, 0, added.stderr);
 
-  for (const [edition, skillCount, referenceCount] of [['minimal', 5, 4], ['full', 10, 10]]) {
+  for (const edition of ['minimal', 'full']) {
     const pluginId = `allforone-${edition}@allforone`;
     const result = codex('plugin', 'add', pluginId, '--json');
     assert.equal(result.status, 0, result.stderr);
     const installed = JSON.parse(result.stdout);
     assert.equal(installed.pluginId, pluginId);
-    assert.equal(installed.version, VERSION);
-    assert.deepEqual(fs.readdirSync(installed.installedPath).sort(), ['.codex-plugin', 'LICENSE', 'skills']);
     const skillsDir = path.join(installed.installedPath, 'skills');
-    assert.equal(fs.readdirSync(skillsDir).length, skillCount);
-    assert.equal(fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length, referenceCount);
+    if (edition === 'full') {
+      const manifest = JSON.parse(fs.readFileSync(path.join(FULL_PACKAGE, '.codex-plugin/plugin.json')));
+      assert.equal(installed.version, manifest.version);
+      assertFullInventory(installed.installedPath);
+    } else {
+      assert.equal(installed.version, VERSION);
+      assert.equal(fs.readdirSync(skillsDir).length, 5);
+      assert.equal(fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length, 4);
+    }
     const removed = codex('plugin', 'remove', pluginId);
     assert.equal(removed.status, 0, removed.stderr);
   }
+  checkQoder(env);
+});
+
+function assertFullInventory(root) {
+  const expectedSkills = resolveSkills(QODER_FULL);
+  const expectedKnowledge = resolveKnowledge(QODER_FULL);
+  const skills = fs.readdirSync(path.join(root, 'skills')).sort();
+  const knowledge = fs.readdirSync(path.join(root, 'knowledge')).sort();
+  assert.equal(skills.length, 63);
+  assert.equal(knowledge.filter(name => name !== 'INDEX.md').length, 35);
+  assert.deepEqual(skills, expectedSkills);
+  assert.deepEqual(knowledge, expectedKnowledge);
+  for (const name of skills) {
+    const skill = fs.readFileSync(path.join(root, 'skills', name, 'SKILL.md'), 'utf8');
+    assert.match(skill, new RegExp(`^name: ${name}\\r?$`, 'm'));
+  }
+  const index = fs.readFileSync(path.join(root, 'knowledge', 'INDEX.md'), 'utf8');
+  const indexed = new Set([...index.matchAll(/`([a-z0-9_]+\.md)`/g)].map(match => match[1]));
+  assert.deepEqual([...indexed].sort(), knowledge.filter(name => name !== 'INDEX.md'));
+}
+
+test('Codex Full packages the Qoder inventory and the Codex-specific paths', () => {
+  assertFullInventory(FULL_PACKAGE);
+  for (const file of ['tools/financial_calculator.py', 'skills/trader-memory-core/schemas/thesis.schema.json',
+    'skills/macos-dmg-builder/scripts/build-dmg.sh', 'licenses/claude-trading-skills-LICENSE.txt']) {
+    assert.ok(fs.existsSync(path.join(FULL_PACKAGE, file)), file);
+  }
+  for (const file of ['.qoder-plugin', 'hooks', '.mcp.json', 'memory']) {
+    assert.ok(!fs.existsSync(path.join(FULL_PACKAGE, file)), file);
+  }
+  const knowledgeRouter = fs.readFileSync(path.join(FULL_PACKAGE, 'skills/allforone-knowledge/SKILL.md'), 'utf8');
+  assert.ok(knowledgeRouter.includes('(../../knowledge/INDEX.md)'));
+});
+
+test('Codex Full memory persists only in the selected Codex home', t => {
+  const env = isolated(t);
+  const call = (args, input) => spawnSync(process.execPath, [path.join(FULL_PACKAGE, 'bin/memory.mjs'), ...args],
+    { env, cwd: env.QODER_CONFIG_DIR, input, encoding: 'utf8' });
+  const query = 'fixture decision';
+  assert.deepEqual(JSON.parse(call(['search', query]).stdout), []);
+  const content = JSON.stringify({ title: 'fixture', text: query, type: 'project' });
+  const result = call(['add'], content);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(JSON.parse(result.stdout).file, path.join(env.CODEX_HOME, 'allforone/memory/notes.md'));
+  assert.match(JSON.parse(call(['search', query]).stdout)[0].snippet, /fixture decision/);
+  const credential = 'ghp_' + 'x'.repeat(36);
+  const refused = call(['add'], JSON.stringify({ text: credential }));
+  assert.equal(refused.status, 1);
+  assert.match(refused.stderr, /Refusing to store a credential/);
+  assert.ok(!fs.readFileSync(JSON.parse(result.stdout).file, 'utf8').includes(credential));
   checkQoder(env);
 });

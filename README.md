@@ -39,14 +39,14 @@
 
 ### Codex and ChatGPT desktop
 
-Choose one edition. Full includes everything in Minimal plus five workflows packaged for Codex. The [Qoder inventory](#what-you-get) lists 63 skills, 35 guides, and Qoder-specific integration features.
+Choose one edition. Full covers the 63 skills and 35 knowledge documents in the [AllForOne inventory](#what-you-get), with Codex paths and workflows for the local tools and memory.
 
 | Edition | Skills | AllForOne guides | Includes |
 |---|---:|---:|---|
 | **AllForOne Minimal** | 5 | 4 | Engineering references, data quality, exact output, technical writing, and software QA. |
-| **AllForOne Full** | 10 | 10 | Minimal plus UI design, product discovery, document conversion, spec-driven development, and refactoring. |
+| **AllForOne Full** | 63 | 35 | Complete skill inventory, the indexed knowledge library, local helper scripts, and Codex-local memory. |
 
-Both editions use local skill files. The data quality checker requires Python 3.9+ when you run it. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
+Both editions load skills from the installed plugin. Individual workflows may require Python, Node.js, a supported operating system, or an authorized external CLI or MCP connection. Full includes the local helpers. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
 
 **Add the marketplace** with a recent Codex CLI:
 
@@ -63,7 +63,9 @@ codex plugin add allforone-minimal@allforone
 codex plugin add allforone-full@allforone
 ```
 
-Run `codex plugin list --marketplace allforone` to verify the install. Start a new chat and ask it to use `allforone-library`. To switch editions, uninstall the current edition in Plugins or run `codex plugin remove <installed-plugin-id>`, then install the other. To refresh a Git-backed marketplace, run `codex plugin marketplace upgrade allforone` and run the installation command for your edition again.
+Run `codex plugin list --marketplace allforone` to verify the install. In a new chat, ask Full to use `allforone-knowledge` or Minimal to use `allforone-library`. Full version 0.3.0 stores user-requested notes under the active Codex home via `allforone-memory`.
+
+To switch editions, uninstall the current edition in Plugins or run `codex plugin remove <installed-plugin-id>`, then install the other. To upgrade an existing Full installation, run `codex plugin marketplace upgrade allforone`, then `codex plugin add allforone-full@allforone` and start a new chat.
 
 If you used the v0.2.0 `npx` installer, remove that copy with `npx --yes github:geadalfa/AllForOne#v0.2.0 uninstall --target codex` before choosing a marketplace edition.
 
@@ -436,7 +438,8 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
 | `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
-| `plugins/` | Self-contained Codex plugin directories generated from the public skills and guides. |
+| `plugins/` | Generated Codex editions. Full contains 63 skills, 35 indexed documents, and local helper files. |
+| `integrations/codex/` | Codex adaptations for shared skills, knowledge, and the local memory helper. |
 | `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
 | `commands/ (5)` | User commands: install, status, update, knowledge, and memory. |
@@ -483,7 +486,7 @@ AllForOne/
 ├── upstreams/registry.json       18 tracked third-party repositories
 ├── profiles.json                 core, profiles, and knowledge mapping
 ├── plugins/                      Codex Minimal and Full editions
-├── integrations/                 ChatGPT Workbench source
+├── integrations/                 Codex adaptations and ChatGPT Workbench source
 ├── scripts/                      validation, privacy scan, and packaging
 └── tests/                        installer, updater, MCP, and hook tests
 ```

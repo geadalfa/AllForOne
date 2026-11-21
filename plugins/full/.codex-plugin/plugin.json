@@ -1,7 +1,7 @@
 {
   "name": "allforone-full",
-  "version": "0.2.0",
-  "description": "The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.",
+  "version": "0.3.0",
+  "description": "The complete AllForOne skill and knowledge inventory adapted for Codex.",
   "author": {
     "name": "AllForOne Contributors"
   },
@@ -10,7 +10,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "AllForOne Full",
-    "shortDescription": "The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.",
+    "shortDescription": "The complete AllForOne skill and knowledge inventory adapted for Codex.",
     "developerName": "AllForOne Contributors",
     "category": "Productivity",
     "defaultPrompt": [

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { REPO, ROOT, VERSION } from '../lib/constants.mjs';
 import { CORE_CODEX_REFERENCES, CORE_CODEX_SKILLS, writeCodexSkills } from '../lib/codex-payload.mjs';
 import { walk, writeJson, writeText } from '../lib/fsx.mjs';
+import { writeFullCodexSkills } from './codex-full.mjs';
 
 const pluginDirectory = 'plugins';
 const catalogFile = '.agents/plugins/marketplace.json';
@@ -13,33 +14,21 @@ const editions = [
   {
     name: 'allforone-minimal',
     folder: 'minimal',
+    version: VERSION,
     displayName: 'AllForOne Minimal',
     description: 'Core workflows for engineering, technical writing, QA, and data quality.',
-    skills: CORE_CODEX_SKILLS,
-    references: CORE_CODEX_REFERENCES
+    write(destination) {
+      writeCodexSkills(destination, CORE_CODEX_SKILLS, CORE_CODEX_REFERENCES);
+      return { skills: CORE_CODEX_SKILLS.length + 1, references: CORE_CODEX_REFERENCES.length };
+    }
   },
   {
     name: 'allforone-full',
     folder: 'full',
+    version: '0.3.0',
     displayName: 'AllForOne Full',
-    description: 'The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.',
-    skills: [
-      ...CORE_CODEX_SKILLS,
-      'anti-slop-ui-design',
-      'app-opportunity-lab',
-      'document-ocr-and-conversion',
-      'spec-driven-development',
-      'zero-regression-refactoring'
-    ],
-    references: [
-      ...CORE_CODEX_REFERENCES,
-      'anti_vibe_coding_engineering_protocol.md',
-      'app_opportunity_lab_playbook.md',
-      'high_precision_ocr_and_document_conversion.md',
-      'humanizer_id_indonesian_academic_editing.md',
-      'microsoft_reality_check_smart_tool_analysis.md',
-      'ui_ux_anti_slop_design_engineering.md'
-    ]
+    description: 'The complete AllForOne skill and knowledge inventory adapted for Codex.',
+    write: writeFullCodexSkills
   }
 ];
 
@@ -49,13 +38,17 @@ if (args.length !== 1 || !['--check', '--write'].includes(args[0])) {
 }
 const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'allforone-codex-marketplace-'));
 try {
+  const errors = [];
   for (const edition of editions) {
     const directory = path.join(stage, pluginDirectory, edition.folder);
-    writeCodexSkills(directory, edition.skills, edition.references);
+    const { skills, references } = edition.write(directory);
+    if (!readme.includes(`| **${edition.displayName}** | ${skills} | ${references} |`)) {
+      errors.push(`Update the README inventory for ${edition.displayName}.`);
+    }
     fs.copyFileSync(path.join(ROOT, 'LICENSE'), path.join(directory, 'LICENSE'));
     writeJson(path.join(directory, '.codex-plugin', 'plugin.json'), {
       name: edition.name,
-      version: VERSION,
+      version: edition.version,
       description: edition.description,
       author: { name: 'AllForOne Contributors' },
       repository: REPO,
@@ -83,7 +76,6 @@ try {
   });
 
   const generated = new Set(walk(stage).map(file => path.relative(stage, file)));
-  const errors = [];
   for (const relative of generated) {
     const expected = fs.readFileSync(path.join(stage, relative), 'utf8').replaceAll('\r\n', '\n');
     const target = path.join(ROOT, relative);
@@ -95,11 +87,6 @@ try {
   for (const file of walk(path.join(ROOT, pluginDirectory))) {
     const relative = path.relative(ROOT, file);
     if (!generated.has(relative)) errors.push(`Unexpected file: ${relative}`);
-  }
-  for (const { displayName, skills, references } of editions) {
-    if (!readme.includes(`| **${displayName}** | ${skills.length + 1} | ${references.length} |`)) {
-      errors.push(`Update the README inventory for ${displayName}.`);
-    }
   }
   if (errors.length) throw new Error(errors.join('\n') + '\nRegenerate with npm run build:codex.');
   console.log('Codex marketplace matches the generated Minimal and Full packages.');

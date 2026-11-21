@@ -30,6 +30,8 @@ The archives appear under `dist/` with the version from `package.json`. `allforo
 
 For the Codex marketplace, run `npm run build:codex` after editing a bundled skill, guide, or manifest setting. Commit the generated catalog and plugin directories so Desktop and CLI can install directly from Git. `npm run validate` checks the generated files and the edition counts in the README.
 
+Full packages the tracked public skills, references, helper scripts, and license files. Keep shared source changes in `skills/`, `knowledge/`, or `tools/`. Use the matching path under `integrations/codex/` for a Codex-specific adaptation. Stage new source or adaptation files before regenerating so Git can identify the inputs. Keep user memory outside the source and generated packages.
+
 ChatGPT workspace owners or admins with upload permission can use the web admin console to upload the ChatGPT ZIP. Signed-in users with Projects can instead extract the four guides and use them as project sources with the skill instructions. [Plugin upload permissions](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt) · [Projects in ChatGPT](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) · [Portable plugin format](https://developers.openai.com/plugins/build/plugins)
 
 ## Commit identity

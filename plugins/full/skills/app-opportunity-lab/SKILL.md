@@ -5,6 +5,8 @@ description: Use when the user wants to brainstorm, validate, design, or build a
 
 # App Opportunity Lab
 
+Resolve `<skill-dir>` from the directory of this installed SKILL.md and `<plugin-root>` from its grandparent. Replace placeholders with absolute paths when running commands from a different directory.
+
 Turn a problem the user cares about into a validated app concept and a build plan — without hype, harm, or wasted effort.
 
 ## When to activate

@@ -91,6 +91,9 @@ test('full install includes all skills and preserves existing Qoder entries', ()
     assert.ok(skills.includes('financial-etf-advisory'));
     assert.ok(skills.includes('bughunter-defensive-review'));
     assert.ok(skills.length === result.skills.length);
+    assert.ok(!fs.existsSync(path.join(result.pluginPath, 'plugins')));
+    assert.ok(!fs.existsSync(path.join(result.pluginPath, '.agents/plugins')));
+    assert.ok(!fs.existsSync(path.join(result.pluginPath, 'integrations/codex')));
 
     const registry = JSON.parse(
       fs.readFileSync(path.join(qoderDir, 'plugins', 'installed_plugins_v2.json'), 'utf8')

@@ -5,12 +5,16 @@ description: Apply Spec-Driven Development (OpenSpec) workflow to design, propos
 
 # Spec-Driven Development (OpenSpec Protocol)
 
+Resolve `<skill-dir>` from the directory of this installed SKILL.md and `<plugin-root>` from its grandparent. Replace placeholders with absolute paths when running commands from a different directory.
+
 > **Core Philosophy:** "Spec first. Code second. Boundaries first."  
 > Review intent (specifications and proposals) before writing code. Eliminate large, unconstrained PR diffs and keep agents strictly within their scoped directories.
 
 ---
 
 ## 1. The 4-Phase Development Loop
+
+Use the project’s OpenSpec commands when configured. In a standard Codex session, run the phases below directly. For a local spec check, run `python "<plugin-root>/tools/openspec_tool.py" --help` and use the supported subcommand from the target repository.
 
 ```mermaid
 flowchart LR

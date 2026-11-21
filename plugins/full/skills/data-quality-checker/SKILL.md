@@ -5,6 +5,8 @@ description: Validate data quality in market analysis documents and blog article
 
 ## Overview
 
+Resolve `<skill-dir>` from the directory of this installed SKILL.md and `<plugin-root>` from its grandparent. Replace placeholders with absolute paths when running commands from a different directory.
+
 Detect common data quality issues in market analysis documents before
 publication. The checker validates five categories: price scale consistency,
 instrument notation, date/weekday accuracy, allocation totals, and unit usage.
@@ -36,8 +38,6 @@ Accept the target markdown file path and optional parameters:
 - `--output-dir`: Directory for report output (optional; default: `reports/`)
 
 ### Step 2: Execute Validation Script
-
-Replace `<skill-dir>` in the commands below with the absolute directory containing this SKILL.md.
 
 Run the data quality checker script:
 

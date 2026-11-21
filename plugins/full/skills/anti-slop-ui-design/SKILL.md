@@ -82,7 +82,9 @@ Replace generic default Inter/Roboto with modern, characterful alternatives:
 
 ---
 
-## 4. MCP Server Integration Guidance
+## 4. Optional design integrations
+
+Use configured integrations when relevant. Without them, use the project design tokens, existing components, and local accessibility checks.
 
 1. **21st.dev MCP (`21st.dev/mcp`):** Use when discovering curated, human-crafted component implementations rather than generating boilerplate components from scratch.
 2. **shadcn/ui MCP (`ui.shadcn.com/docs/mcp`):** Run `npx shadcn@latest mcp` to pull tested accessible primitives (Radix/Base UI) with custom theme variables.

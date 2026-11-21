@@ -13,7 +13,7 @@ When the user asks for an exact output, deliver only that output.
 2. **No preamble** — never add "Baik", "Siap", "Tentu", "Tidak ada tool yang dipanggil", or any acknowledgment.
 3. **No explanation** — unless the user explicitly asks why; the requested line stands alone.
 4. **Literal final line** — if a line must be at the end, it must be the last line, character-for-character, with no trailing commentary.
-5. **No extra usage lines** — never add a Qoder usage line unless the user requests it.
+5. **No extra usage lines** — never add usage metadata unless the user requests it.
 6. **Deleted phrase stays deleted** — if the user says to remove a sentence from future responses, never include it again.
 7. **One short conflict note only if unavoidable** — if a hard system requirement makes literal compliance impossible, state the conflict in one sentence, then comply as far as possible.
 
@@ -22,13 +22,13 @@ When the user asks for an exact output, deliver only that output.
 **Wrong**
 > Baik, tidak ada tool yang dipanggil.
 >
-> Qoder usage · …
+> exact requested line
 
 **Right**
-> Qoder usage · …
+> exact requested line
 
 **Wrong**
-> Siap, the agent hapus kalimat itu. Berikut jawabannya: …
+> Siap, kalimat itu sudah dihapus. Berikut jawabannya: …
 
 **Right**
 > <jawaban yang diminta, tanpa preamble>
