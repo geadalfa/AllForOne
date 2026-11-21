@@ -14,7 +14,6 @@ const editions = [
   {
     name: 'allforone-minimal',
     folder: 'minimal',
-    version: VERSION,
     displayName: 'AllForOne Minimal',
     description: 'Core workflows for engineering, technical writing, QA, and data quality.',
     write(destination) {
@@ -25,7 +24,6 @@ const editions = [
   {
     name: 'allforone-full',
     folder: 'full',
-    version: '0.3.0',
     displayName: 'AllForOne Full',
     description: 'The complete AllForOne skill and knowledge inventory adapted for Codex.',
     write: writeFullCodexSkills
@@ -48,7 +46,7 @@ try {
     fs.copyFileSync(path.join(ROOT, 'LICENSE'), path.join(directory, 'LICENSE'));
     writeJson(path.join(directory, '.codex-plugin', 'plugin.json'), {
       name: edition.name,
-      version: edition.version,
+      version: VERSION,
       description: edition.description,
       author: { name: 'AllForOne Contributors' },
       repository: REPO,

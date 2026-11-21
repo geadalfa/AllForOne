@@ -129,13 +129,11 @@ test('Codex installs each repository marketplace edition with its declared skill
     assert.equal(result.status, 0, result.stderr);
     const installed = JSON.parse(result.stdout);
     assert.equal(installed.pluginId, pluginId);
+    assert.equal(installed.version, VERSION);
     const skillsDir = path.join(installed.installedPath, 'skills');
     if (edition === 'full') {
-      const manifest = JSON.parse(fs.readFileSync(path.join(FULL_PACKAGE, '.codex-plugin/plugin.json')));
-      assert.equal(installed.version, manifest.version);
       assertFullInventory(installed.installedPath);
     } else {
-      assert.equal(installed.version, VERSION);
       assert.equal(fs.readdirSync(skillsDir).length, 5);
       assert.equal(fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length, 4);
     }
@@ -164,6 +162,10 @@ function assertFullInventory(root) {
 }
 
 test('Codex Full packages the Qoder inventory and the Codex-specific paths', () => {
+  for (const edition of ['minimal', 'full']) {
+    const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'plugins', edition, '.codex-plugin/plugin.json')));
+    assert.equal(manifest.version, VERSION);
+  }
   assertFullInventory(FULL_PACKAGE);
   for (const file of ['tools/financial_calculator.py', 'skills/trader-memory-core/schemas/thesis.schema.json',
     'skills/macos-dmg-builder/scripts/build-dmg.sh', 'licenses/claude-trading-skills-LICENSE.txt']) {

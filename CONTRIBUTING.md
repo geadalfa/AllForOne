@@ -17,6 +17,10 @@ npm run privacy
 
 `npm run privacy` scans the working tree and the full commit history. A pull request with any finding is not merged.
 
+## Version policy
+
+Use one AllForOne version across the package, Qoder, both Codex editions, the ChatGPT archive, and the GitHub release tag. For changes to existing agent integrations, increment the patch version in the `0.2.x` series from `0.2.1` through `0.2.100`. Use `0.3.0` for the release that adds a new agent integration.
+
 ## Build release archives
 
 Use Git, Node.js 18 or newer, and npm. Build a release from a clean checkout of the release commit. Run `git status --short` after checking out that commit and confirm the output is empty. For a local development build, stage new runtime files first. The Qoder packager uses Git's tracked paths, the `files` list in `package.json`, and each selected file's current working-tree contents. It includes tracked scripts nested inside skills.
@@ -27,6 +31,8 @@ npm run pack:chatgpt
 ```
 
 The archives appear under `dist/` with the version from `package.json`. `allforone-<version>.qoder.zip` contains the Qoder manifest, CLI, runtime modules, and bundled resources. `allforone-<version>.chatgpt.zip` contains a portable `plugin.json`, one skill, and four public Markdown guides.
+
+Publish both archives and `SHA256SUMS.txt` under the matching `v<version>` GitHub release. Verify the tag points to the tested commit and the downloadable assets match the checksums.
 
 For the Codex marketplace, run `npm run build:codex` after editing a bundled skill, guide, or manifest setting. Commit the generated catalog and plugin directories so Desktop and CLI can install directly from Git. `npm run validate` checks the generated files and the edition counts in the README.
 
