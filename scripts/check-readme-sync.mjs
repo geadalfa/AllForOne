@@ -38,7 +38,9 @@ export function checkReadmeSync(root = DEFAULT_ROOT) {
   want('version alt text', `alt="Version ${pkg.version}"`);
   want('release ZIP link', `allforone-${pkg.version}.qoder.zip`);
   want('ChatGPT release ZIP link', `releases/download/v${pkg.version}/allforone-${pkg.version}.chatgpt.zip`);
-  want('Codex installation', `AllForOne#v${pkg.version} install --target codex`);
+  want('Codex marketplace setup', 'codex plugin marketplace add geadalfa/AllForOne');
+  want('Codex Minimal installation', 'codex plugin add allforone-minimal@allforone');
+  want('Codex Full installation', 'codex plugin add allforone-full@allforone');
 
   want('skills badge', `skills-${skills.length}-`);
   want('knowledge badge', `knowledge-${knowledge.length}-`);

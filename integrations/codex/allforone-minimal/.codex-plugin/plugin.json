@@ -1,0 +1,20 @@
+{
+  "name": "allforone-minimal",
+  "version": "0.2.0",
+  "description": "Core workflows for engineering, technical writing, QA, and data quality.",
+  "author": {
+    "name": "AllForOne Contributors"
+  },
+  "repository": "https://github.com/geadalfa/AllForOne",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AllForOne Minimal",
+    "shortDescription": "Core workflows for engineering, technical writing, QA, and data quality.",
+    "developerName": "AllForOne Contributors",
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Use AllForOne to review a proposed software change and suggest verification steps."
+    ]
+  }
+}

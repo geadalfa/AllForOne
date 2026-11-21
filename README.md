@@ -33,20 +33,39 @@
 
 | Client | Where to start | What you get |
 | --- | --- | --- |
-| Codex CLI or Codex in ChatGPT desktop | Install the local plugin below | Five portable skills and four bundled public references |
+| Codex CLI or ChatGPT desktop | Add the AllForOne marketplace and choose Minimal or Full | Portable skills and public references |
 | ChatGPT web | Upload the ChatGPT ZIP to a workspace, or add its files to a Project | A writing, planning, and software review workflow with four public references |
 | Qoder | Choose Minimal or Full, or import the Qoder ZIP | Qoder skills, commands, MCP, memory scaffolding, optional upstreams, and update checks |
 
 ### Codex and ChatGPT desktop
 
-Install Node.js 18+ and a Codex CLI that supports `codex plugin marketplace add` and `codex plugin add`. Run these commands in a terminal on the computer where you use Codex.
+Choose one edition. Full includes everything in Minimal.
+
+| Edition | Skills | AllForOne guides | Includes |
+|---|---:|---:|---|
+| **AllForOne Minimal** | 5 | 4 | Engineering references, data quality, exact output, technical writing, and software QA. |
+| **AllForOne Full** | 10 | 10 | Minimal plus UI design, product discovery, document conversion, spec-driven development, and refactoring. |
+
+Both editions use local skill files. The data quality checker requires Python 3.9+ when you run it. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
+
+**Add the marketplace** with a recent Codex CLI:
 
 ```sh
-npx --yes github:geadalfa/AllForOne#v0.2.0 install --target codex
-npx --yes github:geadalfa/AllForOne#v0.2.0 status --target codex --json
+codex plugin marketplace add geadalfa/AllForOne --ref codex-marketplace
 ```
 
-For Codex in ChatGPT desktop, `--target chatgpt` installs the same `allforone@allforone-local` plugin. Choose either target once. Open a new Codex chat and ask it to use `allforone-library`. To update, run `update --target codex` from the desired release. To remove the plugin, run `uninstall --target codex`. The local marketplace remains available for reinstallation.
+**ChatGPT desktop.** Restart the app, open **Plugins** in **Codex** or **Work**, choose the **AllForOne** source, then install **AllForOne Minimal** or **AllForOne Full**. For a local checkout, clone the [`codex-marketplace` branch](https://github.com/geadalfa/AllForOne/tree/codex-marketplace) and open its folder in Codex. The repository marketplace is declared in [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json). See [OpenAI's local marketplace instructions](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work).
+
+**Codex CLI.** Run one of these installation commands:
+
+```sh
+codex plugin add allforone-minimal@allforone
+codex plugin add allforone-full@allforone
+```
+
+Run `codex plugin list --marketplace allforone` to verify the install. Start a new chat and ask it to use `allforone-library`. To switch editions, uninstall the current edition in Plugins or run `codex plugin remove <installed-plugin-id>`, then install the other. To refresh a Git-backed marketplace, run `codex plugin marketplace upgrade allforone` and run the installation command for your edition again.
+
+If you used the v0.2.0 `npx` installer, remove that copy with `npx --yes github:geadalfa/AllForOne#v0.2.0 uninstall --target codex` before choosing a marketplace edition.
 
 ### ChatGPT web
 
@@ -416,6 +435,9 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | Surface | What it is |
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
+| `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
+| `integrations/codex/` | Self-contained Codex plugin directories generated from the public skills and guides. |
+| `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
 | `commands/ (5)` | User commands: install, status, update, knowledge, and memory. |
 | `hooks/hooks.json` | SessionStart bootstrap plus the daily cached update check. |
@@ -447,6 +469,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 
 ```text
 AllForOne/
+├── .agents/plugins/marketplace.json  Codex marketplace
 ├── .qoder-plugin/plugin.json     Qoder manifest
 ├── .mcp.json                     built-in MCP server declaration
 ├── hooks/hooks.json              SessionStart bootstrap
@@ -459,7 +482,8 @@ AllForOne/
 ├── bin/                          CLI and MCP server
 ├── upstreams/registry.json       18 tracked third-party repositories
 ├── profiles.json                 core, profiles, and knowledge mapping
-├── scripts/                      validate, privacy scan, ZIP packager
+├── integrations/                Codex editions and ChatGPT Workbench source
+├── scripts/                      validation, privacy scan, and packaging
 └── tests/                        installer, updater, MCP, and hook tests
 ```
 

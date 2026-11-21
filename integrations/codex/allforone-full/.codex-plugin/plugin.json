@@ -1,0 +1,20 @@
+{
+  "name": "allforone-full",
+  "version": "0.2.0",
+  "description": "The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.",
+  "author": {
+    "name": "AllForOne Contributors"
+  },
+  "repository": "https://github.com/geadalfa/AllForOne",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AllForOne Full",
+    "shortDescription": "The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.",
+    "developerName": "AllForOne Contributors",
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Use AllForOne to review a proposed software change and suggest verification steps."
+    ]
+  }
+}

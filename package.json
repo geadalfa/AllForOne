@@ -34,11 +34,12 @@
   },
   "scripts": {
     "test": "node --test",
-    "validate": "node scripts/validate.mjs",
+    "validate": "node scripts/validate.mjs && node scripts/build-codex-marketplace.mjs --check",
     "check:readme": "node scripts/check-readme-sync.mjs",
     "privacy": "node scripts/privacy-scan.mjs --history",
     "pack": "node scripts/build-zip.mjs",
-    "pack:chatgpt": "node scripts/build-chatgpt.mjs"
+    "pack:chatgpt": "node scripts/build-chatgpt.mjs",
+    "build:codex": "node scripts/build-codex-marketplace.mjs --write"
   },
   "license": "PolyForm-Noncommercial-1.0.0"
 }

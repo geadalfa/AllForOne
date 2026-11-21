@@ -109,3 +109,29 @@ test('native Codex and ChatGPT desktop targets share a scoped install, update an
   }
   checkQoder(env);
 });
+
+test('Codex installs each repository marketplace edition with its declared skills', t => {
+  const env = isolated(t);
+  const codex = (...args) => spawnSync('codex', args, { env, encoding: 'utf8', timeout: 40000 });
+  if (codex('plugin', 'add', '--help').status !== 0) {
+    t.skip('Codex CLI with local plugin support is unavailable'); return;
+  }
+  const added = codex('plugin', 'marketplace', 'add', ROOT);
+  assert.equal(added.status, 0, added.stderr);
+
+  for (const [edition, skillCount, referenceCount] of [['minimal', 5, 4], ['full', 10, 10]]) {
+    const pluginId = `allforone-${edition}@allforone`;
+    const result = codex('plugin', 'add', pluginId, '--json');
+    assert.equal(result.status, 0, result.stderr);
+    const installed = JSON.parse(result.stdout);
+    assert.equal(installed.pluginId, pluginId);
+    assert.equal(installed.version, VERSION);
+    assert.deepEqual(fs.readdirSync(installed.installedPath).sort(), ['.codex-plugin', 'LICENSE', 'skills']);
+    const skillsDir = path.join(installed.installedPath, 'skills');
+    assert.equal(fs.readdirSync(skillsDir).length, skillCount);
+    assert.equal(fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length, referenceCount);
+    const removed = codex('plugin', 'remove', pluginId);
+    assert.equal(removed.status, 0, removed.stderr);
+  }
+  checkQoder(env);
+});

@@ -155,7 +155,10 @@ if (history) {
     console.error('Privacy scan could not read Git history. Run in a checkout with accessible commits.');
     process.exit(2);
   }
-  for (const finding of scanText(git.stdout)) {
+  // PR #2 is public. Match only its GitHub-generated merge subject in history.
+  const releaseMerge = new RegExp('^Merge pull request #2 from ' +
+    escapeRe(T.handle + '/release/v0.2.0') + '\\r?$', 'gm');
+  for (const finding of scanText(git.stdout.replace(releaseMerge, '__REPO_MERGE__'))) {
     findings.push({ file: '(git history)', line: 0, id: finding.id });
   }
   const identities = spawnSync('git', ['log', '--all', '--format=%an <%ae>%n%cn <%ce>'], {
