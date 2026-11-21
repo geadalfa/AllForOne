@@ -79,7 +79,9 @@ const escapeRe = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const ALLOW = [
   new RegExp(escapeRe(REPO_URL), 'g'),
   new RegExp(escapeRe(REPO_SLUG), 'g'),
-  new RegExp(escapeRe('github:' + REPO_SLUG), 'g')
+  new RegExp(escapeRe('github:' + REPO_SLUG), 'g'),
+  // GitHub-generated merge messages include the owner's own branch path.
+  new RegExp(escapeRe(T.handle + '/' + T.handle + '-') + '[A-Za-z0-9._-]+', 'g')
 ];
 
 const DOC_EXAMPLE_IPS = new Set(['10.0.0.' + '0', '10.0.0.' + '1', '192.168.' + '1.1']);
