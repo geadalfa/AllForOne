@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="AllForOne" width="180">
+  <img src="assets/banner.png" alt="All Might vs All For One" width="360">
 </p>
 
 <h1 align="center">ALL FOR ONE</h1>
@@ -30,8 +30,6 @@
 </p>
 
 ---
-
-AllForOne is the continuation of the OverhaulMyAgent work. The old name is retired.
 
 ## Two commands
 
