@@ -5,14 +5,12 @@
 <h1 align="center">ALL FOR ONE</h1>
 
 <p align="center">
-  <b>One install. Every capability.</b><br>
-  A self-updating Qoder plugin that gives an agent real skills, public knowledge, deterministic tools,
-  a built-in MCP server, local memory scaffolding, and curated upstream packs — not a folder of loose markdown.
+  Agent skills and public reference material for Qoder, Codex, and ChatGPT. Choose your client below.
 </p>
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.1.4-6b7280?style=flat-square" alt="Version 0.1.4">
+  <img src="https://img.shields.io/badge/version-0.2.0-6b7280?style=flat-square" alt="Version 0.2.0">
   <img src="https://img.shields.io/badge/skills-63-7c3aed?style=flat-square" alt="63 skills">
   <img src="https://img.shields.io/badge/knowledge-35-0ea5e9?style=flat-square" alt="35 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
@@ -31,42 +29,46 @@
 
 ---
 
-## Two commands
+## Install for your client
 
-Pick one. Do not run both.
+| Client | Where to start | What you get |
+| --- | --- | --- |
+| Codex CLI or Codex in ChatGPT desktop | Install the local plugin below | Five portable skills and four bundled public references |
+| ChatGPT web | Upload the ChatGPT ZIP to a workspace, or add its files to a Project | A writing, planning, and software review workflow with four public references |
+| Qoder | Choose Minimal or Full, or import the Qoder ZIP | Qoder skills, commands, MCP, memory scaffolding, optional upstreams, and update checks |
 
-### Minimal
+### Codex and ChatGPT desktop
 
-Core skills plus the profiles you choose, then only the upstream repositories that match those profiles.
+Install Node.js 18+ and a Codex CLI that supports `codex plugin marketplace add` and `codex plugin add`. Run these commands in a terminal on the computer where you use Codex.
 
-```bash
-npx --yes github:geadalfa/AllForOne install --minimal
+```sh
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --target codex
+npx --yes github:geadalfa/AllForOne#v0.2.0 status --target codex --json
 ```
 
-### Full
+For Codex in ChatGPT desktop, `--target chatgpt` installs the same `allforone@allforone-local` plugin. Choose either target once. Open a new Codex chat and ask it to use `allforone-library`. To update, run `update --target codex` from the desired release. To remove the plugin, run `uninstall --target codex`. The local marketplace remains available for reinstallation.
 
-Every public skill, knowledge document, tool, MCP server, memory scaffold, and upstream pack.
+### ChatGPT web
 
-```bash
-npx --yes github:geadalfa/AllForOne install --full
+Download [allforone-0.2.0.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.0/allforone-0.2.0.chatgpt.zip). Choose the route available in your account.
+
+- **Workspace plugin.** An administrator with plugin upload access can upload the ZIP in the workspace plugin settings and enable it for the intended users.
+- **Personal Project.** Extract the ZIP. Open a ChatGPT Project and add the four Markdown files from `skills/allforone-workbench/references/` as project sources. Copy the body of `skills/allforone-workbench/SKILL.md`, starting below the closing `---`, into the Project instructions. Start a chat inside that Project and ask it to review a draft against the references.
+
+The web edition uses text instructions and uploaded files. It needs no local executable, Qoder profile, or connection to a private memory store. See [ChatGPT plugins](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt) and [Projects in ChatGPT](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
+
+### Qoder
+
+Minimal installs core skills and selected profiles. Full installs the complete public Qoder pack. Choose one command.
+
+```sh
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --full
 ```
 
-If you are an LLM agent, stop and ask the user **“Minimal or Full?”** before running anything. The full protocol is in [AGENTS.md](AGENTS.md).
+For manual installation, download [allforone-0.2.0.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.0/allforone-0.2.0.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
 
-## Download the release pack
-
-Prefer a manual install, or want a file you can keep offline? Download the latest ZIP and import it in Qoder.
-
-- [allforone-0.1.4.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.4/allforone-0.1.4.qoder.zip)
-- [All releases](https://github.com/geadalfa/AllForOne/releases)
-
-Manual import: **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, then restart Qoder.
-
-## What this is
-
-- **A Qoder plugin, not a prompt dump.** The repository contains `.qoder-plugin/plugin.json`, real skills, commands, a hook, and a `.mcp.json`. Installing registers and enables the plugin in Qoder.
-- **A self-updating bundle.** A daily cached check updates the plugin and every tracked upstream repository. The user can opt out at install time or later.
-- **A public edition.** Private memory, employer data, internal endpoints, customer records, credentials, and private repository names are not in this repository. Local memory stays on the machine.
+The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.0) lists downloadable files and their SHA-256 checksums.
 
 ## DLSS MFG on RTX 20/30/40
 
@@ -105,7 +107,7 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 | Memory | Local scaffold | `MEMORY.md`, topic files, and a secret-rejecting `memory_add` tool. Never published. |
 | Commands | 5 | `/allforone-install`, `/allforone-status`, `/allforone-update`, `/allforone-knowledge`, `/allforone-memory`. |
 | Hooks | SessionStart | Injects a compact bootstrap and starts the daily update check in the background. |
-| Upstream packs | 18 | Cloned or installed depending on the selected profiles. |
+| Upstream packs | 18 | Selected by profile. The defensive review guide is bundled locally. |
 
 ## Minimal vs Full
 
@@ -125,7 +127,7 @@ Profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research
 Non-interactive minimal install:
 
 ```bash
-npx --yes github:geadalfa/AllForOne install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --minimal --profiles engineering,security --yes
 ```
 
 ## How it works
@@ -156,7 +158,7 @@ flowchart LR
 Auto-update is **on by default** for both the plugin and the upstream repositories. The first install asks once; `--no-auto-update` opts out.
 
 - One check per day, with a 24-hour cache per target.
-- Self-update pulls the newest AllForOne commit, copies it into a versioned cache path, and re-registers the plugin.
+- Self-update follows the repository's default branch. A tag or GitHub Release on a separate branch is available for explicit installation and does not trigger this check by itself.
 - Upstream update runs `git fetch` and a fast-forward reset only inside AllForOne-managed clones. A clone with local changes is skipped, never discarded.
 - The result is written to `~/.allforone/cache/update-status.json`.
 - Restart Qoder after an update so the new skills load.
@@ -164,14 +166,14 @@ Auto-update is **on by default** for both the plugin and the upstream repositori
 Disable later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.2.0 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.2.0 config autoUpdate.upstreams false
 ```
 
 Force a check:
 
 ```bash
-npx --yes github:geadalfa/AllForOne update --force
+npx --yes github:geadalfa/AllForOne#v0.2.0 update --force
 ```
 
 ## Privacy
@@ -223,7 +225,7 @@ Manual Qoder import:
 ## After install
 
 1. Restart Qoder.
-2. Run `npx --yes github:geadalfa/AllForOne status`, or `/allforone-status`.
+2. Run `npx --yes github:geadalfa/AllForOne#v0.2.0 status`, or `/allforone-status`.
 3. Confirm the version, plugin path, skill count, and update flags.
 4. Try a task that crosses domains, for example: “Review this diff, check the UI against the anti-slop rules, and verify the security-sensitive paths.”
 5. The agent should load only the matching skills and at most three knowledge documents.
@@ -235,7 +237,7 @@ Manual Qoder import:
 | [anti-slop](https://github.com/miqdadbadjuber/anti-slop) | MIT | Frontend and creative profiles; installed as a Qoder plugin if absent. |
 | [konoha](https://github.com/andycungkrinx91/konoha) | Apache-2.0 | Engineering and automation profiles; reference clone, manual MCP setup. |
 | [claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) | MIT | Finance and data profiles; keyless subset vendored, upstream tracked. |
-| [Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Security profile; static defensive subset only. |
+| [Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Security profile. Ships a static code-review guide and skips upstream cloning. |
 | [gbrain](https://github.com/garrytan/gbrain) | MIT | Research and LLM profiles; conventions, no runtime. |
 | [humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Writing profile; skill pack installed from source. |
 | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT | Frontend and creative profiles; reference clone. |
@@ -285,7 +287,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `bailian-sandbox` | 阿里云百炼 Sandbox 沙箱实例与模版生命周期管理入口：用户要创建、查询、连接、暂停、恢复或释放百炼沙箱， 或查看内置基础镜像、上传模版挂载文件、创建、更新、查询、删除沙箱模版、查看模版构建状态时，使用 `bl sandbox`。 用户要访问已创建实例、打开 WebShell、连接 browser-use 浏览器自动化或 VNC 实时画面时，先获取连接信息，再连接数据面。 不用于宿主执行沙箱设置、E2B 官方云资源或通用文件传输。… |
 | `bailian-train-deploy` | 用百炼 CLI (`bl`) 走完"数据→微调训练→导出→部署→调用"的完整闭环，或跳过训练直接部署基座模型。支持文本模型（SFT/DPO/CPT）、音频 TTS 模型（CosyVoice）、图像生成模型（Wan2.7）和视频生成模型（Wan i2v/kf2v）微调。涵盖数据集校验/上传、创建微调任务、等待训练、导出最佳 checkpoint、创建推理部署、等待就绪、给出调用示例。当用户提到在百炼 / DashScope /… |
 | `bailian-web-search` | 阿里云百炼联网搜索（web search）入口：为联网搜索 / 网页搜索 / 查最新资讯做路径分发。 `bl search web` 默认走 model 模式（Chat Completions enable_search），任何连接身份 （含 Token Plan）均可用；仅当用户明确要 WebSearch MCP 服务或 pages 列表时用 `--mode mcp`（仅普通 DashScope API Key）；MCP 鉴权失败、未开通或传输失败时… |
-| `bughunter-defensive-review` | Use when reviewing code, diffs, or pull requests for security defects, interpreting Checkmarx SCA or SonarQube findings, threat-modeling a flow, triaging a vulnerability report, or writing a security finding for Confluence/CDR.… |
+| `bughunter-defensive-review` | Trace trust boundaries in source, interpret scanner evidence, and recommend a targeted fix and regression test. |
 | `cli-hub-meta-skill` | Discover agent-native CLIs for professional software. Access the live catalog to find tools for creative workflows, productivity, AI, and more. |
 | `corporate-diplomacy-and-career-acceleration` | Transform raw technical updates, bad mood or frustration, escalations, performance reports, and upward communications into tactful, executive-grade corporate language (BLUF, 1-3-1 escalation, blameless post-mortem, XYZ… |
 | `data-quality-checker` | Validate data quality in market analysis documents and blog articles before publication. Use when checking for price scale inconsistencies (ETF vs futures), instrument notation errors, date/day-of-week mismatches, allocation… |
@@ -316,7 +318,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `pre-trade-discipline-gate` | Evaluate a local pre-trade checklist before manual order entry, blocking planless, oversized, revenge-risk, market-regime-blocked, or circuit-breaker-blocked entries while journaling the decision for trader-memory-core review. |
 | `privacy-publish-gate` | Use before publishing, syncing, or pushing any private agent asset (skills, knowledge, tools, MCP config, plugin payload, memory) to a PUBLIC repository, and whenever asked to "make sure my personal data does not leak". Runs the… |
 | `repo-architecture-mentor` | Use when the user asks to learn, trace, teach, or safely refactor a codebase from Bitbucket/GitHub — onboarding to unfamiliar repositories, explaining request/data flows, mapping architecture, understanding the tech stack (Go… |
-| `reverse-engineer-anything` | Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a… |
+| `reverse-engineer-anything` | Compare local software artifacts using file inventories, build metadata, version information, and hashes. |
 | `software-qa-and-ui-testing` | Software testing standards, UI state synchronization verification, and multi-item test automation to deterministically detect functional and visual bugs using Playwright, CDP, and the SFDPOT heuristic. |
 | `spec-driven-development` | Apply Spec-Driven Development (OpenSpec) workflow to design, propose, implement, and archive features with strict interface contracts, bounded blast radius, and 1:1 unit test parity before writing code. |
 | `systematic-debugging` | Use when something is broken — an error message, stack trace, failing test, crash, wrong output, "it doesn't work", build failure, or unexpected behavior. Finds the root cause with evidence before changing code, then records the… |
@@ -432,14 +434,14 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 
 | Command | Purpose |
 |---|---|
-| `npx --yes github:geadalfa/AllForOne install --minimal` | Minimal install. |
-| `npx --yes github:geadalfa/AllForOne install --full` | Full install. |
-| `npx --yes github:geadalfa/AllForOne status` | Installed version, paths, skills, upstreams, update state. |
-| `npx --yes github:geadalfa/AllForOne update` | Daily cached update check. |
-| `npx --yes github:geadalfa/AllForOne update --force` | Ignore the cache. |
-| `npx --yes github:geadalfa/AllForOne profiles` | List profiles and skill counts. |
-| `npx --yes github:geadalfa/AllForOne config autoUpdate.self false` | Disable self-update. |
-| `npx --yes github:geadalfa/AllForOne uninstall` | Remove the plugin registration. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 install --minimal` | Minimal install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 install --full` | Full install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 status` | Installed version, paths, skills, upstreams, update state. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 update` | Daily cached update check. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 update --force` | Ignore the cache. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 profiles` | List profiles and skill counts. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 config autoUpdate.self false` | Disable self-update. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.0 uninstall` | Remove the plugin registration. |
 
 ## Repository layout
 
@@ -468,6 +470,7 @@ npm test
 npm run validate
 npm run privacy
 npm run pack
+npm run pack:chatgpt
 ```
 
 `npm run privacy` now scans the working tree and the full commit history. It must report zero findings. The CI workflow runs the same checks.
@@ -479,7 +482,7 @@ npm run pack
 ## Uninstall
 
 ```bash
-npx --yes github:geadalfa/AllForOne uninstall
+npx --yes github:geadalfa/AllForOne#v0.2.0 uninstall
 ```
 
 Add `--purge --yes` to also remove the local state directory, including portable memory and upstream clones. Restart Qoder afterward.

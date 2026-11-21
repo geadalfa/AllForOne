@@ -141,7 +141,7 @@ if (registry) {
     if (!entry.license) errors.push(`upstream ${entry.id}: license missing`);
     if (!Array.isArray(entry.profiles)) errors.push(`upstream ${entry.id}: profiles missing`);
     const type = entry.install?.type;
-    if (!['reference', 'skills', 'qoder-plugin', 'mcp'].includes(type)) {
+    if (!['reference', 'skills', 'qoder-plugin', 'mcp', 'bundled'].includes(type)) {
       errors.push(`upstream ${entry.id}: invalid install type ${type}`);
     }
     if (type === 'qoder-plugin' && !entry.install.pluginPath) {
