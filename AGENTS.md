@@ -47,6 +47,18 @@ Report the real version, plugin path, skill count, memory path, and update flags
 
 The plugin, skills, hooks, and MCP server load on restart. After restart, the user can run `/allforone-status`.
 
+## 6. Keep README in sync
+
+Any change to `skills/`, `knowledge/`, `tools/`, `plugins`, `upstreams/`, or the package version must update `README.md` in the same change:
+
+- badges and the "What you get" table;
+- the "Upstream packs" table;
+- the full inventory headings and rows;
+- the repository tree counts;
+- the version badge and release ZIP link.
+
+Run `npm run validate`. It calls `scripts/check-readme-sync.mjs` and fails when README is stale. Do not treat the README update as a follow-up task.
+
 ## Boundaries
 
 - Never copy the user's real memory, credentials, employer data, customer records, internal endpoints, or private repository names into a public artifact.

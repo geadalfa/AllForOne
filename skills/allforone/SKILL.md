@@ -52,6 +52,18 @@ npx --yes github:geadalfa/AllForOne config autoUpdate.upstreams false
 - Security review: `bughunter-defensive-review`.
 - UI work: `anti-slop-ui-design`.
 
+## Changing capabilities
+
+When you add, remove, or rename a skill, knowledge document, tool, plugin surface, or upstream, update `README.md` in the same change:
+
+- badge counts and the "What you get" table;
+- the "Upstream packs" table;
+- the full inventory headings and rows;
+- the repository tree counts;
+- the version badge and release ZIP link when the version changes.
+
+Run `npm run validate`. It includes `scripts/check-readme-sync.mjs` and fails when README is stale. Never ship a capability change with a README update deferred.
+
 ## Privacy boundary
 
 The public repository never contains the user's real memory, credentials, employer data, internal endpoints, customer records, or private repository names. Memory is created locally under the AllForOne state directory and never synced back to the public repository. If a task requires private context, read it from the user's local files at runtime; do not copy it into the plugin.

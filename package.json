@@ -1,6 +1,6 @@
 {
   "name": "allforone",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Self-updating Qoder capability pack with skills, knowledge, tools, MCP, local memory, and upstream repositories.",
   "type": "module",
   "bin": {
@@ -35,6 +35,7 @@
   "scripts": {
     "test": "node --test",
     "validate": "node scripts/validate.mjs",
+    "check:readme": "node scripts/check-readme-sync.mjs",
     "privacy": "node scripts/privacy-scan.mjs --history",
     "pack": "node scripts/build-zip.mjs"
   },

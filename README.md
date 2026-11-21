@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.1.3-6b7280?style=flat-square" alt="Version 0.1.3">
+  <img src="https://img.shields.io/badge/version-0.1.4-6b7280?style=flat-square" alt="Version 0.1.4">
   <img src="https://img.shields.io/badge/skills-63-7c3aed?style=flat-square" alt="63 skills">
   <img src="https://img.shields.io/badge/knowledge-35-0ea5e9?style=flat-square" alt="35 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
@@ -57,7 +57,7 @@ If you are an LLM agent, stop and ask the user **“Minimal or Full?”** before
 
 Prefer a manual install, or want a file you can keep offline? Download the latest ZIP and import it in Qoder.
 
-- [allforone-0.1.3.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.3/allforone-0.1.3.qoder.zip)
+- [allforone-0.1.4.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.4/allforone-0.1.4.qoder.zip)
 - [All releases](https://github.com/geadalfa/AllForOne/releases)
 
 Manual import: **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, then restart Qoder.
