@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline/promises';
+import { runCodexCommand } from '../lib/codex.mjs';
 import {
   DISPLAY_NAME,
   PLUGIN_NAME,
@@ -10,13 +11,13 @@ import {
 } from '../lib/constants.mjs';
 import { installAll } from '../lib/installer.mjs';
 import { availableProfiles, resolveSkills, loadUpstreamRegistry } from '../lib/profiles.mjs';
-import { readState, writeState } from '../lib/state.mjs';
+import { prepareStatePurge, readState, writeState } from '../lib/state.mjs';
 import {
   autoUpdate,
   readUpdateReport
 } from '../lib/updater.mjs';
 import { sessionStart } from '../lib/hook.mjs';
-import { qoderPaths, unregisterPlugin, pluginInstallPath } from '../lib/qoder.mjs';
+import { isRegistered, qoderPaths, unregisterPlugin, pluginInstallPath } from '../lib/qoder.mjs';
 
 const BOOLEAN_FLAGS = new Set([
   'minimal',
@@ -70,6 +71,8 @@ function usage() {
 Usage:
   allforone install --minimal [--profiles engineering,security]
   allforone install --full
+  allforone install --target codex|chatgpt
+  allforone status|update|uninstall --target codex|chatgpt
   allforone update [--force]
   allforone status [--json]
   allforone profiles
@@ -78,7 +81,12 @@ Usage:
   allforone hook session-start
   allforone mcp
 
-Install flags:
+Codex and ChatGPT desktop:
+  Use --target codex or --target chatgpt for the portable local plugin.
+  Both require the Codex CLI with plugin support. Run status with --json to
+  inspect the installed version. Update installs the invoked package version.
+
+Qoder install flags:
   --no-auto-update   Disable daily self and upstream updates
   --no-upstreams     Skip third-party repositories
   --offline          Skip all network operations
@@ -86,7 +94,7 @@ Install flags:
   --state-dir PATH   Override the AllForOne state directory
   --yes              Skip confirmations
 
-Minimal installs the core plus only the profiles you choose, then pulls the
+For Qoder, Minimal installs the core plus only the profiles you choose, then pulls the
 matching upstream repositories. Full installs every public skill, knowledge
 document, tool, and upstream pack.`);
 }
@@ -293,6 +301,7 @@ function doUpdate(flags) {
   const report = autoUpdate({
     ...opts,
     force: Boolean(flags.force),
+    offline: Boolean(flags.offline),
     quiet: Boolean(flags.quiet)
   });
   if (flags.quiet) return;
@@ -344,16 +353,15 @@ async function doUninstall(flags) {
       return;
     }
   }
-  unregisterPlugin(opts.qoderDir, PLUGIN_NAME);
+  const purge = flags.purge && prepareStatePurge(opts.stateDir, opts.qoderDir);
+  const removed = unregisterPlugin(opts.qoderDir, PLUGIN_NAME);
   const cacheDir = qoderPaths(opts.qoderDir).pluginCache;
-  if (fs.existsSync(cacheDir)) {
+  if (removed && !isRegistered(opts.qoderDir, PLUGIN_NAME) && fs.existsSync(cacheDir)) {
     for (const name of fs.readdirSync(cacheDir)) {
       if (name === PLUGIN_NAME) fs.rmSync(path.join(cacheDir, name), { recursive: true, force: true });
     }
   }
-  if (flags.purge) {
-    fs.rmSync(opts.stateDir, { recursive: true, force: true });
-  }
+  if (purge) purge();
   console.log('AllForOne removed from Qoder. Restart Qoder to finish.');
 }
 
@@ -364,6 +372,13 @@ async function main() {
 
   if (flags.help || command === 'help') {
     usage();
+    return;
+  }
+  if (flags.target !== undefined && flags.target !== 'qoder') {
+    if (!['codex', 'chatgpt'].includes(flags.target)) {
+      throw new Error('Choose --target qoder, codex, or chatgpt.');
+    }
+    runCodexCommand(command, flags);
     return;
   }
   if (command === 'install') {

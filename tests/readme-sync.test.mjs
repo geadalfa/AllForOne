@@ -48,6 +48,8 @@ function syncedReadme() {
     'version-9.9.9-',
     'alt="Version 9.9.9"',
     'allforone-9.9.9.qoder.zip',
+    'releases/download/v9.9.9/allforone-9.9.9.chatgpt.zip',
+    'AllForOne#v9.9.9 install --target codex',
     'skills-1-',
     'knowledge-1-',
     'upstreams-1-',

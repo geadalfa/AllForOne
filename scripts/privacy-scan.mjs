@@ -113,14 +113,7 @@ for (const file of files) {
   const lines = text.split(/\r?\n/);
   for (let index = 0; index < lines.length; index += 1) {
     for (const finding of scanText(lines[index])) {
-      if (
-        finding.id === 'private-ip' &&
-        rel.startsWith('skills/bughunter-defensive-review/references/') &&
-        ['10.0.0.' + '0', '10.0.0.' + '1', '192.168.' + '1.1'].includes(finding.match)
-      ) {
-        continue;
-      }
-      findings.push({ file: rel, line: index + 1, id: finding.id, match: finding.match });
+      findings.push({ file: rel, line: index + 1, id: finding.id });
     }
   }
 }
@@ -148,8 +141,7 @@ for (const file of files) {
     ) {
       continue;
     }
-    if (rel.startsWith('skills/bughunter-defensive-review/references/')) continue;
-    findings.push({ file: rel, line: 0, id: 'email', match: match[0] });
+    findings.push({ file: rel, line: 0, id: 'email' });
   }
 }
 
@@ -159,10 +151,12 @@ if (history) {
     encoding: 'utf8',
     maxBuffer: 200 * 1024 * 1024
   });
-  if (git.status === 0 && git.stdout) {
-    for (const finding of scanText(git.stdout)) {
-      findings.push({ file: '(git history)', line: 0, id: finding.id, match: finding.match });
-    }
+  if (git.status !== 0 || !git.stdout) {
+    console.error('Privacy scan could not read Git history. Run in a checkout with accessible commits.');
+    process.exit(2);
+  }
+  for (const finding of scanText(git.stdout)) {
+    findings.push({ file: '(git history)', line: 0, id: finding.id });
   }
   const identities = spawnSync('git', ['log', '--all', '--format=%an <%ae>%n%cn <%ce>'], {
     cwd: ROOT,
@@ -173,11 +167,13 @@ if (history) {
   // The public repo owner's GitHub noreply is the only personal handle allowed in commit metadata.
   const OWNER_NOREPLY = new RegExp('52628488\\+' + 'gead' + 'alfa@users\\.noreply\\.github\\.com', 'i');
   const FOREIGN_NOREPLY = new RegExp('all' + 'forone@users\\.noreply\\.github\\.com', 'i');
-  if (identities.status === 0 && identities.stdout) {
-    for (const line of identities.stdout.split(/\r?\n/).filter(Boolean)) {
-      if ((IDENTITY.test(line) || FOREIGN_NOREPLY.test(line)) && !OWNER_NOREPLY.test(line)) {
-        findings.push({ file: '(commit metadata)', line: 0, id: 'identity', match: line });
-      }
+  if (identities.status !== 0 || !identities.stdout) {
+    console.error('Privacy scan could not verify commit metadata.');
+    process.exit(2);
+  }
+  for (const line of identities.stdout.split(/\r?\n/).filter(Boolean)) {
+    if ((IDENTITY.test(line) || FOREIGN_NOREPLY.test(line)) && !OWNER_NOREPLY.test(line)) {
+      findings.push({ file: '(commit metadata)', line: 0, id: 'identity' });
     }
   }
 }
@@ -186,7 +182,7 @@ if (json) {
   console.log(JSON.stringify({ findings, scanned: files.length }, null, 2));
 } else if (findings.length) {
   for (const finding of findings) {
-    console.error(`${finding.file}:${finding.line} [${finding.id}] ${finding.match}`);
+    console.error(`${finding.file}:${finding.line} [${finding.id}]`);
   }
   console.error(`\nPrivacy scan failed with ${findings.length} finding(s).`);
 } else {

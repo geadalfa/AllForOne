@@ -52,8 +52,8 @@
       "description": "Defensive security review corpus. AllForOne ships only the static defensive subset.",
       "vendored": true,
       "install": {
-        "type": "reference",
-        "note": "Offensive-only classes are never installed. Active testing requires written authorization."
+        "type": "bundled",
+        "note": "The static review guide ships in the release. The upstream testing corpus is not fetched."
       }
     },
     {

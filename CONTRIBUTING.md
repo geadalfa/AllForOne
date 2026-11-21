@@ -17,6 +17,19 @@ npm run privacy
 
 `npm run privacy` scans the working tree and the full commit history. A pull request with any finding is not merged.
 
+## Build release archives
+
+Use Git, Node.js 18 or newer, and npm. Build a release from a clean checkout of the release commit. Run `git status --short` after checking out that commit and confirm the output is empty. For a local development build, stage new runtime files first. The Qoder packager uses Git's tracked paths, the `files` list in `package.json`, and each selected file's current working-tree contents. It includes tracked scripts nested inside skills.
+
+```bash
+npm run pack
+npm run pack:chatgpt
+```
+
+The archives appear under `dist/` with the version from `package.json`. `allforone-<version>.qoder.zip` contains the Qoder manifest, CLI, runtime modules, and bundled resources. `allforone-<version>.chatgpt.zip` contains a portable `plugin.json`, one skill, and four public Markdown guides. Codex installation uses the CLI described in the README.
+
+ChatGPT workspace owners or admins with upload permission can use the web admin console to upload the ChatGPT ZIP. Signed-in users with Projects can instead extract the four guides and use them as project sources with the skill instructions. [Plugin upload permissions](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt) · [Projects in ChatGPT](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) · [Portable plugin format](https://developers.openai.com/plugins/build/plugins)
+
 ## Commit identity
 
 - Use a GitHub noreply address tied to your own GitHub account.

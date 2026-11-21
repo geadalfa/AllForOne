@@ -23,7 +23,7 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/anti-slop) | MIT | Qoder plugin installed when selected. |
 | [andycungkrinx91/konoha](https://github.com/andycungkrinx91/konoha) | Apache-2.0 | Reference clone; MCP runtime is manual. |
 | [tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) | MIT | Upstream tracking for the vendored subset. |
-| [elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Upstream tracking for the defensive subset. |
+| [elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Attribution for the earlier defensive review collection. The current guide is bundled locally. |
 | [garrytan/gbrain](https://github.com/garrytan/gbrain) | MIT | Reference clone; runtime is not installed. |
 | [apissaj/humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Skills installed when the writing profile is selected. |
 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT | Reference clone; the Qoder Marketplace plugin is the supported runtime. |

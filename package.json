@@ -1,7 +1,7 @@
 {
   "name": "allforone",
-  "version": "0.1.4",
-  "description": "Self-updating Qoder capability pack with skills, knowledge, tools, MCP, local memory, and upstream repositories.",
+  "version": "0.2.0",
+  "description": "Qoder capability pack, local Codex plugin, and portable ChatGPT workflows.",
   "type": "module",
   "bin": {
     "allforone": "bin/allforone.mjs"
@@ -37,7 +37,8 @@
     "validate": "node scripts/validate.mjs",
     "check:readme": "node scripts/check-readme-sync.mjs",
     "privacy": "node scripts/privacy-scan.mjs --history",
-    "pack": "node scripts/build-zip.mjs"
+    "pack": "node scripts/build-zip.mjs",
+    "pack:chatgpt": "node scripts/build-chatgpt.mjs"
   },
   "license": "PolyForm-Noncommercial-1.0.0"
 }

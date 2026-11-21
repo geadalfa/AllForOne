@@ -1,6 +1,6 @@
 # AllForOne Agent Protocol
 
-This file is for LLM agents. If a user asks to install AllForOne, follow this protocol exactly.
+This file is for LLM agents. For Codex or ChatGPT, follow the client-specific installation section in README.md. Apply the Qoder protocol below only when the requested client is Qoder. Ask which client the user uses if the target is unclear.
 
 ## 1. Ask one question
 
@@ -12,16 +12,16 @@ Do not pick a mode silently. Do not install both.
 
 ```bash
 # Minimal
-npx --yes github:geadalfa/AllForOne install --minimal
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --minimal
 
 # Full
-npx --yes github:geadalfa/AllForOne install --full
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --full
 ```
 
 Minimal is interactive when run in a terminal. For a non-interactive run, pass profiles:
 
 ```bash
-npx --yes github:geadalfa/AllForOne install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.2.0 install --minimal --profiles engineering,security --yes
 ```
 
 Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
@@ -31,14 +31,14 @@ Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `re
 Auto-update is on by default and checked once per day with a 24-hour cache. If the user wants it off, add `--no-auto-update`. Later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.2.0 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.2.0 config autoUpdate.upstreams false
 ```
 
 ## 4. Verify
 
 ```bash
-npx --yes github:geadalfa/AllForOne status
+npx --yes github:geadalfa/AllForOne#v0.2.0 status
 ```
 
 Report the real version, plugin path, skill count, memory path, and update flags. Do not claim success without this output.

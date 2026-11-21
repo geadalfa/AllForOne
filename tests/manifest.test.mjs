@@ -79,7 +79,7 @@ test('upstream registry is complete and unique', () => {
     assert.ok(entry.branch);
     assert.ok(entry.license);
     assert.ok(Array.isArray(entry.profiles) && entry.profiles.length > 0);
-    assert.ok(['reference', 'skills', 'qoder-plugin', 'mcp'].includes(entry.install.type));
+    assert.ok(['reference', 'skills', 'qoder-plugin', 'mcp', 'bundled'].includes(entry.install.type));
     assert.ok(!ids.has(entry.id), `duplicate ${entry.id}`);
     ids.add(entry.id);
   }
