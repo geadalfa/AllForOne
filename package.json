@@ -35,7 +35,7 @@
   "scripts": {
     "test": "node --test",
     "validate": "node scripts/validate.mjs",
-    "privacy": "node scripts/privacy-scan.mjs",
+    "privacy": "node scripts/privacy-scan.mjs --history",
     "pack": "node scripts/build-zip.mjs"
   },
   "license": "PolyForm-Noncommercial-1.0.0"

@@ -462,7 +462,11 @@ npm run privacy
 npm run pack
 ```
 
-`npm run privacy` must report zero findings. The CI workflow runs the same three checks.
+`npm run privacy` now scans the working tree and the full commit history. It must report zero findings. The CI workflow runs the same checks.
+
+## Contributing
+
+`main` is protected. Direct pushes are disabled; open a pull request from a fork or a branch. CI runs `npm test`, `npm run validate`, and `npm run privacy` (including history). Use a GitHub noreply identity tied to your own account, never another person's noreply address. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Uninstall
 

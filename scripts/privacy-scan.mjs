@@ -152,7 +152,7 @@ for (const file of files) {
 }
 
 if (history) {
-  const git = spawnSync('git', ['log', '--all', '-p'], {
+  const git = spawnSync('git', ['log', '--all', '-p', '--format=commit %H%n%B'], {
     cwd: ROOT,
     encoding: 'utf8',
     maxBuffer: 200 * 1024 * 1024
@@ -168,9 +168,12 @@ if (history) {
     maxBuffer: 10 * 1024 * 1024
   });
   const IDENTITY = new RegExp([T.nameA, T.nameG, T.mobile, T.org, T.handle].join('|'), 'i');
+  // The public repo owner's GitHub noreply is the only personal handle allowed in commit metadata.
+  const OWNER_NOREPLY = new RegExp('52628488\\+' + 'gead' + 'alfa@users\\.noreply\\.github\\.com', 'i');
+  const FOREIGN_NOREPLY = new RegExp('all' + 'forone@users\\.noreply\\.github\\.com', 'i');
   if (identities.status === 0 && identities.stdout) {
     for (const line of identities.stdout.split(/\r?\n/).filter(Boolean)) {
-      if (IDENTITY.test(line)) {
+      if ((IDENTITY.test(line) || FOREIGN_NOREPLY.test(line)) && !OWNER_NOREPLY.test(line)) {
         findings.push({ file: '(commit metadata)', line: 0, id: 'identity', match: line });
       }
     }
