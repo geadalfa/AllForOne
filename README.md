@@ -436,7 +436,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
 | `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
-| `integrations/codex/` | Self-contained Codex plugin directories generated from the public skills and guides. |
+| `plugins/` | Self-contained Codex plugin directories generated from the public skills and guides. |
 | `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
 | `commands/ (5)` | User commands: install, status, update, knowledge, and memory. |
@@ -482,7 +482,8 @@ AllForOne/
 ├── bin/                          CLI and MCP server
 ├── upstreams/registry.json       18 tracked third-party repositories
 ├── profiles.json                 core, profiles, and knowledge mapping
-├── integrations/                Codex editions and ChatGPT Workbench source
+├── plugins/                      Codex Minimal and Full editions
+├── integrations/                 ChatGPT Workbench source
 ├── scripts/                      validation, privacy scan, and packaging
 └── tests/                        installer, updater, MCP, and hook tests
 ```

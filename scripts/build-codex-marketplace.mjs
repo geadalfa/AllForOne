@@ -5,13 +5,14 @@ import { REPO, ROOT, VERSION } from '../lib/constants.mjs';
 import { CORE_CODEX_REFERENCES, CORE_CODEX_SKILLS, writeCodexSkills } from '../lib/codex-payload.mjs';
 import { walk, writeJson, writeText } from '../lib/fsx.mjs';
 
-const pluginDirectory = 'integrations/codex';
+const pluginDirectory = 'plugins';
 const catalogFile = '.agents/plugins/marketplace.json';
 const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
 const { license } = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const editions = [
   {
     name: 'allforone-minimal',
+    folder: 'minimal',
     displayName: 'AllForOne Minimal',
     description: 'Core workflows for engineering, technical writing, QA, and data quality.',
     skills: CORE_CODEX_SKILLS,
@@ -19,6 +20,7 @@ const editions = [
   },
   {
     name: 'allforone-full',
+    folder: 'full',
     displayName: 'AllForOne Full',
     description: 'The core workflows plus product discovery, UI design, document conversion, specs, and safe refactoring.',
     skills: [
@@ -48,7 +50,7 @@ if (args.length !== 1 || !['--check', '--write'].includes(args[0])) {
 const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'allforone-codex-marketplace-'));
 try {
   for (const edition of editions) {
-    const directory = path.join(stage, pluginDirectory, edition.name);
+    const directory = path.join(stage, pluginDirectory, edition.folder);
     writeCodexSkills(directory, edition.skills, edition.references);
     fs.copyFileSync(path.join(ROOT, 'LICENSE'), path.join(directory, 'LICENSE'));
     writeJson(path.join(directory, '.codex-plugin', 'plugin.json'), {
@@ -74,7 +76,7 @@ try {
     interface: { displayName: 'AllForOne' },
     plugins: editions.map(edition => ({
       name: edition.name,
-      source: { source: 'local', path: `./${pluginDirectory}/${edition.name}` },
+      source: { source: 'local', path: `./${pluginDirectory}/${edition.folder}` },
       policy: { installation: 'AVAILABLE', authentication: 'ON_INSTALL' },
       category: 'Productivity'
     }))
