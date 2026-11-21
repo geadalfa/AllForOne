@@ -12,6 +12,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `agents_md_open_standard_specification.md` | You are writing or auditing AGENTS.md instructions. |
 | `software_qa_and_testing_discipline.md` | You need a test plan, regression gates, or UI state verification. |
 | `polyglot_architecture_and_graph_code_intelligence.md` | You are navigating a cross-language codebase or building an impact graph. |
+| `hkuds_cli_anything_agent_native_cli.md` | You are finding or installing an agent-native CLI for desktop software. |
 
 ## UI, writing, and research
 
@@ -29,12 +30,14 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `knowledge_ingestion_automation.md` | You are ingesting a new source into skills, knowledge, or memory. |
 | `reading_habit_psychology.md` | You need the evidence summary on reading habits. |
 | `psychology_mental_health_and_modern_problems.md` | You need careful, non-diagnostic mental-health context. |
+| `affine_local_first_knowledge_base.md` | You are designing local-first sync or evaluating a self-hosted workspace. |
 
 ## Security
 
 | Document | Use when |
 |---|---|
 | `cross_platform_uiux_qa_security_playbook.md` | You need the cross-platform QA and security checklist. |
+| `app_store_compliance_ora_playbook.md` | You are preparing an iOS or Android release for store review. |
 | `claude_trading_skills_toolkit.md` | You are reviewing the provenance and limits of the trading skill pack. |
 
 ## Finance
@@ -54,6 +57,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `web_content_extraction_protocol.md` | You need to turn a URL into reliable readable content. |
 | `windows_desktop_app_engineering.md` | You are building or packaging a Windows desktop app. |
 | `macos_native_dmg_app_development.md` | You are building a macOS app or a signed DMG. |
+| `autoclip_video_repurposing.md` | You are clipping or repurposing long video into platform shorts. |
 
 ## Automation and optional integrations
 

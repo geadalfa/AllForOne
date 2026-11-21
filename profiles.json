@@ -25,7 +25,8 @@
       "omp-agent-harness",
       "konoha-agentic-workflow",
       "reverse-engineer-anything",
-      "github-release-sync"
+      "github-release-sync",
+      "cli-hub-meta-skill"
     ],
     "frontend": [
       "anti-slop-ui-design",
@@ -66,7 +67,9 @@
       "windows-gaming-optimizer",
       "omp-agent-harness",
       "konoha-agentic-workflow",
-      "github-release-sync"
+      "github-release-sync",
+      "cli-hub-meta-skill",
+      "autoclip"
     ],
     "gaming": [
       "mfg-unlock-installer",
@@ -89,7 +92,9 @@
       "bailian-finetune",
       "bailian-memory",
       "bailian-sandbox",
-      "bailian-train-deploy"
+      "bailian-train-deploy",
+      "cli-hub-meta-skill",
+      "autoclip"
     ],
     "llm": [
       "llm-weight-ablation-and-steering",

@@ -12,11 +12,11 @@
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.1.1-6b7280?style=flat-square" alt="Version 0.1.1">
-  <img src="https://img.shields.io/badge/skills-61-7c3aed?style=flat-square" alt="61 skills">
-  <img src="https://img.shields.io/badge/knowledge-31-0ea5e9?style=flat-square" alt="31 knowledge documents">
+  <img src="https://img.shields.io/badge/version-0.1.2-6b7280?style=flat-square" alt="Version 0.1.2">
+  <img src="https://img.shields.io/badge/skills-63-7c3aed?style=flat-square" alt="63 skills">
+  <img src="https://img.shields.io/badge/knowledge-35-0ea5e9?style=flat-square" alt="35 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
-  <img src="https://img.shields.io/badge/upstreams-14-ef4444?style=flat-square" alt="14 upstream repositories">
+  <img src="https://img.shields.io/badge/upstreams-18-ef4444?style=flat-square" alt="18 upstream repositories">
   <img src="https://img.shields.io/badge/license-Noncommercial-f59e0b?style=flat-square" alt="PolyForm Noncommercial 1.0.0">
   <img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 18+">
 </p>
@@ -57,7 +57,7 @@ If you are an LLM agent, stop and ask the user **“Minimal or Full?”** before
 
 Prefer a manual install, or want a file you can keep offline? Download the latest ZIP and import it in Qoder.
 
-- [allforone-0.1.1.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.1/allforone-0.1.1.qoder.zip)
+- [allforone-0.1.2.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.2/allforone-0.1.2.qoder.zip)
 - [All releases](https://github.com/geadalfa/AllForOne/releases)
 
 Manual import: **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, then restart Qoder.
@@ -98,14 +98,14 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 
 | Component | Count | What it does |
 |---|---:|---|
-| Skills | 61 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
-| Knowledge documents | 31 | Public reference material loaded one to three files at a time, never all at once. |
+| Skills | 63 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
+| Knowledge documents | 35 | Public reference material loaded one to three files at a time, never all at once. |
 | Deterministic tools | 14 | Token-efficient reads, web capture, document conversion, finance math, spec tracking, display analysis, DLSS MFG setup, and more. |
 | MCP server | 1 | `allforone` stdio server with status, knowledge search, skill listing, memory search/add, update check, and policy tools. |
 | Memory | Local scaffold | `MEMORY.md`, topic files, and a secret-rejecting `memory_add` tool. Never published. |
 | Commands | 5 | `/allforone-install`, `/allforone-status`, `/allforone-update`, `/allforone-knowledge`, `/allforone-memory`. |
 | Hooks | SessionStart | Injects a compact bootstrap and starts the daily update check in the background. |
-| Upstream packs | 14 | Cloned or installed depending on the selected profiles. |
+| Upstream packs | 18 | Cloned or installed depending on the selected profiles. |
 
 ## Minimal vs Full
 
@@ -113,11 +113,11 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 |---|---|---|
 | Core skills | Yes | Yes |
 | Chosen profile skills | Yes | All |
-| Knowledge documents | Core + matching docs | All 31 |
+| Knowledge documents | Core + matching docs | All 35 |
 | Tools | Yes | Yes |
 | MCP server | Yes | Yes |
 | Local memory scaffold | Yes | Yes |
-| Upstream repositories | Matching profiles only | All 14 |
+| Upstream repositories | Matching profiles only | All 18 |
 | Install time | Short | Longer; clones every tracked repository |
 
 Profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
@@ -439,8 +439,8 @@ AllForOne/
 ├── .mcp.json                     built-in MCP server declaration
 ├── hooks/hooks.json              SessionStart bootstrap
 ├── commands/                     five user-invocable commands
-├── skills/                       61 skills, one folder per skill
-├── knowledge/                    31 public knowledge documents and INDEX.md
+├── skills/                       63 skills, one folder per skill
+├── knowledge/                    35 public knowledge documents and INDEX.md
 ├── tools/                        14 deterministic helpers
 ├── memory/                       empty local-memory templates
 ├── lib/                          installer, updater, Qoder registration

@@ -1,7 +1,7 @@
 {
   "name": "allforone",
   "displayName": "AllForOne",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "One install. Every capability. A self-updating Qoder plugin with public skills, knowledge, deterministic tools, a built-in MCP server, local memory scaffolding, and curated upstream packs.",
   "author": {
     "name": "AllForOne Contributors"

@@ -177,6 +177,54 @@
         "type": "reference",
         "note": "Reference clone only. Download the setup or standalone release from upstream; never stack it with MFG Unlock."
       }
+    },
+    {
+      "id": "cli-anything",
+      "repo": "https://github.com/HKUDS/CLI-Anything.git",
+      "branch": "main",
+      "license": "Apache-2.0",
+      "profiles": ["engineering", "automation", "creative"],
+      "description": "Agent-native CLI registry and harness generator; CLI-Hub installs cli-anything-<name> packages for desktop software.",
+      "install": {
+        "type": "reference",
+        "note": "The cli-hub-meta-skill is vendored with AllForOne. Install the hub with `pip install cli-anything-hub`; scope harness installs with `cli-hub matrix preflight` and `--capability`."
+      }
+    },
+    {
+      "id": "affine",
+      "repo": "https://github.com/toeverything/AFFiNE.git",
+      "branch": "canary",
+      "license": "MIT (core; backend and native directories have separate licenses)",
+      "profiles": ["research", "documents"],
+      "description": "Local-first Notion and Miro alternative built on BlockSuite, OctoBase, and y-octo CRDT.",
+      "install": {
+        "type": "reference",
+        "note": "Reference only. The checkout is large; self-host with Docker from upstream. Read packages/backend/server/LICENSE before commercial embedding."
+      }
+    },
+    {
+      "id": "app-store-compliance",
+      "repo": "https://github.com/mjmirza/app-store-compliance.git",
+      "branch": "main",
+      "license": "LicenseRef-OpenRoots-ORA-2.3",
+      "profiles": ["engineering", "security", "documents"],
+      "description": "Apple App Store and Google Play pre-submission guard, rejection taxonomy, metadata audit, and regulatory deadline register.",
+      "install": {
+        "type": "reference",
+        "note": "Root tier is free for individuals and small organizations. Do not vendor this work into AllForOne; clone upstream and follow its ORA 2.3 terms. On Windows run Python scripts with PYTHONUTF8=1."
+      }
+    },
+    {
+      "id": "autoclip",
+      "repo": "https://github.com/zhouxiaoka/autoclip.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["creative", "automation"],
+      "description": "Local AI video clipping: one link or long video into platform clips, covers, copy, and publish kits.",
+      "install": {
+        "type": "reference",
+        "note": "The autoclip skill is vendored with AllForOne. The runtime needs Python 3.10+ and FFmpeg; MCP is staged as `uvx autoclip-mcp` and stays disabled until the user opts in."
+      }
     }
   ]
 }

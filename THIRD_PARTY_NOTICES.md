@@ -9,6 +9,8 @@ AllForOne's original code and prose are licensed under the PolyForm Noncommercia
 | `claude-trading-skills` subset | MIT | Copyright (c) Tradermonty. See `licenses/claude-trading-skills-LICENSE.txt`. |
 | `bughunter-defensive-review` | MIT (code), CC BY 4.0 (prose) | Sachin Sharma / Claude-BugHunter. See `skills/bughunter-defensive-review/LICENSE`, `LICENSE-CONTENT`, and `NOTICE`. |
 | `agent-asset-hygiene` GBrain conventions | MIT | Copyright (c) Garry Tan. See `licenses/gbrain-LICENSE.txt`. |
+| `cli-hub-meta-skill` | Apache-2.0 | HKUDS / CLI-Anything. See `licenses/cli-anything-LICENSE.txt`. |
+| `autoclip` | MIT | Copyright (c) 2024 AutoClip Team. See `licenses/autoclip-LICENSE.txt`. |
 
 The defensive security subset is included for static review. Offensive-only classes and any material requiring a live target are not included.
 
@@ -32,6 +34,10 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [ruvnet/RuView](https://github.com/ruvnet/RuView) | MIT | Reference clone only; real sensing needs hardware. |
 | [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx) | MIT | Reference clone only; the released ReShade add-on is downloaded by the user, not redistributed. See `licenses/MFGAdaUnlock-RenoDx-LICENSE.txt`. |
 | [ShyVortex/dlss-unlocked](https://github.com/ShyVortex/dlss-unlocked) | MIT | Reference clone only; the setup and standalone packages are downloaded by the user, not redistributed. See `licenses/dlss-unlocked-LICENSE.txt`. |
+| [HKUDS/CLI-Anything](https://github.com/HKUDS/CLI-Anything) | Apache-2.0 | Upstream tracking for the vendored meta-skill; the hub package is installed by the user. See `licenses/cli-anything-LICENSE.txt`. |
+| [toeverything/AFFiNE](https://github.com/toeverything/AFFiNE) | MIT (core) / separate backend and native licenses | Reference clone only; not vendored. |
+| [mjmirza/app-store-compliance](https://github.com/mjmirza/app-store-compliance) | LicenseRef-OpenRoots-ORA-2.3 | Reference clone only; intentionally not vendored because ORA 2.3 restricts AI-training use and redistribution. |
+| [zhouxiaoka/autoclip](https://github.com/zhouxiaoka/autoclip) | MIT | Upstream tracking for the adapted skill; the runtime is installed by the user. See `licenses/autoclip-LICENSE.txt`. |
 
 ## Media
 
