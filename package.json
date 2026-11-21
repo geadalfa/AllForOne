@@ -1,6 +1,6 @@
 {
   "name": "allforone",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Self-updating Qoder capability pack with skills, knowledge, tools, MCP, local memory, and upstream repositories.",
   "type": "module",
   "bin": {

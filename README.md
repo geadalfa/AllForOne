@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.1.2-6b7280?style=flat-square" alt="Version 0.1.2">
+  <img src="https://img.shields.io/badge/version-0.1.3-6b7280?style=flat-square" alt="Version 0.1.3">
   <img src="https://img.shields.io/badge/skills-63-7c3aed?style=flat-square" alt="63 skills">
   <img src="https://img.shields.io/badge/knowledge-35-0ea5e9?style=flat-square" alt="35 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
@@ -57,7 +57,7 @@ If you are an LLM agent, stop and ask the user **“Minimal or Full?”** before
 
 Prefer a manual install, or want a file you can keep offline? Download the latest ZIP and import it in Qoder.
 
-- [allforone-0.1.2.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.2/allforone-0.1.2.qoder.zip)
+- [allforone-0.1.3.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.1.3/allforone-0.1.3.qoder.zip)
 - [All releases](https://github.com/geadalfa/AllForOne/releases)
 
 Manual import: **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, then restart Qoder.
@@ -246,6 +246,10 @@ Manual Qoder import:
 | [RuView](https://github.com/ruvnet/RuView) | MIT | Research profile; reference only, real sensing needs hardware. |
 | [MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx) | MIT | Automation and gaming profiles; reference clone, released add-on downloaded by the user. |
 | [dlss-unlocked](https://github.com/ShyVortex/dlss-unlocked) | MIT | Automation and gaming profiles; reference clone, setup/standalone release downloaded by the user. |
+| [CLI-Anything](https://github.com/HKUDS/CLI-Anything) | Apache-2.0 | Engineering, automation, and creative profiles; meta-skill vendored, the CLI-Hub package is installed by the user. |
+| [AFFiNE](https://github.com/toeverything/AFFiNE) | MIT (core) / separate backend and native licenses | Research and documents profiles; reference only, self-host with Docker. |
+| [App Store Compliance](https://github.com/mjmirza/app-store-compliance) | ORA 2.3 (Root tier) | Engineering, security, and documents profiles; reference only, never vendored. |
+| [AutoClip](https://github.com/zhouxiaoka/autoclip) | MIT | Creative and automation profiles; skill vendored, runtime and MCP installed by the user. |
 
 Full notices and license texts are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `licenses/`.
 
@@ -256,7 +260,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 <!-- INVENTORY:START -->
 
 <details>
-<summary><b>Skills (61)</b> — click to expand</summary>
+<summary><b>Skills (63)</b> — click to expand</summary>
 
 | Skill | What it does |
 |---|---|
@@ -266,6 +270,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `allforone-memory` | Use when the user asks to remember, recall, update, or forget a preference, decision, project fact, or lesson. Keeps portable memory local to the machine, never publishes it, and refuses credentials or customer data. |
 | `anti-slop-ui-design` | Design and implement high-taste, anti-AI user interfaces across Desktop, Web, and Mobile. Enforces design contracts (DESIGN.md), neutral color systems (OKLCH/Zinc), typographic hierarchy, platform-native viewports, and… |
 | `app-opportunity-lab` | Use when the user wants to brainstorm, validate, design, or build a desktop, web, or mobile app that solves a real problem — especially in finance, psychology/mental health, productivity, pet care, or daily life. Combines problem… |
+| `autoclip` | Use when the user wants to clip, repurpose, or package long video — “potong video”, “bikin short”, “出片”, “clip this podcast”, a YouTube or Bilibili link turned into shorts, covers, publish copy, or ZIP kits. Produces… |
 | `automated-game-modding` | Discover installed games, validate mod compatibility against executable versions, resolve dependency trees, stage archives, and safely deploy/undeploy mods with transactional SHA-256 rollback and live in-game editing support. |
 | `backtest-expert` | Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating ideas to death" methodology, parameter robustness… |
 | `bailian-cli` | 阿里云百炼 / Aliyun Bailian / DashScope 资源管理与 `bl` CLI hub： 应用调用（bl app）、决策模型推理（bl decision）、模型目录/模型列表、用量/额度/配额、免费额度、 工作空间、MCP 市场、pipeline、文件上传、ParseX 文档/音视频解析与字段抽取、Batch 批量推理与 CSV 转换、同步 Batch Chat、console API、登录鉴权与配置、 Agent skill… |
@@ -281,6 +286,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `bailian-train-deploy` | 用百炼 CLI (`bl`) 走完"数据→微调训练→导出→部署→调用"的完整闭环，或跳过训练直接部署基座模型。支持文本模型（SFT/DPO/CPT）、音频 TTS 模型（CosyVoice）、图像生成模型（Wan2.7）和视频生成模型（Wan i2v/kf2v）微调。涵盖数据集校验/上传、创建微调任务、等待训练、导出最佳 checkpoint、创建推理部署、等待就绪、给出调用示例。当用户提到在百炼 / DashScope /… |
 | `bailian-web-search` | 阿里云百炼联网搜索（web search）入口：为联网搜索 / 网页搜索 / 查最新资讯做路径分发。 `bl search web` 默认走 model 模式（Chat Completions enable_search），任何连接身份 （含 Token Plan）均可用；仅当用户明确要 WebSearch MCP 服务或 pages 列表时用 `--mode mcp`（仅普通 DashScope API Key）；MCP 鉴权失败、未开通或传输失败时… |
 | `bughunter-defensive-review` | Use when reviewing code, diffs, or pull requests for security defects, interpreting Checkmarx SCA or SonarQube findings, threat-modeling a flow, triaging a vulnerability report, or writing a security finding for Confluence/CDR.… |
+| `cli-hub-meta-skill` | Discover agent-native CLIs for professional software. Access the live catalog to find tools for creative workflows, productivity, AI, and more. |
 | `corporate-diplomacy-and-career-acceleration` | Transform raw technical updates, bad mood or frustration, escalations, performance reports, and upward communications into tactful, executive-grade corporate language (BLUF, 1-3-1 escalation, blameless post-mortem, XYZ… |
 | `data-quality-checker` | Validate data quality in market analysis documents and blog articles before publication. Use when checking for price scale inconsistencies (ETF vs futures), instrument notation errors, date/day-of-week mismatches, allocation… |
 | `display-color-calibration` | Audit, calibrate, and optimize computer monitor hardware and color accuracy via DDC/CI VESA MCCS, EDID chromaticity parsing, CIEDE2000 ΔE calculation, gamut clamping (sRGB/DCI-P3), and GPU signal integrity. |
@@ -325,13 +331,16 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 </details>
 
 <details>
-<summary><b>Knowledge documents (31)</b> — click to expand</summary>
+<summary><b>Knowledge documents (35)</b> — click to expand</summary>
 
 | Document | What it covers |
 |---|---|
+| `affine_local_first_knowledge_base.md` | You are designing local-first sync or evaluating a self-hosted workspace. |
 | `agents_md_open_standard_specification.md` | You are writing or auditing AGENTS.md instructions. |
 | `anti_vibe_coding_engineering_protocol.md` | You need deterministic engineering rules, blast-radius analysis, and evidence labels. |
 | `app_opportunity_lab_playbook.md` | You are validating or designing a new application. |
+| `app_store_compliance_ora_playbook.md` | You are preparing an iOS or Android release for store review. |
+| `autoclip_video_repurposing.md` | You are clipping or repurposing long video into platform shorts. |
 | `claude_trading_skills_toolkit.md` | You are reviewing the provenance and limits of the trading skill pack. |
 | `corporate_communication_and_career_diplomacy.md` | You are writing an escalation, performance update, or executive summary. |
 | `cross_platform_uiux_qa_security_playbook.md` | You need the cross-platform QA and security checklist. |
@@ -342,6 +351,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `gbrain_agent_brain_patterns.md` | You are maintaining agent memory, knowledge, or asset hygiene. |
 | `ha_mcp_home_assistant_automation.md` | You are evaluating or using a Home Assistant MCP server. |
 | `high_precision_ocr_and_document_conversion.md` | You are extracting text, tables, or structure from PDFs and scans. |
+| `hkuds_cli_anything_agent_native_cli.md` | You are finding or installing an agent-native CLI for desktop software. |
 | `holistic_financial_agent_intelligence.md` | You need the full personal-finance advisory framework. |
 | `human_writing_and_technical_prose.md` | You are writing documentation, UX copy, or a review. |
 | `humanizer_id_indonesian_academic_editing.md` | You are editing formal Indonesian prose. |
@@ -408,7 +418,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `commands/ (5)` | User commands: install, status, update, knowledge, and memory. |
 | `hooks/hooks.json` | SessionStart bootstrap plus the daily cached update check. |
 | `profiles.json` | Core set plus 12 profiles: engineering, frontend, security, finance, writing, research, automation, gaming, documents, creative, llm, data. |
-| `upstreams/registry.json` | Registry of 14 tracked third-party repositories and their install mode. |
+| `upstreams/registry.json` | Registry of 18 tracked third-party repositories and their install mode. |
 | `lib/ + bin/` | Installer, updater, Qoder registration, state, memory, and CLI entry point. |
 | `scripts/` | Validate the manifest and assets, run the privacy scan, and build the release ZIP. |
 | `tests/` | Installer, updater, manifest, MCP, hook, and release-pack tests. |
@@ -445,7 +455,7 @@ AllForOne/
 ├── memory/                       empty local-memory templates
 ├── lib/                          installer, updater, Qoder registration
 ├── bin/                          CLI and MCP server
-├── upstreams/registry.json       14 tracked third-party repositories
+├── upstreams/registry.json       18 tracked third-party repositories
 ├── profiles.json                 core, profiles, and knowledge mapping
 ├── scripts/                      validate, privacy scan, ZIP packager
 └── tests/                        installer, updater, MCP, and hook tests
