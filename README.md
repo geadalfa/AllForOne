@@ -39,7 +39,7 @@
 
 ### Codex and ChatGPT desktop
 
-Choose one edition. Full includes everything in Minimal.
+Choose one edition. Full includes everything in Minimal plus five workflows packaged for Codex. The [Qoder inventory](#what-you-get) lists 63 skills, 35 guides, and Qoder-specific integration features.
 
 | Edition | Skills | AllForOne guides | Includes |
 |---|---:|---:|---|
@@ -51,10 +51,10 @@ Both editions use local skill files. The data quality checker requires Python 3.
 **Add the marketplace** with a recent Codex CLI:
 
 ```sh
-codex plugin marketplace add geadalfa/AllForOne --ref codex-marketplace
+codex plugin marketplace add geadalfa/AllForOne
 ```
 
-**ChatGPT desktop.** Restart the app, open **Plugins** in **Codex** or **Work**, choose the **AllForOne** source, then install **AllForOne Minimal** or **AllForOne Full**. For a local checkout, clone the [`codex-marketplace` branch](https://github.com/geadalfa/AllForOne/tree/codex-marketplace) and open its folder in Codex. The repository marketplace is declared in [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json). See [OpenAI's local marketplace instructions](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work).
+**ChatGPT desktop.** Restart the app, open **Plugins** in **Codex** or **Work**, choose the **AllForOne** source, then install **AllForOne Minimal** or **AllForOne Full**. For a local checkout, clone this repository and open its folder in Codex. The repository marketplace is declared in [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json). See [OpenAI's local marketplace instructions](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work).
 
 **Codex CLI.** Run one of these installation commands:
 
