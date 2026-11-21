@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/banner.png" alt="All Might vs All For One" width="100%">
+  <img src="https://media.tenor.com/04fBdqc9oAkAAAAC/mha-my-hero-academia.gif" alt="All For One attacking in My Hero Academia" width="620">
 </p>
 
 <p align="center">
