@@ -5,7 +5,7 @@ description: Install AllForOne in minimal or full mode, or switch modes later
 The user wants to install or reconfigure AllForOne.
 
 1. Ask exactly one question: "Minimal or Full?"
-2. If Minimal, ask which profiles fit the user's work. Valid profiles: engineering, frontend, security, finance, writing, research, automation, documents, creative, llm, data.
+2. If Minimal, ask which profiles fit the user's work. Valid profiles: engineering, frontend, security, finance, writing, research, automation, gaming, documents, creative, llm, data.
 3. Run the matching command in the terminal:
 
 ```bash

@@ -68,6 +68,11 @@
       "konoha-agentic-workflow",
       "github-release-sync"
     ],
+    "gaming": [
+      "mfg-unlock-installer",
+      "windows-gaming-optimizer",
+      "automated-game-modding"
+    ],
     "documents": [
       "document-ocr-and-conversion",
       "macos-dmg-builder"
@@ -137,7 +142,11 @@
     ],
     "automation": [
       "ha_mcp_home_assistant_automation.md",
-      "ruview_wifi_csi_sensing.md"
+      "ruview_wifi_csi_sensing.md",
+      "dlss_mfg_unlock_non_rtx50.md"
+    ],
+    "gaming": [
+      "dlss_mfg_unlock_non_rtx50.md"
     ],
     "documents": [
       "high_precision_ocr_and_document_conversion.md",

@@ -24,7 +24,7 @@ Minimal is interactive when run in a terminal. For a non-interactive run, pass p
 npx --yes github:geadalfa/AllForOne install --minimal --profiles engineering,security --yes
 ```
 
-Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `documents`, `creative`, `llm`, `data`.
+Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
 
 ## 3. Respect the update choice
 

@@ -63,6 +63,12 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `ruview_wifi_csi_sensing.md` | You are working with WiFi CSI sensing or its simulation. |
 | `microsoft_reality_check_smart_tool_analysis.md` | You need to verify that a proposed tool exists and works before recommending it. |
 
+## Gaming and GPU runtime
+
+| Document | Use when |
+|---|---|
+| `dlss_mfg_unlock_non_rtx50.md` | You need DLSS multi-frame generation on RTX 20/30/40, are installing or reverting MFG Unlock or DLSS Unlocked, or must verify frame-generation telemetry. |
+
 ## Privacy rule
 
 Nothing in this folder is a substitute for the user's private context. Do not add personal memory, employer data, internal endpoints, customer records, credentials, or private repository names to these documents. Run `privacy-publish-gate` before publishing any change.

@@ -153,6 +153,30 @@
         "type": "reference",
         "note": "Reference only; real sensing needs ESP32-S3/C6 hardware."
       }
+    },
+    {
+      "id": "mfg-ada-unlock-renodx",
+      "repo": "https://github.com/mavismmg/MFGAdaUnlock-RenoDx.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["automation", "gaming"],
+      "description": "ReShade add-on that unlocks 3x–6x DLSS-G on RTX 40/50, an experimental RTX 20/30 DLSS-G path, and XeMFG 2x–6x.",
+      "install": {
+        "type": "reference",
+        "note": "Reference clone only. Download the released .addon64 from upstream; the mfg-unlock-installer skill and tool install it per game."
+      }
+    },
+    {
+      "id": "dlss-unlocked",
+      "repo": "https://github.com/ShyVortex/dlss-unlocked.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["automation", "gaming"],
+      "description": "OptiScaler-based pack with native dlssg_sm86 MFG on RTX 20/30, RTX 40 unlock up to 6x, Streamline, and DLSS-NR.",
+      "install": {
+        "type": "reference",
+        "note": "Reference clone only. Download the setup or standalone release from upstream; never stack it with MFG Unlock."
+      }
     }
   ]
 }

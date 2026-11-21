@@ -30,6 +30,8 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [homeassistant-ai/ha-mcp](https://github.com/homeassistant-ai/ha-mcp) | MIT | Reference clone only; requires Home Assistant and a token. |
 | [google-research/paper-orchestra](https://github.com/google-research/paper-orchestra) | Apache-2.0 | Reference clone only. |
 | [ruvnet/RuView](https://github.com/ruvnet/RuView) | MIT | Reference clone only; real sensing needs hardware. |
+| [mavismmg/MFGAdaUnlock-RenoDx](https://github.com/mavismmg/MFGAdaUnlock-RenoDx) | MIT | Reference clone only; the released ReShade add-on is downloaded by the user, not redistributed. See `licenses/MFGAdaUnlock-RenoDx-LICENSE.txt`. |
+| [ShyVortex/dlss-unlocked](https://github.com/ShyVortex/dlss-unlocked) | MIT | Reference clone only; the setup and standalone packages are downloaded by the user, not redistributed. See `licenses/dlss-unlocked-LICENSE.txt`. |
 
 ## Media
 

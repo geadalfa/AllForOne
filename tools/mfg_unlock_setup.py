@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MFGAdaUnlock-RenoDx setup, verification, backup, and revert tool."""
+"""DLSS frame-generation setup: MFG Unlock (ReShade add-on) and DLSS Unlocked (OptiScaler proxy)."""
 from __future__ import annotations
 
 import argparse
@@ -10,6 +10,7 @@ import re
 import shutil
 import subprocess
 import sys
+import zipfile
 from datetime import datetime
 from pathlib import Path
 
@@ -18,14 +19,9 @@ MFG_INI = "MFGAdaUnlock.ini"
 RESHADE_INI = "ReShade.ini"
 RESHADE_DLL = "dxgi.dll"
 SESSION = "MFGAdaUnlock.session"
-SHY_FILES = [
-    "dxgi.dll",
-    "OptiScaler.ini",
-    "OptiScaler.log",
-    "nvngx.dll_dlssnr.dll",
-    "nvngx_dlssnr.dll",
-]
-SHY_DIRS = ["OptiScaler"]
+SHY_DIRS = ["OptiScaler", "REPatch"]
+SHY_PROXIES = ["dxgi", "version", "winmm", "dbghelp", "d3d12", "wininet", "winhttp"]
+SHY_EXCLUDE = ("Licenses/", "HOW-TO-INSTALL.txt", "install.sh", ".github/")
 SHY_MANIFEST = Path(".allforone_mods") / "DLSS_Unlocked_OptiScaler"
 MFG_SECTION = "RenoDX.MFGUnlock"
 
@@ -48,14 +44,63 @@ def bin_dir(game: Path) -> Path:
     return candidate if candidate.is_dir() else game
 
 
-def find_exe(game: Path) -> Path:
-    candidate = bin_dir(game) / "Cyberpunk2077.exe"
+def find_any_exe(game: Path) -> Path:
+    root = bin_dir(game)
+    candidate = root / "Cyberpunk2077.exe"
     if candidate.is_file():
         return candidate
-    for exe in bin_dir(game).glob("*.exe"):
+    exes = sorted(root.glob("*.exe"))
+    for exe in exes:
         if (exe.parent / "nvngx_dlssg.dll").is_file():
             return exe
-    die(f"no game executable with nvngx_dlssg.dll found under {game}")
+    if exes:
+        return exes[0]
+    die(f"no game executable found under {root}")
+
+
+def find_exe(game: Path) -> Path:
+    return find_any_exe(game)
+
+
+def game_rel(game: Path, root: Path, relative: str) -> str:
+    return str((root / relative).relative_to(game)).replace("\\", "/")
+
+
+def gpu_info() -> dict[str, str]:
+    try:
+        result = run(
+            ["nvidia-smi", "--query-gpu=name,driver_version", "--format=csv,noheader"],
+            timeout=20,
+        )
+        if result.returncode == 0:
+            for line in result.stdout.splitlines():
+                parts = [part.strip() for part in line.split(",")]
+                if parts and parts[0]:
+                    return {
+                        "name": parts[0],
+                        "driver": parts[1] if len(parts) > 1 else "unknown",
+                    }
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return {"name": "unknown", "driver": "unknown"}
+
+
+def gpu_family(name: str) -> str:
+    match = re.search(r"RTX\s*(20|30|40|50)\d{2}", name, re.I)
+    return f"RTX {match.group(1)}" if match else "unknown"
+
+
+def proxy_identity(root: Path) -> str:
+    for name in [f"{proxy}.dll" for proxy in SHY_PROXIES]:
+        path = root / name
+        if not path.is_file():
+            continue
+        if binary_marker(path, b"ReShade"):
+            return f"{name} = ReShade {file_version(path)}"
+        if binary_marker(path, b"OptiScaler"):
+            return f"{name} = OptiScaler {file_version(path)}"
+        return f"{name} = unknown proxy {file_version(path)}"
+    return "none"
 
 
 def file_version(path: Path) -> str:
@@ -159,13 +204,18 @@ def set_cyberpunk_multiplier(value: int) -> None:
 def find_shyvortex(game: Path) -> list[Path]:
     root = bin_dir(game)
     found: list[Path] = []
-    for name in SHY_FILES:
-        path = root / name
+    for proxy in SHY_PROXIES:
+        path = root / f"{proxy}.dll"
         if not path.is_file():
             continue
-        if name == RESHADE_DLL and binary_marker(path, b"ReShade"):
+        if binary_marker(path, b"ReShade"):
             continue
-        found.append(path)
+        if proxy == "dxgi" or binary_marker(path, b"OptiScaler"):
+            found.append(path)
+    for name in ["OptiScaler.ini", "OptiScaler.log", "nvngx.dll_dlssnr.dll", "nvngx_dlssnr.dll"]:
+        path = root / name
+        if path.is_file():
+            found.append(path)
     found += [root / name for name in SHY_DIRS if (root / name).is_dir()]
     manifest = game / SHY_MANIFEST
     if manifest.is_dir():
@@ -218,11 +268,16 @@ def backup_shyvortex(game: Path, quiet: bool = False) -> Path | None:
 
 def remove_shyvortex(game: Path) -> None:
     root = bin_dir(game)
-    for name in SHY_FILES:
+    for proxy in SHY_PROXIES:
+        path = root / f"{proxy}.dll"
+        if path.is_file() and binary_marker(path, b"OptiScaler"):
+            path.unlink()
+            print(f"  - removed {path.name}")
+    for name in ["OptiScaler.ini", "OptiScaler.log", "nvngx.dll_dlssnr.dll", "nvngx_dlssnr.dll"]:
         path = root / name
         if path.is_file():
             path.unlink()
-            print(f"  - removed {path.name}")
+            print(f"  - removed {name}")
     for name in SHY_DIRS:
         path = root / name
         if path.is_dir():
@@ -232,6 +287,237 @@ def remove_shyvortex(game: Path) -> None:
     if manifest.is_dir():
         shutil.rmtree(manifest)
         print(f"  - removed {SHY_MANIFEST}")
+
+
+def route_cmd(game: Path) -> int:
+    root = bin_dir(game)
+    exe = find_any_exe(game)
+    gpu = gpu_info()
+    family = gpu_family(gpu["name"])
+    provider = file_version(root / "nvngx_dlssg.dll")
+    stack: list[str] = []
+    if (root / ADDON).is_file() or (root / MFG_INI).is_file():
+        stack.append("MFG Unlock")
+    if (root / "OptiScaler").is_dir() or (root / "OptiScaler.ini").is_file():
+        stack.append("DLSS Unlocked/OptiScaler")
+    reshade = (root / RESHADE_DLL).is_file() and binary_marker(root / RESHADE_DLL, b"ReShade")
+    if reshade:
+        stack.append("ReShade dxgi.dll")
+
+    print(f"game            : {game}")
+    print(f"exe             : {exe.name}")
+    print(f"GPU             : {gpu['name']} (driver {gpu['driver']})")
+    print(f"GPU family      : {family}")
+    print(f"DLSS-G provider : {provider}")
+    print(f"proxy           : {proxy_identity(root)}")
+    print(f"existing stack  : {', '.join(stack) if stack else 'clean'}")
+    if provider == "missing":
+        print("note            : no nvngx_dlssg.dll beside the executable")
+    if len([item for item in stack if item != 'ReShade dxgi.dll']) > 1:
+        print("WARNING         : multiple DLSS-G patchers detected; remove one before installing")
+
+    if family == "RTX 50":
+        print("recommended     : native MFG; install nothing. MFG Unlock only for experiments or a dynamic ceiling.")
+    elif family == "RTX 40":
+        print("recommended     : MFG Unlock 1.10.1, DLSS-G backend.")
+        print("fallback        : XeMFG DLSS-G if unstable; DLSS Unlocked NR-v0.9.95 if OptiScaler or DLSS-NR is needed.")
+    elif family in ("RTX 30", "RTX 20"):
+        print("recommended     : DLSS Unlocked NR-v0.9.95 native dlssg_sm86.")
+        print("fallback        : MFG Unlock experimental RTX 20/30 DLSS-G, or XeMFG when the game has no native frame generation.")
+    else:
+        print("recommended     : no supported RTX detected; stop and verify the GPU before installing.")
+    if provider == "missing":
+        print("note            : DLSS Unlocked needs native DLSS Frame Generation; MFG Unlock XeMFG/Add frame generation may still apply.")
+    return 0
+
+
+def shyvortex_status(game: Path) -> int:
+    root = bin_dir(game)
+    exe = find_any_exe(game)
+    print(f"game            : {game}")
+    print(f"exe             : {exe.name}")
+    print(f"folder          : {root}")
+    print(f"proxy           : {proxy_identity(root)}")
+    print(f"OptiScaler.ini  : {'OK' if (root / 'OptiScaler.ini').is_file() else 'MISSING'}")
+    print(f"MfgUnlock       : {ini_get(root / 'OptiScaler.ini', 'DLSSG', 'MfgUnlock') or 'not set'}")
+    print(f"MfgUnlocker     : {ini_get(root / 'OptiScaler.ini', 'DLSSG', 'MfgUnlocker') or 'not set'}")
+    print(f"OptiScaler/     : {'OK' if (root / 'OptiScaler').is_dir() else 'MISSING'}")
+    print(f"dlssg_sm86      : {'OK' if (root / 'OptiScaler' / 'dlssg_sm86').is_dir() else 'MISSING'}")
+    manifest = game / SHY_MANIFEST / "manifest.json"
+    if manifest.is_file():
+        data = json.loads(manifest.read_text(encoding="utf-8"))
+        print(f"manifest        : {manifest} (proxy {data.get('proxy', 'unknown')})")
+    else:
+        print("manifest        : none (manual install)")
+    core = (root / "OptiScaler.ini").is_file() and (root / "OptiScaler").is_dir()
+    return 0 if core else 1
+
+
+def archive_entries(archive: zipfile.ZipFile) -> tuple[str, list[str]]:
+    names = [name for name in archive.namelist() if name and not name.endswith("/")]
+    if not names:
+        die("archive is empty")
+    tops = {name.split("/")[0] for name in names}
+    prefix = ""
+    if len(tops) == 1 and all("/" in name for name in names):
+        prefix = next(iter(tops)) + "/"
+    entries: list[str] = []
+    for name in names:
+        relative = name[len(prefix):] if prefix and name.startswith(prefix) else name
+        relative = relative.replace("\\", "/").lstrip("/")
+        if not relative or ".." in relative.split("/"):
+            die(f"unsafe path in archive: {name}")
+        if relative.startswith(SHY_EXCLUDE):
+            continue
+        if relative == "install.sh" or relative.startswith("README") or relative.startswith(".github/"):
+            continue
+        entries.append(relative)
+    if "OptiScaler.ini" not in entries:
+        die("not a DLSS Unlocked standalone archive: OptiScaler.ini is missing")
+    return prefix, sorted(set(entries))
+
+
+def collapse_rels(rels: list[str]) -> list[str]:
+    out: list[str] = []
+    for relative in sorted(set(rels), key=lambda item: item.count("/")):
+        if any(relative == parent or relative.startswith(parent + "/") for parent in out):
+            continue
+        out.append(relative)
+    return out
+
+
+def backup_relative(game: Path, rels: list[str], backup: Path) -> list[str]:
+    backed: list[str] = []
+    for relative in collapse_rels(rels):
+        source = game / relative
+        if not source.exists():
+            continue
+        target = backup / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if source.is_dir():
+            shutil.copytree(source, target, dirs_exist_ok=True)
+        else:
+            shutil.copy2(source, target)
+        backed.append(relative)
+    return backed
+
+
+def existing_shyvortex_rels(game: Path) -> list[str]:
+    return [str(path.relative_to(game)).replace("\\", "/") for path in find_shyvortex(game)]
+
+
+def target_rel(relative: str, proxy: str) -> str:
+    if relative == "dxgi.dll" and proxy != "dxgi":
+        return f"{proxy}.dll"
+    return relative
+
+
+def shyvortex_install(args: argparse.Namespace) -> int:
+    game = Path(args.game).expanduser().resolve()
+    root = bin_dir(game)
+    exe = find_any_exe(game)
+    archive = Path(args.archive).expanduser().resolve()
+    if not archive.is_file():
+        die(f"archive not found: {archive}")
+    if not args.yes:
+        die("DLSS Unlocked install replaces files; re-run with --yes")
+    if (root / ADDON).is_file() or (root / MFG_INI).is_file():
+        die("MFG Unlock is present in this game folder. Revert it first; never stack both patchers.")
+    if not (root / "nvngx_dlssg.dll").is_file():
+        die("no nvngx_dlssg.dll beside the executable; DLSS Unlocked needs a game with native DLSS Frame Generation")
+
+    proxy = args.proxy
+    reshade_owns_dxgi = (root / RESHADE_DLL).is_file() and binary_marker(root / RESHADE_DLL, b"ReShade")
+    if proxy is None:
+        proxy = "version" if reshade_owns_dxgi else "dxgi"
+    if proxy == "dxgi" and reshade_owns_dxgi:
+        die("ReShade owns dxgi.dll; re-run with --proxy version")
+
+    try:
+        with zipfile.ZipFile(archive) as bundle:
+            prefix, entries = archive_entries(bundle)
+            mapped = {relative: target_rel(relative, proxy) for relative in entries}
+            backup = game / ".allforone_mods" / f"_backup_dlss_unlocked_{datetime.now():%Y%m%d_%H%M%S}"
+            targets = [game_rel(game, root, relative) for relative in mapped.values() if (root / relative).exists()]
+            backed = backup_relative(game, existing_shyvortex_rels(game) + targets, backup)
+            installed: list[str] = []
+            created_dirs: set[str] = set()
+            for relative, target in mapped.items():
+                target_path = root / target
+                if target_path.is_dir():
+                    die(f"cannot overwrite directory with file: {target_path}")
+                parent = target_path.parent
+                while parent != root and parent != game:
+                    if not parent.exists():
+                        created_dirs.add(str(parent.relative_to(game)).replace("\\", "/"))
+                    parent = parent.parent
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                with bundle.open(prefix + relative) as source, open(target_path, "wb") as destination:
+                    shutil.copyfileobj(source, destination)
+                installed.append(game_rel(game, root, target))
+    except zipfile.BadZipFile:
+        die(f"not a valid ZIP archive: {archive}")
+
+    manifest = {
+        "created": datetime.now().isoformat(),
+        "game": str(game),
+        "exe": exe.name,
+        "archive": str(archive),
+        "archive_sha256": sha256(archive),
+        "proxy": proxy,
+        "backup": str(backup),
+        "backed_up": backed,
+        "installed_files": sorted(installed),
+        "installed_dirs": sorted(created_dirs, key=lambda item: item.count("/"), reverse=True),
+    }
+    manifest_dir = game / SHY_MANIFEST
+    manifest_dir.mkdir(parents=True, exist_ok=True)
+    (manifest_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"  + DLSS Unlocked installed with proxy {proxy}.dll")
+    print(f"  + backup: {backup} ({len(backed)} entries)")
+    print(f"  + manifest: {manifest_dir / 'manifest.json'}")
+    print("  next: launch the game, open the OptiScaler overlay, check DLSS MFG, start at 2x then 3x/4x")
+    return 0
+
+
+def shyvortex_revert(args: argparse.Namespace) -> int:
+    if not args.yes:
+        die("revert removes files; re-run with --yes")
+    game = Path(args.game).expanduser().resolve()
+    manifest_path = game / SHY_MANIFEST / "manifest.json"
+    if not manifest_path.is_file():
+        print("  no DLSS Unlocked manifest found; removing known proxy files without restore")
+        remove_shyvortex(game)
+        return 0
+    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    for relative in data.get("installed_files", []):
+        path = game / relative
+        if path.is_file():
+            path.unlink()
+            print(f"  - removed {relative}")
+    for relative in sorted(data.get("installed_dirs", []), key=lambda item: item.count("/"), reverse=True):
+        path = game / relative
+        if path.is_dir():
+            try:
+                path.rmdir()
+                print(f"  - removed {relative}/")
+            except OSError:
+                pass
+    backup = Path(data.get("backup", ""))
+    if backup.is_dir():
+        for item in sorted(backup.rglob("*"), key=lambda path: len(path.parts)):
+            relative = item.relative_to(backup)
+            target = game / relative
+            if item.is_dir():
+                target.mkdir(parents=True, exist_ok=True)
+            else:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(item, target)
+                print(f"  + restored {relative}")
+    if (game / SHY_MANIFEST).is_dir():
+        shutil.rmtree(game / SHY_MANIFEST)
+    print("  done. Start the game to verify the restored stack.")
+    return 0
 
 
 def status(game: Path) -> int:
@@ -379,8 +665,24 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
 
-    p_status = sub.add_parser("status", help="read-only install status")
+    p_status = sub.add_parser("status", help="read-only MFG Unlock install status")
     p_status.add_argument("--game", required=True)
+
+    p_route = sub.add_parser("route", help="detect GPU and recommend an MFG route")
+    p_route.add_argument("--game", required=True)
+
+    p_shy_status = sub.add_parser("shyvortex-status", help="read-only DLSS Unlocked status")
+    p_shy_status.add_argument("--game", required=True)
+
+    p_shy_install = sub.add_parser("shyvortex-install", help="install a DLSS Unlocked standalone ZIP with backup")
+    p_shy_install.add_argument("--game", required=True)
+    p_shy_install.add_argument("--archive", required=True)
+    p_shy_install.add_argument("--proxy", choices=SHY_PROXIES)
+    p_shy_install.add_argument("--yes", action="store_true")
+
+    p_shy_revert = sub.add_parser("shyvortex-revert", help="remove DLSS Unlocked and restore the backup")
+    p_shy_revert.add_argument("--game", required=True)
+    p_shy_revert.add_argument("--yes", action="store_true")
 
     p_verify = sub.add_parser("verify", help="check ReShade.log evidence")
     p_verify.add_argument("--game", required=True)
@@ -411,6 +713,14 @@ def main() -> int:
     args = parser.parse_args()
     if args.command == "status":
         return status(Path(args.game).expanduser().resolve())
+    if args.command == "route":
+        return route_cmd(Path(args.game).expanduser().resolve())
+    if args.command == "shyvortex-status":
+        return shyvortex_status(Path(args.game).expanduser().resolve())
+    if args.command == "shyvortex-install":
+        return shyvortex_install(args)
+    if args.command == "shyvortex-revert":
+        return shyvortex_revert(args)
     if args.command == "verify":
         return verify(Path(args.game).expanduser().resolve())
     if args.command == "backup":
