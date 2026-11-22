@@ -36,6 +36,11 @@ test('minimal install registers, enables, and filters skills', () => {
       fs.existsSync(path.join(result.pluginPath, 'skills', 'repo-architecture-mentor', 'SKILL.md'))
     );
     assert.ok(!fs.existsSync(path.join(result.pluginPath, 'skills', 'financial-etf-advisory')));
+    assert.ok(fs.existsSync(path.join(result.pluginPath, 'knowledge', 'INDEX.md')));
+    assert.ok(!fs.existsSync(path.join(result.pluginPath, 'knowledge', 'affine_local_first_knowledge_base.md')));
+    assert.ok(fs.existsSync(path.join(result.pluginPath, 'tools', 'fetch_web.py')));
+    assert.ok(!fs.existsSync(path.join(result.pluginPath, 'tools', 'financial_calculator.py')));
+    assert.equal(result.tools.length, 4);
 
     const registry = JSON.parse(
       fs.readFileSync(path.join(qoderDir, 'plugins', 'installed_plugins_v2.json'), 'utf8')

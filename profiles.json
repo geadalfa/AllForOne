@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "minimalShare": 0.25,
   "core": [
     "allforone",
     "allforone-knowledge",
@@ -14,8 +15,34 @@
     "privacy-publish-gate",
     "exact-output-protocol",
     "knowledge-ingestion",
-    "agent-asset-hygiene"
+    "agent-asset-hygiene",
+    "repo-architecture-mentor",
+    "software-qa-and-ui-testing",
+    "zero-regression-refactoring"
   ],
+  "coreKnowledge": [
+    "anti_vibe_coding_engineering_protocol.md",
+    "disciplined_software_engineering_framework.md",
+    "spec_driven_development_and_token_compression.md",
+    "software_qa_and_testing_discipline.md",
+    "human_writing_and_technical_prose.md",
+    "web_content_extraction_protocol.md",
+    "knowledge_ingestion_automation.md",
+    "agents_md_open_standard_specification.md",
+    "ghidra_software_reverse_engineering.md",
+    "n8n_workflow_automation.md"
+  ],
+  "coreTools": [
+    "fetch_web.py",
+    "compress_prompt.py",
+    "rtk.py",
+    "doc_converter.py"
+  ],
+  "profileTools": {
+    "automation": [
+      "n8n_workflow_tool.py"
+    ]
+  },
   "profiles": {
     "engineering": [
       "repo-architecture-mentor",
@@ -34,7 +61,8 @@
       "document-ocr-and-conversion"
     ],
     "security": [
-      "bughunter-defensive-review"
+      "bughunter-defensive-review",
+      "ghidra-headless-analysis"
     ],
     "finance": [
       "financial-etf-advisory",
@@ -59,7 +87,9 @@
       "app-opportunity-lab",
       "noted-workspace-engine",
       "reverse-engineer-anything",
-      "flashmind-persistent-memory"
+      "flashmind-persistent-memory",
+      "ghidra-headless-analysis",
+      "socratic-tutor"
     ],
     "automation": [
       "automated-game-modding",
@@ -69,7 +99,8 @@
       "konoha-agentic-workflow",
       "github-release-sync",
       "cli-hub-meta-skill",
-      "autoclip"
+      "autoclip",
+      "n8n-workflow-automation"
     ],
     "gaming": [
       "mfg-unlock-installer",
@@ -105,16 +136,6 @@
       "dual-axis-skill-reviewer"
     ]
   },
-  "coreKnowledge": [
-    "anti_vibe_coding_engineering_protocol.md",
-    "disciplined_software_engineering_framework.md",
-    "spec_driven_development_and_token_compression.md",
-    "software_qa_and_testing_discipline.md",
-    "human_writing_and_technical_prose.md",
-    "web_content_extraction_protocol.md",
-    "knowledge_ingestion_automation.md",
-    "agents_md_open_standard_specification.md"
-  ],
   "knowledge": {
     "engineering": [
       "polyglot_architecture_and_graph_code_intelligence.md",
@@ -127,7 +148,8 @@
       "cross_platform_uiux_qa_security_playbook.md"
     ],
     "security": [
-      "cross_platform_uiux_qa_security_playbook.md"
+      "cross_platform_uiux_qa_security_playbook.md",
+      "ghidra_software_reverse_engineering.md"
     ],
     "finance": [
       "finance_economics_macro_micro_map.md",
@@ -143,12 +165,14 @@
       "app_opportunity_lab_playbook.md",
       "gbrain_agent_brain_patterns.md",
       "reading_habit_psychology.md",
-      "psychology_mental_health_and_modern_problems.md"
+      "psychology_mental_health_and_modern_problems.md",
+      "socratic_tutoring_method.md"
     ],
     "automation": [
       "ha_mcp_home_assistant_automation.md",
       "ruview_wifi_csi_sensing.md",
-      "dlss_mfg_unlock_non_rtx50.md"
+      "dlss_mfg_unlock_non_rtx50.md",
+      "n8n_workflow_automation.md"
     ],
     "gaming": [
       "dlss_mfg_unlock_non_rtx50.md"

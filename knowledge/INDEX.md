@@ -28,6 +28,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `paper_orchestra_research_writing_pipeline.md` | You are designing a multi-agent research or writing pipeline. |
 | `gbrain_agent_brain_patterns.md` | You are maintaining agent memory, knowledge, or asset hygiene. |
 | `knowledge_ingestion_automation.md` | You are ingesting a new source into skills, knowledge, or memory. |
+| `socratic_tutoring_method.md` | You are teaching, drilling, or assessing a learner to mastery with a Socratic protocol. |
 | `reading_habit_psychology.md` | You need the evidence summary on reading habits. |
 | `psychology_mental_health_and_modern_problems.md` | You need careful, non-diagnostic mental-health context. |
 | `affine_local_first_knowledge_base.md` | You are designing local-first sync or evaluating a self-hosted workspace. |
@@ -39,6 +40,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `cross_platform_uiux_qa_security_playbook.md` | You need the cross-platform QA and security checklist. |
 | `app_store_compliance_ora_playbook.md` | You are preparing an iOS or Android release for store review. |
 | `claude_trading_skills_toolkit.md` | You are reviewing the provenance and limits of the trading skill pack. |
+| `ghidra_software_reverse_engineering.md` | You are installing Ghidra or running authorized headless binary analysis. |
 
 ## Finance
 
@@ -64,6 +66,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | Document | Use when |
 |---|---|
 | `ha_mcp_home_assistant_automation.md` | You are evaluating or using a Home Assistant MCP server. |
+| `n8n_workflow_automation.md` | You are designing, self-hosting, or auditing n8n workflows and must respect its fair-code license. |
 | `ruview_wifi_csi_sensing.md` | You are working with WiFi CSI sensing or its simulation. |
 | `microsoft_reality_check_smart_tool_analysis.md` | You need to verify that a proposed tool exists and works before recommending it. |
 

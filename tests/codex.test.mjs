@@ -43,10 +43,16 @@ test('portable marketplace contains the declared skills, references and licenses
   const plugin = JSON.parse(fs.readFileSync(path.join(payload, '.codex-plugin/plugin.json')));
   assert.equal(plugin.version, VERSION);
   assert.deepEqual(fs.readdirSync(payload).sort(),
-    ['.codex-plugin', 'LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.md', 'licenses', 'skills']);
-  assert.equal(fs.readdirSync(path.join(payload, plugin.skills)).length, 5);
-  assert.equal(fs.readdirSync(path.join(payload, 'skills/allforone-library/references')).length, 4);
-  assert.ok(fs.existsSync(path.join(payload, 'skills/data-quality-checker/scripts/check_data_quality.py')));
+    ['.codex-plugin', 'LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.md', 'licenses', 'skills', 'tools']);
+  const minimalSkills = resolveSkills({ root: ROOT, mode: 'minimal' });
+  const minimalKnowledge = resolveKnowledge({ root: ROOT, mode: 'minimal' });
+  assert.equal(fs.readdirSync(path.join(payload, plugin.skills)).length, minimalSkills.length + 1);
+  assert.equal(
+    fs.readdirSync(path.join(payload, 'skills/allforone-library/references')).length,
+    minimalKnowledge.filter(name => name !== 'INDEX.md').length
+  );
+  assert.ok(fs.existsSync(path.join(payload, 'skills/plan-first/SKILL.md')));
+  assert.ok(fs.existsSync(path.join(payload, 'tools/fetch_web.py')));
   assert.equal(prepareCodexMarketplace(env.CODEX_HOME), root);
   fs.writeFileSync(path.join(payload, '.mcp.json'), '{}');
   assert.throws(() => prepareCodexMarketplace(env.CODEX_HOME), /differs from this release/);
@@ -134,8 +140,13 @@ test('Codex installs each repository marketplace edition with its declared skill
     if (edition === 'full') {
       assertFullInventory(installed.installedPath);
     } else {
-      assert.equal(fs.readdirSync(skillsDir).length, 5);
-      assert.equal(fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length, 4);
+      const minimalSkills = resolveSkills({ root: ROOT, mode: 'minimal' });
+      const minimalKnowledge = resolveKnowledge({ root: ROOT, mode: 'minimal' });
+      assert.equal(fs.readdirSync(skillsDir).length, minimalSkills.length + 1);
+      assert.equal(
+        fs.readdirSync(path.join(skillsDir, 'allforone-library/references')).length,
+        minimalKnowledge.filter(name => name !== 'INDEX.md').length
+      );
     }
     const removed = codex('plugin', 'remove', pluginId);
     assert.equal(removed.status, 0, removed.stderr);
@@ -148,8 +159,7 @@ function assertFullInventory(root) {
   const expectedKnowledge = resolveKnowledge(QODER_FULL);
   const skills = fs.readdirSync(path.join(root, 'skills')).sort();
   const knowledge = fs.readdirSync(path.join(root, 'knowledge')).sort();
-  assert.equal(skills.length, 63);
-  assert.equal(knowledge.filter(name => name !== 'INDEX.md').length, 35);
+  assert.ok(expectedSkills.length >= 55);
   assert.deepEqual(skills, expectedSkills);
   assert.deepEqual(knowledge, expectedKnowledge);
   for (const name of skills) {

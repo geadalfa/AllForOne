@@ -225,6 +225,43 @@
         "type": "reference",
         "note": "The autoclip skill is vendored with AllForOne. The runtime needs Python 3.10+ and FFmpeg; MCP is staged as `uvx autoclip-mcp` and stays disabled until the user opts in."
       }
+    },
+    {
+      "id": "ghidra",
+      "repo": "https://github.com/NationalSecurityAgency/ghidra.git",
+      "branch": "master",
+      "license": "Apache-2.0",
+      "profiles": ["security", "research"],
+      "description": "NSA software reverse engineering framework: disassembly, decompilation, graphing, scripting, and headless batch analysis.",
+      "install": {
+        "type": "reference",
+        "note": "Reference clone only and large (about 400 MB). Download the official multi-platform release from upstream; the ghidra-headless-analysis skill handles authorized batch analysis."
+      }
+    },
+    {
+      "id": "n8n",
+      "repo": "https://github.com/n8n-io/n8n.git",
+      "branch": "master",
+      "license": "Sustainable Use License (fair-code; source-available)",
+      "profiles": ["automation"],
+      "description": "Fair-code workflow automation platform with AI-agent capabilities, a visual canvas, 1,500+ integrations, and MCP client/server nodes.",
+      "install": {
+        "type": "reference",
+        "note": "Reference clone only; never vendored. The Sustainable Use License allows internal, personal, and non-commercial use; .ee files need an enterprise license. The n8n-workflow-automation skill and tools/n8n_workflow_tool.py drive a user-hosted instance."
+      }
+    },
+    {
+      "id": "agent-skills",
+      "repo": "https://github.com/janestreet/agent_skills.git",
+      "branch": "master",
+      "license": "MIT",
+      "profiles": ["research"],
+      "description": "Jane Street agent skills. The socratic-tutor skill runs a strict diagnostic, leveled tutoring loop, spaced review, and final assessment.",
+      "vendored": true,
+      "install": {
+        "type": "reference",
+        "note": "The socratic-tutor skill is vendored with AllForOne under the MIT license. The clone is kept for attribution and update tracking."
+      }
     }
   ]
 }

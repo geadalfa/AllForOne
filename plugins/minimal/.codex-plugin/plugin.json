@@ -1,7 +1,7 @@
 {
   "name": "allforone-minimal",
-  "version": "0.2.1",
-  "description": "Core workflows for engineering, technical writing, QA, and data quality.",
+  "version": "0.2.2",
+  "description": "A curated quarter of the Full inventory: engineering, writing, QA, and security research.",
   "author": {
     "name": "AllForOne Contributors"
   },
@@ -10,7 +10,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "AllForOne Minimal",
-    "shortDescription": "Core workflows for engineering, technical writing, QA, and data quality.",
+    "shortDescription": "A curated quarter of the Full inventory: engineering, writing, QA, and security research.",
     "developerName": "AllForOne Contributors",
     "category": "Productivity",
     "defaultPrompt": [

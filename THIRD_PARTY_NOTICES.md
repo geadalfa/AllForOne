@@ -11,6 +11,7 @@ AllForOne's original code and prose are licensed under the PolyForm Noncommercia
 | `agent-asset-hygiene` GBrain conventions | MIT | Copyright (c) Garry Tan. See `licenses/gbrain-LICENSE.txt`. |
 | `cli-hub-meta-skill` | Apache-2.0 | HKUDS / CLI-Anything. See `licenses/cli-anything-LICENSE.txt`. |
 | `autoclip` | MIT | Copyright (c) 2024 AutoClip Team. See `licenses/autoclip-LICENSE.txt`. |
+| `socratic-tutor` | MIT | Copyright (c) 2026 Jane Street Group, LLC. See `skills/socratic-tutor/LICENSE.md` and `licenses/janestreet-agent-skills-LICENSE.txt`. |
 
 The defensive security subset is included for static review. Offensive-only classes and any material requiring a live target are not included.
 
@@ -38,6 +39,9 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [toeverything/AFFiNE](https://github.com/toeverything/AFFiNE) | MIT (core) / separate backend and native licenses | Reference clone only; not vendored. |
 | [mjmirza/app-store-compliance](https://github.com/mjmirza/app-store-compliance) | LicenseRef-OpenRoots-ORA-2.3 | Reference clone only; intentionally not vendored because ORA 2.3 restricts AI-training use and redistribution. |
 | [zhouxiaoka/autoclip](https://github.com/zhouxiaoka/autoclip) | MIT | Upstream tracking for the adapted skill; the runtime is installed by the user. See `licenses/autoclip-LICENSE.txt`. |
+| [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) | Apache-2.0 | Reference clone only; the official release is downloaded by the user, not redistributed. |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | Sustainable Use License (fair-code) | Reference clone only; never vendored. The license restricts use to internal, personal, or non-commercial purposes, and `.ee` files require an enterprise license. |
+| [janestreet/agent_skills](https://github.com/janestreet/agent_skills) | MIT | Upstream tracking for the vendored `socratic-tutor` skill. See `licenses/janestreet-agent-skills-LICENSE.txt`. |
 
 ## Media
 

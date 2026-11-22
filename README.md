@@ -10,11 +10,11 @@
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.2.1-6b7280?style=flat-square" alt="Version 0.2.1">
-  <img src="https://img.shields.io/badge/skills-63-7c3aed?style=flat-square" alt="63 skills">
-  <img src="https://img.shields.io/badge/knowledge-35-0ea5e9?style=flat-square" alt="35 knowledge documents">
+  <img src="https://img.shields.io/badge/version-0.2.2-6b7280?style=flat-square" alt="Version 0.2.2">
+  <img src="https://img.shields.io/badge/skills-66-7c3aed?style=flat-square" alt="66 skills">
+  <img src="https://img.shields.io/badge/knowledge-38-0ea5e9?style=flat-square" alt="38 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
-  <img src="https://img.shields.io/badge/upstreams-18-ef4444?style=flat-square" alt="18 upstream repositories">
+  <img src="https://img.shields.io/badge/upstreams-21-ef4444?style=flat-square" alt="21 upstream repositories">
   <img src="https://img.shields.io/badge/license-Noncommercial-f59e0b?style=flat-square" alt="PolyForm Noncommercial 1.0.0">
   <img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 18+">
 </p>
@@ -39,14 +39,14 @@
 
 ### Codex and ChatGPT desktop
 
-Choose one edition. Full covers the 63 skills and 35 knowledge documents in the [AllForOne inventory](#what-you-get), with Codex paths and workflows for the local tools and memory.
+Choose one edition. Full covers the 66 skills and 38 knowledge documents in the [AllForOne inventory](#what-you-get), with Codex paths and workflows for the local tools and memory. Minimal is generated from the same inventory and carries a curated quarter of it.
 
 | Edition | Skills | AllForOne guides | Includes |
 |---|---:|---:|---|
-| **AllForOne Minimal** | 5 | 4 | Engineering references, data quality, exact output, technical writing, and software QA. |
-| **AllForOne Full** | 63 | 35 | Complete skill inventory, the indexed knowledge library, local helper scripts, and Codex-local memory. |
+| **AllForOne Minimal** | 18 | 10 | A quarter of the inventory: engineering, exact output, technical writing, software QA, security research, and a reference library. |
+| **AllForOne Full** | 66 | 38 | Complete skill inventory, the indexed knowledge library, local helper scripts, and Codex-local memory. |
 
-Both editions load skills from the installed plugin. Individual workflows may require Python, Node.js, a supported operating system, or an authorized external CLI or MCP connection. Full includes the local helpers. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
+Both editions load skills from the installed plugin. Individual workflows may require Python, Node.js, a supported operating system, or an authorized external CLI or MCP connection. Minimal includes a quarter of the deterministic tools; Full includes all of them. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
 
 **Add the marketplace** with a recent Codex CLI:
 
@@ -71,7 +71,7 @@ If you used the v0.2.0 `npx` installer, remove that copy with `npx --yes github:
 
 ### ChatGPT web
 
-Download [allforone-0.2.1.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.1/allforone-0.2.1.chatgpt.zip). Choose the route available in your account.
+Download [allforone-0.2.2.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.2/allforone-0.2.2.chatgpt.zip). Choose the route available in your account.
 
 - **Workspace plugin.** An administrator with plugin upload access can upload the ZIP in the workspace plugin settings and enable it for the intended users.
 - **Personal Project.** Extract the ZIP. Open a ChatGPT Project and add the four Markdown files from `skills/allforone-workbench/references/` as project sources. Copy the body of `skills/allforone-workbench/SKILL.md`, starting below the closing `---`, into the Project instructions. Start a chat inside that Project and ask it to review a draft against the references.
@@ -80,16 +80,16 @@ The web edition uses text instructions and uploaded files. It needs no local exe
 
 ### Qoder
 
-Minimal installs core skills and selected profiles. Full installs the complete public Qoder pack. Choose one command.
+Minimal installs a curated quarter of the full inventory, plus any extra profiles you choose. The quarter is recalculated from the live inventory on every release, so new skills, documents, and tools stay proportional. Full installs the complete public Qoder pack. Choose one command.
 
 ```sh
-npx --yes github:geadalfa/AllForOne#v0.2.1 install --minimal
-npx --yes github:geadalfa/AllForOne#v0.2.1 install --full
+npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.2.2 install --full
 ```
 
-For manual installation, download [allforone-0.2.1.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.1/allforone-0.2.1.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
+For manual installation, download [allforone-0.2.2.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.2/allforone-0.2.2.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
 
-The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.1) lists downloadable files and their SHA-256 checksums.
+The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.2) lists downloadable files and their SHA-256 checksums.
 
 ## DLSS MFG on RTX 20/30/40
 
@@ -121,34 +121,38 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 
 | Component | Count | What it does |
 |---|---:|---|
-| Skills | 63 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
-| Knowledge documents | 35 | Public reference material loaded one to three files at a time, never all at once. |
-| Deterministic tools | 14 | Token-efficient reads, web capture, document conversion, finance math, spec tracking, display analysis, DLSS MFG setup, and more. |
+| Skills | 66 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
+| Knowledge documents | 38 | Public reference material loaded one to three files at a time, never all at once. |
+| Deterministic tools | 15 | Token-efficient reads, web capture, document conversion, finance math, spec tracking, display analysis, n8n automation, DLSS MFG setup, and more. |
 | MCP server | 1 | `allforone` stdio server with status, knowledge search, skill listing, memory search/add, update check, and policy tools. |
 | Memory | Local scaffold | `MEMORY.md`, topic files, and a secret-rejecting `memory_add` tool. Never published. |
 | Commands | 5 | `/allforone-install`, `/allforone-status`, `/allforone-update`, `/allforone-knowledge`, `/allforone-memory`. |
 | Hooks | SessionStart | Injects a compact bootstrap and starts the daily update check in the background. |
-| Upstream packs | 18 | Selected by profile. The defensive review guide is bundled locally. |
+| Upstream packs | 21 | Selected by profile. The defensive review guide is bundled locally. |
 
 ## Minimal vs Full
 
 | | Minimal | Full |
 |---|---|---|
-| Core skills | Yes | Yes |
-| Chosen profile skills | Yes | All |
-| Knowledge documents | Core + matching docs | All 35 |
-| Tools | Yes | Yes |
+| Inventory share | A curated quarter (auto-scaled) | 100% |
+| Core skills | A quarter by default | All |
+| Chosen profile skills | Add on top | All |
+| Knowledge documents | A quarter plus matching docs | All 38 |
+| Tools | A quarter | All 15 |
 | MCP server | Yes | Yes |
 | Local memory scaffold | Yes | Yes |
-| Upstream repositories | Matching profiles only | All 18 |
+| Upstream repositories | Matching profiles only | All 21 |
 | Install time | Short | Longer; clones every tracked repository |
+
+`profiles.json` stores `minimalShare: 0.25`. The installer computes `ceil(25%)` of the live skill, knowledge, and tool inventory, then fills from the curated core lists. Add a new skill, document, tool, or upstream and the Minimal edition grows with it on the next build; no hand-maintained count exists to drift.
 
 Profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
 
 Non-interactive minimal install:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.1 install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal --yes
+npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal --profiles engineering,security --yes
 ```
 
 ## How it works
@@ -187,14 +191,14 @@ Auto-update is **on by default** for both the plugin and the upstream repositori
 Disable later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.1 config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne#v0.2.1 config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.upstreams false
 ```
 
 Force a check:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.1 update --force
+npx --yes github:geadalfa/AllForOne#v0.2.2 update --force
 ```
 
 ## Privacy
@@ -226,9 +230,9 @@ The working-tree scan must report zero findings. The history scan is required be
 
 | Flag | Effect |
 |---|---|
-| `--minimal` | Core plus selected profiles. |
+| `--minimal` | A curated quarter of the inventory, auto-scaled from the live counts, plus any extra profiles. |
 | `--full` | Everything public plus all upstream packs. |
-| `--profiles a,b` | Profile list for minimal mode. |
+| `--profiles a,b` | Extra profiles for minimal mode; each one adds its skills, documents, tools, and upstream packs. |
 | `--no-auto-update` | Disable daily self and upstream updates. |
 | `--no-upstreams` | Skip third-party repositories entirely. |
 | `--offline` | Skip all network operations. |
@@ -246,7 +250,7 @@ Manual Qoder import:
 ## After install
 
 1. Restart Qoder.
-2. Run `npx --yes github:geadalfa/AllForOne#v0.2.1 status`, or `/allforone-status`.
+2. Run `npx --yes github:geadalfa/AllForOne#v0.2.2 status`, or `/allforone-status`.
 3. Confirm the version, plugin path, skill count, and update flags.
 4. Try a task that crosses domains, for example: “Review this diff, check the UI against the anti-slop rules, and verify the security-sensitive paths.”
 5. The agent should load only the matching skills and at most three knowledge documents.
@@ -273,6 +277,9 @@ Manual Qoder import:
 | [AFFiNE](https://github.com/toeverything/AFFiNE) | MIT (core) / separate backend and native licenses | Research and documents profiles; reference only, self-host with Docker. |
 | [App Store Compliance](https://github.com/mjmirza/app-store-compliance) | ORA 2.3 (Root tier) | Engineering, security, and documents profiles; reference only, never vendored. |
 | [AutoClip](https://github.com/zhouxiaoka/autoclip) | MIT | Creative and automation profiles; skill vendored, runtime and MCP installed by the user. |
+| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Apache-2.0 | Security and research profiles; reference clone only, official release downloaded by the user. The skill handles authorized headless analysis. |
+| [n8n](https://github.com/n8n-io/n8n) | Sustainable Use License (fair-code) | Automation profile; reference clone only, never vendored. The skill and helper tool drive a user-hosted instance. |
+| [Jane Street agent_skills](https://github.com/janestreet/agent_skills) | MIT | Research profile; the `socratic-tutor` skill is vendored with attribution, the clone is for update tracking. |
 
 Full notices and license texts are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `licenses/`.
 
@@ -283,7 +290,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 <!-- INVENTORY:START -->
 
 <details>
-<summary><b>Skills (63)</b> — click to expand</summary>
+<summary><b>Skills (66)</b> — click to expand</summary>
 
 | Skill | What it does |
 |---|---|
@@ -321,6 +328,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `financial-etf-advisory` | Analyze US ETFs, stocks, and macroeconomic regimes for retail brokerages and global investors with zero hallucination. Enforces real-time MCP data ingestion, deterministic Python computation (pandas-ta, ATR, SMA, RSI)… |
 | `flashmind-persistent-memory` | Persistent cross-session agent memory and anti-hallucination guardrail protocol via Engram and Flashmind fallback. Use at task start to recall previous project decisions, bugs, and user context, during development to verify… |
 | `futures-position-sizer` | Calculate contract-based futures position sizes from a direction, entry, and stop-loss, using verified per-symbol contract specs (multiplier, tick size, tick value). Use when the user asks how many futures contracts to trade… |
+| `ghidra-headless-analysis` | Install Ghidra and run authorized, repeatable headless analysis on local binaries: project setup, post-scripts, PyGhidra, and evidence exports. |
 | `github-release-sync` | Use when publishing a GitHub release for a desktop or CLI app. Rebuilds the app, uploads the installer, portable archive, and SHA256SUMS to the matching GitHub release, then verifies every asset URL. |
 | `holistic-financial-advisor` | Institutional-grade personal finance, wealth accumulation, cashflow defense, income scaling, and portfolio advisory skill. Enforces the 4-stage Financial Waterfall, zero-raw-math execution via financial_calculator.py, Socratic… |
 | `human-technical-writing` | Write human-grade technical documentation, in-app UX microcopy, PR reviews, and developer communication without AI slop. Enforces Google/Apple/Microsoft style guides, bans sycophancy and statistical AI clichés, and applies… |
@@ -330,6 +338,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `macos-dmg-builder` | Design, build, verify, and package native macOS applications (.app and .dmg) for Apple Silicon using Swift 6, SwiftUI, XcodeGen, Hardened Runtime, and strict UI/UX Anti-Slop gates. Use when the user asks to create macOS apps… |
 | `market-breadth-analyzer` | Quantifies market breadth health using TraderMonty's public CSV data. Generates a 0-100 composite score across 6 components (100 = healthy). No API key required. Use when user asks about market breadth, participation rate… |
 | `mfg-unlock-installer` | Use when installing, verifying, or reverting DLSS multi-frame generation unlocks on RTX 20/30/40/50 for heavy single-player games — MFG Unlock (ReShade add-on) or DLSS Unlocked (OptiScaler proxy), including 3x–6x tuning, route… |
+| `n8n-workflow-automation` | Design, export, test, and safely activate n8n workflows, or self-host n8n, with the fair-code license boundary enforced. |
 | `no-invented-code` | Use whenever writing or suggesting code that calls a function, file, module, package, CLI flag, config key, environment variable, or API endpoint — especially third-party libraries, SDKs, or framework features. Prevents… |
 | `noted-workspace-engine` | Structure engineering architectures, project roadmaps, and multi-view database schemas (Table, Board/Kanban, Timeline) using the Noted block-tree connected workspace paradigm, with offline vault persistence and bidirectional… |
 | `omp-agent-harness` | Apply the Oh-My-Pi (OMP) terminal agent harness protocol to enforce deterministic hash-anchored edits, in-process LSP/DAP diagnostic verification, git worktree task isolation, dual-model Advisor verification, and anti-amnesia… |
@@ -340,6 +349,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `privacy-publish-gate` | Use before publishing, syncing, or pushing any private agent asset (skills, knowledge, tools, MCP config, plugin payload, memory) to a PUBLIC repository, and whenever asked to "make sure my personal data does not leak". Runs the… |
 | `repo-architecture-mentor` | Use when the user asks to learn, trace, teach, or safely refactor a codebase from Bitbucket/GitHub — onboarding to unfamiliar repositories, explaining request/data flows, mapping architecture, understanding the tech stack (Go… |
 | `reverse-engineer-anything` | Compare local software artifacts using file inventories, build metadata, version information, and hashes. |
+| `socratic-tutor` | Structured Socratic tutoring when the user explicitly asks to be taught, quizzed, or drilled to mastery: diagnostic placement, a skill map with levels 0-5, spaced review, and a final assessment. |
 | `software-qa-and-ui-testing` | Software testing standards, UI state synchronization verification, and multi-item test automation to deterministically detect functional and visual bugs using Playwright, CDP, and the SFDPOT heuristic. |
 | `spec-driven-development` | Apply Spec-Driven Development (OpenSpec) workflow to design, propose, implement, and archive features with strict interface contracts, bounded blast radius, and 1:1 unit test parity before writing code. |
 | `systematic-debugging` | Use when something is broken — an error message, stack trace, failing test, crash, wrong output, "it doesn't work", build failure, or unexpected behavior. Finds the root cause with evidence before changing code, then records the… |
@@ -354,7 +364,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 </details>
 
 <details>
-<summary><b>Knowledge documents (35)</b> — click to expand</summary>
+<summary><b>Knowledge documents (38)</b> — click to expand</summary>
 
 | Document | What it covers |
 |---|---|
@@ -372,6 +382,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `finance_economics_macro_micro_map.md` | You need the macro and micro finance map. |
 | `financial_market_and_etf_intelligence.md` | You are analyzing ETFs, stocks, or market regimes. |
 | `gbrain_agent_brain_patterns.md` | You are maintaining agent memory, knowledge, or asset hygiene. |
+| `ghidra_software_reverse_engineering.md` | You are installing Ghidra or running authorized headless binary analysis. |
 | `ha_mcp_home_assistant_automation.md` | You are evaluating or using a Home Assistant MCP server. |
 | `high_precision_ocr_and_document_conversion.md` | You are extracting text, tables, or structure from PDFs and scans. |
 | `hkuds_cli_anything_agent_native_cli.md` | You are finding or installing an agent-native CLI for desktop software. |
@@ -381,12 +392,14 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `knowledge_ingestion_automation.md` | You are ingesting a new source into skills, knowledge, or memory. |
 | `macos_native_dmg_app_development.md` | You are building a macOS app or a signed DMG. |
 | `microsoft_reality_check_smart_tool_analysis.md` | You need to verify that a proposed tool exists and works before recommending it. |
+| `n8n_workflow_automation.md` | You are designing, self-hosting, or auditing n8n workflows and must respect its fair-code license. |
 | `pagesource_web_resource_capture.md` | You need to capture a web page's real HTML, CSS, JS, images, or fonts. |
 | `paper_orchestra_research_writing_pipeline.md` | You are designing a multi-agent research or writing pipeline. |
 | `polyglot_architecture_and_graph_code_intelligence.md` | You are navigating a cross-language codebase or building an impact graph. |
 | `psychology_mental_health_and_modern_problems.md` | You need careful, non-diagnostic mental-health context. |
 | `reading_habit_psychology.md` | You need the evidence summary on reading habits. |
 | `ruview_wifi_csi_sensing.md` | You are working with WiFi CSI sensing or its simulation. |
+| `socratic_tutoring_method.md` | You are teaching, drilling, or assessing a learner to mastery with a Socratic protocol. |
 | `software_qa_and_testing_discipline.md` | You need a test plan, regression gates, or UI state verification. |
 | `spec_driven_development_and_token_compression.md` | The work is spec-first, cross-file, or token-heavy. |
 | `ui_ux_anti_slop_design_engineering.md` | You are designing or reviewing a user interface. |
@@ -397,7 +410,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 </details>
 
 <details>
-<summary><b>Deterministic tools (14)</b> — click to expand</summary>
+<summary><b>Deterministic tools (15)</b> — click to expand</summary>
 
 | Tool | Purpose |
 |---|---|
@@ -414,6 +427,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `game_mod_tool.py` | Discover games, stage mods, verify versions, and roll back with a manifest. |
 | `mfg_unlock_setup.py` | Detect the GPU, choose an MFG route, inspect/install/verify/revert MFG Unlock or DLSS Unlocked, and back up proxy stacks. |
 | `corporate_firewall.py` | Rewrite blunt or risky messages into executive-safe language. |
+| `n8n_workflow_tool.py` | Inventory, export, activate, and audit n8n workflows through the public REST API with secret redaction. |
 | `macos-ocr.swift` | Native Vision OCR helper. |
 
 </details>
@@ -438,14 +452,14 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
 | `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
-| `plugins/` | Generated Codex editions. Full contains 63 skills, 35 indexed documents, and local helper files. |
+| `plugins/` | Generated Codex editions. Full contains 66 skills, 38 indexed documents, and local helper files; Minimal contains a generated quarter plus a reference library. |
 | `integrations/codex/` | Codex adaptations for shared skills, knowledge, and the local memory helper. |
 | `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
 | `commands/ (5)` | User commands: install, status, update, knowledge, and memory. |
 | `hooks/hooks.json` | SessionStart bootstrap plus the daily cached update check. |
 | `profiles.json` | Core set plus 12 profiles: engineering, frontend, security, finance, writing, research, automation, gaming, documents, creative, llm, data. |
-| `upstreams/registry.json` | Registry of 18 tracked third-party repositories and their install mode. |
+| `upstreams/registry.json` | Registry of 21 tracked third-party repositories and their install mode. |
 | `lib/ + bin/` | Installer, updater, Qoder registration, state, memory, and CLI entry point. |
 | `scripts/` | Validate the manifest and assets, run the privacy scan, and build the release ZIP. |
 | `tests/` | Installer, updater, manifest, MCP, hook, and release-pack tests. |
@@ -459,14 +473,14 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 
 | Command | Purpose |
 |---|---|
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 install --minimal` | Minimal install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 install --full` | Full install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 status` | Installed version, paths, skills, upstreams, update state. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 update` | Daily cached update check. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 update --force` | Ignore the cache. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 profiles` | List profiles and skill counts. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 config autoUpdate.self false` | Disable self-update. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.1 uninstall` | Remove the plugin registration. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal` | Minimal install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 install --full` | Full install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 status` | Installed version, paths, skills, upstreams, update state. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 update` | Daily cached update check. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 update --force` | Ignore the cache. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 profiles` | List profiles and skill counts. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.self false` | Disable self-update. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.2 uninstall` | Remove the plugin registration. |
 
 ## Repository layout
 
@@ -477,14 +491,14 @@ AllForOne/
 ├── .mcp.json                     built-in MCP server declaration
 ├── hooks/hooks.json              SessionStart bootstrap
 ├── commands/                     five user-invocable commands
-├── skills/                       63 skills, one folder per skill
-├── knowledge/                    35 public knowledge documents and INDEX.md
-├── tools/                        14 deterministic helpers
+├── skills/                       66 skills, one folder per skill
+├── knowledge/                    38 public knowledge documents and INDEX.md
+├── tools/                        15 deterministic helpers
 ├── memory/                       empty local-memory templates
 ├── lib/                          installer, updater, Qoder registration
 ├── bin/                          CLI and MCP server
-├── upstreams/registry.json       18 tracked third-party repositories
-├── profiles.json                 core, profiles, and knowledge mapping
+├── upstreams/registry.json       21 tracked third-party repositories
+├── profiles.json                 core, minimalShare, profiles, and knowledge/tool mapping
 ├── plugins/                      Codex Minimal and Full editions
 ├── integrations/                 Codex adaptations and ChatGPT Workbench source
 ├── scripts/                      validation, privacy scan, and packaging
@@ -510,7 +524,7 @@ npm run pack:chatgpt
 ## Uninstall
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.1 uninstall
+npx --yes github:geadalfa/AllForOne#v0.2.2 uninstall
 ```
 
 Add `--purge --yes` to also remove the local state directory, including portable memory and upstream clones. Restart Qoder afterward.

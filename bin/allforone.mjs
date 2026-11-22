@@ -94,9 +94,9 @@ Qoder install flags:
   --state-dir PATH   Override the AllForOne state directory
   --yes              Skip confirmations
 
-For Qoder, Minimal installs the core plus only the profiles you choose, then pulls the
-matching upstream repositories. Full installs every public skill, knowledge
-document, tool, and upstream pack.`);
+For Qoder, Minimal installs a curated quarter of the full inventory, plus any extra
+profiles you choose, then pulls the matching upstream repositories. Full installs every
+public skill, knowledge document, tool, and upstream pack.`);
 }
 
 async function ask(question, fallback) {
@@ -112,7 +112,7 @@ async function ask(question, fallback) {
 async function chooseMode() {
   banner();
   console.log('Choose how much to install:');
-  console.log('  1) Minimal  core + the profiles you need + matching upstream repos');
+  console.log('  1) Minimal  a curated quarter of Full + any extra profiles + matching upstream repos');
   console.log('  2) Full     every public skill, knowledge doc, tool, and upstream pack');
   const answer = await ask('Mode [1/2, default 1]: ', '1');
   return answer === '2' ? 'full' : 'minimal';
@@ -123,8 +123,8 @@ async function chooseProfiles(profiles) {
   console.log('Available profiles:');
   console.log(`  ${profiles.join(', ')}`);
   const answer = await ask(
-    'Profiles, comma separated [default engineering]: ',
-    'engineering'
+    'Extra profiles, comma separated [default none: automatic quarter]: ',
+    ''
   );
   return answer
     .split(',')
@@ -148,6 +148,8 @@ function printInstallSummary(result) {
     console.log(`  Profiles: ${result.profiles.join(', ') || 'none'}`);
   }
   console.log(`  Skills:   ${result.skills.length}`);
+  console.log(`  Knowledge: ${result.knowledge.length} document(s)`);
+  console.log(`  Tools:    ${result.tools.length}`);
   console.log(
     `  Updates:  self=${result.autoUpdate.self ? 'on' : 'off'}, upstreams=${
       result.autoUpdate.upstreams ? 'on' : 'off'
@@ -261,7 +263,7 @@ async function doInstall(flags) {
   if (mode === 'minimal' && profiles.length === 0) {
     profiles = process.stdin.isTTY
       ? await chooseProfiles(availableProfiles(opts.sourceRoot))
-      : ['engineering'];
+      : [];
   }
 
   let autoUpdateOn = !flags['no-auto-update'];

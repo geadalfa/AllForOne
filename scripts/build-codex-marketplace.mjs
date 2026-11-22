@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { REPO, ROOT, VERSION } from '../lib/constants.mjs';
-import { CORE_CODEX_REFERENCES, CORE_CODEX_SKILLS, writeCodexSkills } from '../lib/codex-payload.mjs';
+import { minimalCodexInventory } from '../lib/codex-payload.mjs';
 import { walk, writeJson, writeText } from '../lib/fsx.mjs';
 import { writeFullCodexSkills } from './codex-full.mjs';
 
@@ -10,15 +10,15 @@ const pluginDirectory = 'plugins';
 const catalogFile = '.agents/plugins/marketplace.json';
 const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
 const { license } = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+const minimal = minimalCodexInventory();
 const editions = [
   {
     name: 'allforone-minimal',
     folder: 'minimal',
     displayName: 'AllForOne Minimal',
-    description: 'Core workflows for engineering, technical writing, QA, and data quality.',
+    description: 'A curated quarter of the Full inventory: engineering, writing, QA, and security research.',
     write(destination) {
-      writeCodexSkills(destination, CORE_CODEX_SKILLS, CORE_CODEX_REFERENCES);
-      return { skills: CORE_CODEX_SKILLS.length + 1, references: CORE_CODEX_REFERENCES.length };
+      return writeFullCodexSkills(destination, { ...minimal, includeLibrary: true });
     }
   },
   {

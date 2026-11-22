@@ -17,6 +17,7 @@ These are deterministic helpers. They are optional; every skill still works with
 | `game_mod_tool.py` | Discover games, stage mods, verify versions, and roll back with a manifest. | Python 3.10+, optional Nexus API key |
 | `mfg_unlock_setup.py` | Detect the GPU, choose an MFG route, inspect/install/verify/revert MFG Unlock or DLSS Unlocked, and back up proxy stacks. | Windows, RTX 20/30/40/50 |
 | `corporate_firewall.py` | Rewrite blunt or risky messages into executive-safe language. | Python 3.10+ |
+| `n8n_workflow_tool.py` | Inventory, export, activate, and audit n8n workflows through the public REST API with secret redaction. | Python 3.10+, n8n instance and API key |
 | `macos-ocr.swift` | Native Vision OCR helper. | macOS 13+, Swift toolchain |
 
 ## Examples
@@ -28,6 +29,8 @@ python tools/financial_calculator.py --help
 python tools/openspec_tool.py --help
 python tools/mfg_unlock_setup.py route --game "<game-dir>"
 python tools/mfg_unlock_setup.py shyvortex-install --game "<game-dir>" --archive <zip> --proxy version --yes
+python tools/n8n_workflow_tool.py list --json
+python tools/n8n_workflow_tool.py export --dir ./n8n-backup
 ```
 
 ## Rules

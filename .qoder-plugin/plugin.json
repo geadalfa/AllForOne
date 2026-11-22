@@ -1,8 +1,8 @@
 {
   "name": "allforone",
   "displayName": "AllForOne",
-  "version": "0.2.1",
-  "description": "One install. Every capability. A self-updating Qoder plugin with public skills, knowledge, deterministic tools, a built-in MCP server, local memory scaffolding, and curated upstream packs.",
+  "version": "0.2.2",
+  "description": "One install. Every capability. A self-updating Qoder plugin with public skills, knowledge, deterministic tools, a built-in MCP server, local memory scaffolding, and curated upstream packs. Minimal ships a curated quarter of the full inventory.",
   "author": {
     "name": "AllForOne Contributors"
   },
