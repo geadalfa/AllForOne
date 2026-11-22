@@ -12,16 +12,16 @@ Do not pick a mode silently. Do not install both.
 
 ```bash
 # Minimal
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal
 
 # Full
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --full
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --full
 ```
 
 Minimal installs a curated quarter of the full inventory by default. The share is computed from the live counts (skills, knowledge, tools) and scales automatically when the inventory grows. Profiles are optional and add their skills, documents, tools, and upstream packs on top:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal --profiles engineering,security --yes
 ```
 
 Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
@@ -31,14 +31,14 @@ Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `re
 Auto-update is on by default and checked once per day with a 24-hour cache. If the user wants it off, add `--no-auto-update`. Later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.upstreams false
 ```
 
 ## 4. Verify
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 status
+npx --yes github:geadalfa/AllForOne#v0.2.3 status
 ```
 
 Report the real version, plugin path, skill count, memory path, and update flags. Do not claim success without this output.

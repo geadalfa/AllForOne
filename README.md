@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.2.2-6b7280?style=flat-square" alt="Version 0.2.2">
+  <img src="https://img.shields.io/badge/version-0.2.3-6b7280?style=flat-square" alt="Version 0.2.3">
   <img src="https://img.shields.io/badge/skills-66-7c3aed?style=flat-square" alt="66 skills">
   <img src="https://img.shields.io/badge/knowledge-38-0ea5e9?style=flat-square" alt="38 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
@@ -71,7 +71,7 @@ If you used the v0.2.0 `npx` installer, remove that copy with `npx --yes github:
 
 ### ChatGPT web
 
-Download [allforone-0.2.2.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.2/allforone-0.2.2.chatgpt.zip). Choose the route available in your account.
+Download [allforone-0.2.3.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.3/allforone-0.2.3.chatgpt.zip). Choose the route available in your account.
 
 - **Workspace plugin.** An administrator with plugin upload access can upload the ZIP in the workspace plugin settings and enable it for the intended users.
 - **Personal Project.** Extract the ZIP. Open a ChatGPT Project and add the four Markdown files from `skills/allforone-workbench/references/` as project sources. Copy the body of `skills/allforone-workbench/SKILL.md`, starting below the closing `---`, into the Project instructions. Start a chat inside that Project and ask it to review a draft against the references.
@@ -83,13 +83,13 @@ The web edition uses text instructions and uploaded files. It needs no local exe
 Minimal installs a curated quarter of the full inventory, plus any extra profiles you choose. The quarter is recalculated from the live inventory on every release, so new skills, documents, and tools stay proportional. Full installs the complete public Qoder pack. Choose one command.
 
 ```sh
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --full
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --full
 ```
 
-For manual installation, download [allforone-0.2.2.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.2/allforone-0.2.2.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
+For manual installation, download [allforone-0.2.3.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.3/allforone-0.2.3.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
 
-The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.2) lists downloadable files and their SHA-256 checksums.
+The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.3) lists downloadable files and their SHA-256 checksums.
 
 ## DLSS MFG on RTX 20/30/40
 
@@ -151,8 +151,8 @@ Profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research
 Non-interactive minimal install:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal --yes
-npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal --yes
+npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal --profiles engineering,security --yes
 ```
 
 ## How it works
@@ -191,14 +191,14 @@ Auto-update is **on by default** for both the plugin and the upstream repositori
 Disable later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.upstreams false
 ```
 
 Force a check:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 update --force
+npx --yes github:geadalfa/AllForOne#v0.2.3 update --force
 ```
 
 ## Privacy
@@ -250,7 +250,7 @@ Manual Qoder import:
 ## After install
 
 1. Restart Qoder.
-2. Run `npx --yes github:geadalfa/AllForOne#v0.2.2 status`, or `/allforone-status`.
+2. Run `npx --yes github:geadalfa/AllForOne#v0.2.3 status`, or `/allforone-status`.
 3. Confirm the version, plugin path, skill count, and update flags.
 4. Try a task that crosses domains, for example: “Review this diff, check the UI against the anti-slop rules, and verify the security-sensitive paths.”
 5. The agent should load only the matching skills and at most three knowledge documents.
@@ -473,14 +473,14 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 
 | Command | Purpose |
 |---|---|
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 install --minimal` | Minimal install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 install --full` | Full install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 status` | Installed version, paths, skills, upstreams, update state. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 update` | Daily cached update check. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 update --force` | Ignore the cache. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 profiles` | List profiles and skill counts. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 config autoUpdate.self false` | Disable self-update. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.2 uninstall` | Remove the plugin registration. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal` | Minimal install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 install --full` | Full install. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 status` | Installed version, paths, skills, upstreams, update state. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 update` | Daily cached update check. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 update --force` | Ignore the cache. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 profiles` | List profiles and skill counts. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.self false` | Disable self-update. |
+| `npx --yes github:geadalfa/AllForOne#v0.2.3 uninstall` | Remove the plugin registration. |
 
 ## Repository layout
 
@@ -524,7 +524,7 @@ npm run pack:chatgpt
 ## Uninstall
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.2 uninstall
+npx --yes github:geadalfa/AllForOne#v0.2.3 uninstall
 ```
 
 Add `--purge --yes` to also remove the local state directory, including portable memory and upstream clones. Restart Qoder afterward.

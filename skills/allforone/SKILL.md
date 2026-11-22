@@ -16,14 +16,14 @@ When the user asks to install AllForOne, do not pick a mode silently. Ask one qu
 Then run the matching command in the user's terminal:
 
 ```bash
-# Minimal: core + only the profiles the user needs + matching upstream repos
+# Minimal: a curated quarter of Full, auto-scaled from the live inventory
 npx github:geadalfa/AllForOne install --minimal
 
 # Full: every public skill, knowledge doc, tool, and upstream pack
 npx github:geadalfa/AllForOne install --full
 ```
 
-A non-interactive agent can choose profiles directly:
+Minimal carries about 25% of each asset class: skills, knowledge documents, and deterministic tools. The count is computed from `minimalShare` and grows automatically when the inventory grows. Profiles are optional and add their skills, documents, tools, and upstream packs on top. A non-interactive agent can request extras directly:
 
 ```bash
 npx github:geadalfa/AllForOne install --minimal --profiles engineering,security --yes

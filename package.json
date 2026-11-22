@@ -1,6 +1,6 @@
 {
   "name": "allforone",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Qoder capability pack, local Codex plugin, and portable ChatGPT workflows.",
   "type": "module",
   "bin": {

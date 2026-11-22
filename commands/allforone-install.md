@@ -5,11 +5,14 @@ description: Install AllForOne in minimal or full mode, or switch modes later
 The user wants to install or reconfigure AllForOne.
 
 1. Ask exactly one question: "Minimal or Full?"
-2. If Minimal, ask which profiles fit the user's work. Valid profiles: engineering, frontend, security, finance, writing, research, automation, gaming, documents, creative, llm, data.
+2. Minimal already includes a curated quarter of the Full inventory (skills, knowledge, tools), computed automatically. Ask for extra profiles only if the user wants more than that. Valid profiles: engineering, frontend, security, finance, writing, research, automation, gaming, documents, creative, llm, data.
 3. Run the matching command in the terminal:
 
 ```bash
-# Minimal
+# Minimal (default quarter)
+npx github:geadalfa/AllForOne install --minimal --yes
+
+# Minimal plus extra profiles
 npx github:geadalfa/AllForOne install --minimal --profiles <selected> --yes
 
 # Full
