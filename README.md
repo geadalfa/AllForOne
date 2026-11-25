@@ -133,17 +133,6 @@ python <plugin-root>/tools/mfg_unlock_setup.py route --game "<game-dir>"
 
 Single-player only. Never stack both stacks in one game folder. The full guide is [`knowledge/dlss_mfg_unlock_non_rtx50.md`](knowledge/dlss_mfg_unlock_non_rtx50.md).
 
-<details>
-<summary>Fight scene (GIF)</summary>
-
-<p align="center">
-  <img src="https://media.tenor.com/04fBdqc9oAkAAAAC/mha-my-hero-academia.gif" alt="All For One attacking in My Hero Academia" width="560">
-</p>
-
-<p align="center"><sub>GIF via Tenor. Fan media; not covered by the software license.</sub></p>
-
-</details>
-
 ## What you get
 
 | Component | Count | What it does |
