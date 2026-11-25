@@ -5,12 +5,13 @@
 <h1 align="center">ALL FOR ONE</h1>
 
 <p align="center">
-  Agent skills and public reference material for Qoder, Codex, and ChatGPT. Choose your client below.
+  Agent skills and public reference material for Qoder, Claude Code, Claude Desktop, Codex, and ChatGPT. Choose your client below.
 </p>
 
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
-  <img src="https://img.shields.io/badge/version-0.2.3-6b7280?style=flat-square" alt="Version 0.2.3">
+  <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Claude%20Code-plugin-D97757?style=flat-square" alt="Claude Code plugin"></a>
+  <img src="https://img.shields.io/badge/version-0.3.0-6b7280?style=flat-square" alt="Version 0.3.0">
   <img src="https://img.shields.io/badge/skills-82-7c3aed?style=flat-square" alt="82 skills">
   <img src="https://img.shields.io/badge/knowledge-40-0ea5e9?style=flat-square" alt="40 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
@@ -33,9 +34,35 @@
 
 | Client | Where to start | What you get |
 | --- | --- | --- |
+| Claude Code or Claude Desktop | Add the AllForOne marketplace and choose Minimal or Full | Skills, commands, a local MCP server, a session bootstrap, and portable memory |
 | Codex CLI or ChatGPT desktop | Add the AllForOne marketplace and choose Minimal or Full | Portable skills and public references |
 | ChatGPT web | Upload the ChatGPT ZIP to a workspace, or add its files to a Project | A writing, planning, and software review workflow with four public references |
 | Qoder | Choose Minimal or Full, or import the Qoder ZIP | Qoder skills, commands, MCP, memory scaffolding, optional upstreams, and update checks |
+
+### Claude Code and Claude Desktop
+
+Use the Claude marketplace. Full covers the 82 skills and 40 knowledge documents in the [AllForOne inventory](#what-you-get); Minimal is generated from the same inventory and carries a curated quarter of it. No hand-maintained count exists to drift.
+
+| Edition | Skills | AllForOne guides | Includes |
+|---|---:|---:|---|
+| **AllForOne Claude Minimal** | 22 | 10 | A quarter of the inventory, the reference library, the five commands, the local MCP server, and portable memory. |
+| **AllForOne Claude Full** | 82 | 40 | Complete skill inventory, the indexed knowledge library, all deterministic tools, the local MCP server, and portable memory. |
+
+```sh
+claude plugin marketplace add geadalfa/AllForOne
+
+# Install one edition
+claude plugin install allforone-minimal@allforone
+claude plugin install allforone-full@allforone
+```
+
+Verify with `claude plugin list`, then run `/reload-plugins` or start a new session. Skills run as `/allforone-full:<skill>`. The five commands are `/allforone-full:install`, `:status`, `:update`, `:knowledge`, and `:memory`. To switch editions, uninstall the current one first with `claude plugin uninstall <edition>@allforone`.
+
+**Claude Desktop.** Open **Customize → Plugins → Add → Add marketplace**, enter `geadalfa/AllForOne`, then add one edition. Skills and commands load in chat and desktop sessions. The local MCP server and the session bootstrap run in Claude Code and in Cowork sessions that run on your machine; chat conversations skip local servers. To upload an edition manually, download [allforone-0.3.0.claude-minimal.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.3.0/allforone-0.3.0.claude-minimal.zip) or [allforone-0.3.0.claude-full.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.3.0/allforone-0.3.0.claude-full.zip) and use **Add → Upload plugin**. Each ZIP holds one edition with its `.claude-plugin/plugin.json` at the root.
+
+**Desktop MCP without the marketplace.** Add the server to the Claude Desktop MCP configuration, replacing the placeholder with this repository's path. The template is in [`integrations/claude/claude_desktop_config.example.json`](integrations/claude/claude_desktop_config.example.json). The server exposes status, knowledge search and read, skill listing, memory search and add, update check, and policy. Memory stays in `~/.allforone/memory` and is shared with the Qoder and Codex editions.
+
+**Updates.** Run `claude plugin marketplace update allforone`, then `claude plugin update allforone-full@allforone` (or the Minimal id). The session hook does not self-update a Claude-managed plugin.
 
 ### Codex and ChatGPT desktop
 
@@ -71,7 +98,7 @@ If you used the v0.2.0 `npx` installer, remove that copy with `npx --yes github:
 
 ### ChatGPT web
 
-Download [allforone-0.2.3.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.3/allforone-0.2.3.chatgpt.zip). Choose the route available in your account.
+Download [allforone-0.3.0.chatgpt.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.3.0/allforone-0.3.0.chatgpt.zip). Choose the route available in your account.
 
 - **Workspace plugin.** An administrator with plugin upload access can upload the ZIP in the workspace plugin settings and enable it for the intended users.
 - **Personal Project.** Extract the ZIP. Open a ChatGPT Project and add the four Markdown files from `skills/allforone-workbench/references/` as project sources. Copy the body of `skills/allforone-workbench/SKILL.md`, starting below the closing `---`, into the Project instructions. Start a chat inside that Project and ask it to review a draft against the references.
@@ -83,13 +110,13 @@ The web edition uses text instructions and uploaded files. It needs no local exe
 Minimal installs a curated quarter of the full inventory, plus any extra profiles you choose. The quarter is recalculated from the live inventory on every release, so new skills, documents, and tools stay proportional. Full installs the complete public Qoder pack. Choose one command.
 
 ```sh
-npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal
-npx --yes github:geadalfa/AllForOne#v0.2.3 install --full
+npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.3.0 install --full
 ```
 
-For manual installation, download [allforone-0.2.3.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.2.3/allforone-0.2.3.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
+For manual installation, download [allforone-0.3.0.qoder.zip](https://github.com/geadalfa/AllForOne/releases/download/v0.3.0/allforone-0.3.0.qoder.zip). Open **Settings → Plugins → + Create Plugin → Import from local folder or ZIP**, enable AllForOne, and restart Qoder. The Qoder CLI installation protocol for assistants is in [AGENTS.md](AGENTS.md).
 
-The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.2.3) lists downloadable files and their SHA-256 checksums.
+The sections below describe the Qoder edition. The [release page](https://github.com/geadalfa/AllForOne/releases/tag/v0.3.0) lists downloadable files and their SHA-256 checksums.
 
 ## DLSS MFG on RTX 20/30/40
 
@@ -128,6 +155,7 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 | Memory | Local scaffold | `MEMORY.md`, topic files, and a secret-rejecting `memory_add` tool. Never published. |
 | Commands | 5 | `/allforone-install`, `/allforone-status`, `/allforone-update`, `/allforone-knowledge`, `/allforone-memory`. |
 | Hooks | SessionStart | Injects a compact bootstrap and starts the daily update check in the background. |
+| Client editions | 4 | Qoder plugin, Claude Code Minimal and Full, Codex Minimal and Full. ChatGPT web ships as its own ZIP. |
 | Upstream packs | 21 | Selected by profile. The defensive review guide is bundled locally. |
 
 ## Minimal vs Full
@@ -141,6 +169,7 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 | Tools | A quarter | All 15 |
 | MCP server | Yes | Yes |
 | Local memory scaffold | Yes | Yes |
+| Claude edition | Same quarter | Same 100% |
 | Upstream repositories | Matching profiles only | All 21 |
 | Install time | Short | Longer; clones every tracked repository |
 
@@ -151,8 +180,8 @@ Profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research
 Non-interactive minimal install:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal --yes
-npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal --yes
+npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal --profiles engineering,security --yes
 ```
 
 ## How it works
@@ -178,6 +207,8 @@ flowchart LR
 5. On the next Qoder start, the SessionStart hook injects a short bootstrap and starts the daily update check in the background.
 6. The built-in MCP server exposes knowledge, skill, status, memory, update, and policy tools to the agent.
 
+The Claude editions follow the same split without the Qoder installer. Claude Code clones the marketplace, caches the chosen edition, and loads its skills, commands, hook, and MCP server. The hook seeds `~/.allforone/memory/` from the packaged templates and prints a short bootstrap; updates run through `claude plugin`, not through the Qoder updater.
+
 ## Auto-update
 
 Auto-update is **on by default** for both the plugin and the upstream repositories. The first install asks once; `--no-auto-update` opts out.
@@ -191,14 +222,14 @@ Auto-update is **on by default** for both the plugin and the upstream repositori
 Disable later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.3.0 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.3.0 config autoUpdate.upstreams false
 ```
 
 Force a check:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.3 update --force
+npx --yes github:geadalfa/AllForOne#v0.3.0 update --force
 ```
 
 ## Privacy
@@ -250,7 +281,7 @@ Manual Qoder import:
 ## After install
 
 1. Restart Qoder.
-2. Run `npx --yes github:geadalfa/AllForOne#v0.2.3 status`, or `/allforone-status`.
+2. Run `npx --yes github:geadalfa/AllForOne#v0.3.0 status`, or `/allforone-status`.
 3. Confirm the version, plugin path, skill count, and update flags.
 4. Try a task that crosses domains, for example: “Review this diff, check the UI against the anti-slop rules, and verify the security-sensitive paths.”
 5. The agent should load only the matching skills and at most three knowledge documents.
@@ -469,8 +500,11 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | Surface | What it is |
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
+| `.claude-plugin/marketplace.json` | Claude Code and Claude Desktop marketplace with the Minimal and Full Claude editions. |
 | `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
-| `plugins/` | Generated Codex editions. Full contains 82 skills, 40 indexed documents, and local helper files; Minimal contains a generated quarter plus a reference library. |
+| `plugins/claude-minimal` + `plugins/claude-full` | Generated Claude editions. Each has its own `.claude-plugin/plugin.json`, commands, hooks, `.mcp.json`, and a Node runtime under `runtime/`; no top-level `bin/`, so Claude chat and Cowork accept the upload. |
+| `plugins/minimal` + `plugins/full` | Generated Codex editions. Full contains 82 skills, 40 indexed documents, and local helper files; Minimal contains a generated quarter plus a reference library. |
+| `integrations/claude/` | Claude adaptations: five commands, the session bootstrap, and a Desktop MCP configuration template. |
 | `integrations/codex/` | Codex adaptations for shared skills, knowledge, and the local memory helper. |
 | `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
@@ -489,21 +523,36 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 
 ## Commands
 
+### Claude Code
+
 | Command | Purpose |
 |---|---|
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 install --minimal` | Minimal install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 install --full` | Full install. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 status` | Installed version, paths, skills, upstreams, update state. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 update` | Daily cached update check. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 update --force` | Ignore the cache. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 profiles` | List profiles and skill counts. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 config autoUpdate.self false` | Disable self-update. |
-| `npx --yes github:geadalfa/AllForOne#v0.2.3 uninstall` | Remove the plugin registration. |
+| `claude plugin marketplace add geadalfa/AllForOne` | Register the AllForOne marketplace. |
+| `claude plugin install allforone-minimal@allforone` | Minimal Claude edition: a curated quarter. |
+| `claude plugin install allforone-full@allforone` | Full Claude edition. |
+| `claude plugin list` | Installed editions, versions, scopes, and status. |
+| `claude plugin update allforone-full@allforone` | Update one edition. |
+| `claude plugin marketplace update allforone` | Refresh the marketplace catalog. |
+| `/reload-plugins` | Load a new version in a running session. |
+
+### Qoder
+
+| Command | Purpose |
+|---|---|
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal` | Minimal install. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 install --full` | Full install. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 status` | Installed version, paths, skills, upstreams, update state. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 update` | Daily cached update check. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 update --force` | Ignore the cache. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 profiles` | List profiles and skill counts. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 config autoUpdate.self false` | Disable self-update. |
+| `npx --yes github:geadalfa/AllForOne#v0.3.0 uninstall` | Remove the plugin registration. |
 
 ## Repository layout
 
 ```text
 AllForOne/
+├── .claude-plugin/marketplace.json  Claude marketplace
 ├── .agents/plugins/marketplace.json  Codex marketplace
 ├── .qoder-plugin/plugin.json     Qoder manifest
 ├── .mcp.json                     built-in MCP server declaration
@@ -513,14 +562,14 @@ AllForOne/
 ├── knowledge/                    40 public knowledge documents and INDEX.md
 ├── tools/                        15 deterministic helpers
 ├── memory/                       empty local-memory templates
-├── lib/                          installer, updater, Qoder registration
+├── lib/                          installer, updater, Qoder registration, Claude payload
 ├── bin/                          CLI and MCP server
 ├── upstreams/registry.json       21 tracked third-party repositories
 ├── profiles.json                 core, minimalShare, profiles, and knowledge/tool mapping
-├── plugins/                      Codex Minimal and Full editions
-├── integrations/                 Codex adaptations and ChatGPT Workbench source
-├── scripts/                      validation, privacy scan, and packaging
-└── tests/                        installer, updater, MCP, and hook tests
+├── plugins/                      Generated Claude and Codex Minimal and Full editions
+├── integrations/                 Claude and Codex adaptations plus ChatGPT Workbench source
+├── scripts/                      validation, privacy scan, marketplace builds, and packaging
+└── tests/                        installer, updater, MCP, hook, Claude, and release-pack tests
 ```
 
 ## Development
@@ -529,11 +578,13 @@ AllForOne/
 npm test
 npm run validate
 npm run privacy
+npm run build:claude
 npm run pack
 npm run pack:chatgpt
+npm run pack:claude
 ```
 
-`npm run privacy` now scans the working tree and the full commit history. It must report zero findings. The CI workflow runs the same checks.
+`npm run validate` regenerates nothing. It checks the Qoder manifest and assets, the Codex marketplace against the generated editions, and the Claude marketplace against `plugins/claude-minimal` and `plugins/claude-full`. `npm run build:claude` regenerates the Claude editions after a skill, knowledge, tool, or command change. `npm run privacy` scans the working tree and the full commit history. It must report zero findings. The CI workflow runs the same checks.
 
 ## Contributing
 
@@ -542,7 +593,7 @@ npm run pack:chatgpt
 ## Uninstall
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.2.3 uninstall
+npx --yes github:geadalfa/AllForOne#v0.3.0 uninstall
 ```
 
 Add `--purge --yes` to also remove the local state directory, including portable memory and upstream clones. Restart Qoder afterward.
@@ -551,7 +602,7 @@ Add `--purge --yes` to also remove the local state directory, including portable
 
 AllForOne is assembled from original work and public upstream projects. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-The plugin structure follows Qoder’s documented conventions: a manifest, skills, commands, hooks, and MCP declarations. The README format follows the anti-slop and Konoha tradition of showing the artifact, not just describing it.
+The plugin structure follows Qoder’s documented conventions: a manifest, skills, commands, hooks, and MCP declarations. The Claude editions follow the Claude Code plugin layout: `.claude-plugin/plugin.json`, `skills/`, `commands/`, `hooks/hooks.json`, `.mcp.json`, and `${CLAUDE_PLUGIN_ROOT}` paths. The README format follows the anti-slop and Konoha tradition of showing the artifact, not just describing it.
 
 ## Support
 

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "allforone": {
+      "command": "node",
+      "args": ["<absolute-path-to-AllForOne>/bin/mcp-server.mjs"],
+      "env": {
+        "ALLFORONE_ROOT": "<absolute-path-to-AllForOne>"
+      }
+    }
+  }
+}

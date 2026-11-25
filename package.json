@@ -1,7 +1,7 @@
 {
   "name": "allforone",
-  "version": "0.2.3",
-  "description": "Qoder capability pack, local Codex plugin, and portable ChatGPT workflows.",
+  "version": "0.3.0",
+  "description": "Qoder capability pack, Claude Code plugin, local Codex plugin, and portable ChatGPT workflows.",
   "type": "module",
   "bin": {
     "allforone": "bin/allforone.mjs"
@@ -34,12 +34,14 @@
   },
   "scripts": {
     "test": "node --test",
-    "validate": "node scripts/validate.mjs && node scripts/build-codex-marketplace.mjs --check",
+    "validate": "node scripts/validate.mjs && node scripts/build-codex-marketplace.mjs --check && node scripts/build-claude-marketplace.mjs --check",
     "check:readme": "node scripts/check-readme-sync.mjs",
     "privacy": "node scripts/privacy-scan.mjs --history",
     "pack": "node scripts/build-zip.mjs",
     "pack:chatgpt": "node scripts/build-chatgpt.mjs",
-    "build:codex": "node scripts/build-codex-marketplace.mjs --write"
+    "pack:claude": "node scripts/build-claude-zip.mjs",
+    "build:codex": "node scripts/build-codex-marketplace.mjs --write",
+    "build:claude": "node scripts/build-claude-marketplace.mjs --write"
   },
   "license": "PolyForm-Noncommercial-1.0.0"
 }

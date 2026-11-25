@@ -1,0 +1,20 @@
+{
+  "name": "allforone-minimal",
+  "displayName": "AllForOne Claude Minimal",
+  "version": "0.3.0",
+  "description": "A curated quarter of the Full inventory for Claude Code: engineering, writing, QA, and security research, plus a reference library.",
+  "author": {
+    "name": "AllForOne Contributors"
+  },
+  "homepage": "https://github.com/geadalfa/AllForOne",
+  "repository": "https://github.com/geadalfa/AllForOne",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "knowledge-base",
+    "mcp",
+    "engineering",
+    "security"
+  ]
+}

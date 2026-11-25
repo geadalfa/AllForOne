@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "allforone": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/runtime/bin/mcp-server.mjs"
+      ],
+      "env": {
+        "ALLFORONE_CLIENT": "claude",
+        "ALLFORONE_MODE": "full"
+      }
+    }
+  }
+}

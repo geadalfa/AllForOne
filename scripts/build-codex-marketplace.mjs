@@ -82,9 +82,13 @@ try {
       errors.push(`Missing or outdated file: ${relative}`);
     }
   }
-  for (const file of walk(path.join(ROOT, pluginDirectory))) {
-    const relative = path.relative(ROOT, file);
-    if (!generated.has(relative)) errors.push(`Unexpected file: ${relative}`);
+  for (const edition of editions) {
+    const directory = path.join(ROOT, pluginDirectory, edition.folder);
+    if (!fs.existsSync(directory)) continue;
+    for (const file of walk(directory)) {
+      const relative = path.relative(ROOT, file);
+      if (!generated.has(relative)) errors.push(`Unexpected file: ${relative}`);
+    }
   }
   if (errors.length) throw new Error(errors.join('\n') + '\nRegenerate with npm run build:codex.');
   console.log('Codex marketplace matches the generated Minimal and Full packages.');

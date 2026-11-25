@@ -1,0 +1,23 @@
+{
+  "name": "allforone",
+  "description": "Portable agent skills, public references, deterministic tools, and a local MCP server for Claude Code and Claude Desktop.",
+  "owner": {
+    "name": "AllForOne Contributors"
+  },
+  "plugins": [
+    {
+      "name": "allforone-minimal",
+      "source": "./plugins/claude-minimal",
+      "description": "A curated quarter of the Full inventory for Claude Code: engineering, writing, QA, and security research, plus a reference library.",
+      "version": "0.3.0",
+      "homepage": "https://github.com/geadalfa/AllForOne"
+    },
+    {
+      "name": "allforone-full",
+      "source": "./plugins/claude-full",
+      "description": "The complete AllForOne skill and knowledge inventory for Claude Code.",
+      "version": "0.3.0",
+      "homepage": "https://github.com/geadalfa/AllForOne"
+    }
+  ]
+}

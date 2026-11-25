@@ -41,6 +41,11 @@ export function checkReadmeSync(root = DEFAULT_ROOT) {
   want('Codex marketplace setup', 'codex plugin marketplace add geadalfa/AllForOne');
   want('Codex Minimal installation', 'codex plugin add allforone-minimal@allforone');
   want('Codex Full installation', 'codex plugin add allforone-full@allforone');
+  want('Claude marketplace setup', 'claude plugin marketplace add geadalfa/AllForOne');
+  want('Claude Minimal installation', 'claude plugin install allforone-minimal@allforone');
+  want('Claude Full installation', 'claude plugin install allforone-full@allforone');
+  want('Claude Minimal ZIP link', `allforone-${pkg.version}.claude-minimal.zip`);
+  want('Claude Full ZIP link', `allforone-${pkg.version}.claude-full.zip`);
 
   want('skills badge', `skills-${skills.length}-`);
   want('knowledge badge', `knowledge-${knowledge.length}-`);

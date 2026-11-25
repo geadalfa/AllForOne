@@ -9,8 +9,14 @@ import { autoUpdate } from '../lib/updater.mjs';
 import { loadProfiles } from '../lib/profiles.mjs';
 
 const STATE_DIR = defaultStateDir();
-const KNOWLEDGE_DIR = path.join(ROOT, 'knowledge');
-const SKILLS_DIR = path.join(ROOT, 'skills');
+const PLUGIN_ROOT = process.env.CLAUDE_PLUGIN_ROOT
+  ? path.resolve(process.env.CLAUDE_PLUGIN_ROOT)
+  : process.env.ALLFORONE_ROOT
+    ? path.resolve(process.env.ALLFORONE_ROOT)
+    : ROOT;
+const CLIENT = process.env.ALLFORONE_CLIENT || null;
+const KNOWLEDGE_DIR = path.join(PLUGIN_ROOT, 'knowledge');
+const SKILLS_DIR = path.join(PLUGIN_ROOT, 'skills');
 
 const TOOLS = [
   {
@@ -159,7 +165,7 @@ function readKnowledge(file) {
 }
 
 function listSkills(profile) {
-  const profiles = loadProfiles(ROOT);
+  const profiles = loadProfiles(PLUGIN_ROOT);
   const memberships = new Map();
   for (const [name, skills] of Object.entries(profiles.profiles)) {
     for (const skill of skills) {
@@ -197,13 +203,16 @@ function policyText() {
 
 function statusPayload() {
   const state = readState(STATE_DIR);
+  const claude = CLIENT === 'claude';
   return {
     version: VERSION,
-    installedVersion: state.installedVersion,
-    mode: state.installMode,
+    client: CLIENT || 'qoder',
+    installedVersion: state.installedVersion || (claude ? VERSION : null),
+    mode: state.installMode || (claude ? process.env.ALLFORONE_MODE || null : null),
     profiles: state.profiles,
     autoUpdate: state.autoUpdate,
     upstreams: Object.keys(state.upstreams || {}),
+    pluginRoot: PLUGIN_ROOT,
     stateDir: STATE_DIR,
     memory: path.join(STATE_DIR, 'memory', 'MEMORY.md'),
     knowledgeIndex: path.join(KNOWLEDGE_DIR, 'INDEX.md')
@@ -231,8 +240,15 @@ async function callTool(name, args = {}) {
       return `Stored locally at ${result.file} at ${result.timestamp}. This entry is not published.`;
     }
     case 'allforone_check_updates': {
+      if (CLIENT === 'claude') {
+        return [
+          'Claude-managed installation: update through the plugin marketplace instead.',
+          'Run `claude plugin marketplace update allforone`, then `claude plugin update <edition>@allforone`.',
+          'AllForOne does not modify a Claude-managed plugin outside that flow.'
+        ].join('\n');
+      }
       const report = autoUpdate({
-        root: ROOT,
+        root: PLUGIN_ROOT,
         qoderDir: defaultQoderDir(),
         stateDir: STATE_DIR,
         force: Boolean(args.force),
