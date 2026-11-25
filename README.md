@@ -11,8 +11,8 @@
 <p align="center">
   <a href="https://github.com/geadalfa/AllForOne"><img src="https://img.shields.io/badge/Qoder-plugin-27BD51?style=flat-square" alt="Qoder plugin"></a>
   <img src="https://img.shields.io/badge/version-0.2.3-6b7280?style=flat-square" alt="Version 0.2.3">
-  <img src="https://img.shields.io/badge/skills-66-7c3aed?style=flat-square" alt="66 skills">
-  <img src="https://img.shields.io/badge/knowledge-38-0ea5e9?style=flat-square" alt="38 knowledge documents">
+  <img src="https://img.shields.io/badge/skills-82-7c3aed?style=flat-square" alt="82 skills">
+  <img src="https://img.shields.io/badge/knowledge-40-0ea5e9?style=flat-square" alt="40 knowledge documents">
   <img src="https://img.shields.io/badge/MCP-server-f59e0b?style=flat-square" alt="Built-in MCP server">
   <img src="https://img.shields.io/badge/upstreams-21-ef4444?style=flat-square" alt="21 upstream repositories">
   <img src="https://img.shields.io/badge/license-Noncommercial-f59e0b?style=flat-square" alt="PolyForm Noncommercial 1.0.0">
@@ -39,12 +39,12 @@
 
 ### Codex and ChatGPT desktop
 
-Choose one edition. Full covers the 66 skills and 38 knowledge documents in the [AllForOne inventory](#what-you-get), with Codex paths and workflows for the local tools and memory. Minimal is generated from the same inventory and carries a curated quarter of it.
+Choose one edition. Full covers the 82 skills and 40 knowledge documents in the [AllForOne inventory](#what-you-get), with Codex paths and workflows for the local tools and memory. Minimal is generated from the same inventory and carries a curated quarter of it.
 
 | Edition | Skills | AllForOne guides | Includes |
 |---|---:|---:|---|
-| **AllForOne Minimal** | 18 | 10 | A quarter of the inventory: engineering, exact output, technical writing, software QA, security research, and a reference library. |
-| **AllForOne Full** | 66 | 38 | Complete skill inventory, the indexed knowledge library, local helper scripts, and Codex-local memory. |
+| **AllForOne Minimal** | 22 | 10 | A quarter of the inventory: engineering, exact output, technical writing, software QA, security research, and a reference library. |
+| **AllForOne Full** | 82 | 40 | Complete skill inventory, the indexed knowledge library, local helper scripts, and Codex-local memory. |
 
 Both editions load skills from the installed plugin. Individual workflows may require Python, Node.js, a supported operating system, or an authorized external CLI or MCP connection. Minimal includes a quarter of the deterministic tools; Full includes all of them. The marketplace pattern comes from [anti-slop](https://github.com/miqdadbadjuber/anti-slop/blob/7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba/README.md#codex---plugin).
 
@@ -121,8 +121,8 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 
 | Component | Count | What it does |
 |---|---:|---|
-| Skills | 66 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
-| Knowledge documents | 38 | Public reference material loaded one to three files at a time, never all at once. |
+| Skills | 82 | Routed workflows for engineering, security, finance, writing, research, UI, documents, gaming, automation, and LLM work. |
+| Knowledge documents | 40 | Public reference material loaded one to three files at a time, never all at once. |
 | Deterministic tools | 15 | Token-efficient reads, web capture, document conversion, finance math, spec tracking, display analysis, n8n automation, DLSS MFG setup, and more. |
 | MCP server | 1 | `allforone` stdio server with status, knowledge search, skill listing, memory search/add, update check, and policy tools. |
 | Memory | Local scaffold | `MEMORY.md`, topic files, and a secret-rejecting `memory_add` tool. Never published. |
@@ -137,7 +137,7 @@ Single-player only. Never stack both stacks in one game folder. The full guide i
 | Inventory share | A curated quarter (auto-scaled) | 100% |
 | Core skills | A quarter by default | All |
 | Chosen profile skills | Add on top | All |
-| Knowledge documents | A quarter plus matching docs | All 38 |
+| Knowledge documents | A quarter plus matching docs | All 40 |
 | Tools | A quarter | All 15 |
 | MCP server | Yes | Yes |
 | Local memory scaffold | Yes | Yes |
@@ -264,9 +264,9 @@ Manual Qoder import:
 | [claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) | MIT | Finance and data profiles; keyless subset vendored, upstream tracked. |
 | [Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Security profile. Ships a static code-review guide and skips upstream cloning. |
 | [gbrain](https://github.com/garrytan/gbrain) | MIT | Research and LLM profiles; conventions, no runtime. |
-| [humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Writing profile; skill pack installed from source. |
+| [humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Writing profile; 15-skill pack vendored with attribution, upstream tracked. |
 | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT | Frontend and creative profiles; reference clone. |
-| [reality-check](https://github.com/microsoft/amplifier-smart-tool-reality-check) | MIT | Engineering and research profiles; skill installed from source. |
+| [reality-check](https://github.com/microsoft/amplifier-smart-tool-reality-check) | MIT | Engineering and research profiles; skill vendored with attribution, upstream tracked. |
 | [superpowers](https://github.com/obra/superpowers) | MIT | Engineering profile; reference clone, Marketplace runtime recommended. |
 | [ha-mcp](https://github.com/homeassistant-ai/ha-mcp) | MIT | Automation profile; reference only, requires Home Assistant. |
 | [paper-orchestra](https://github.com/google-research/paper-orchestra) | Apache-2.0 | Research profile; reference only. |
@@ -290,7 +290,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 <!-- INVENTORY:START -->
 
 <details>
-<summary><b>Skills (66)</b> — click to expand</summary>
+<summary><b>Skills (82)</b> — click to expand</summary>
 
 | Skill | What it does |
 |---|---|
@@ -332,6 +332,21 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `github-release-sync` | Use when publishing a GitHub release for a desktop or CLI app. Rebuilds the app, uploads the installer, portable archive, and SHA256SUMS to the matching GitHub release, then verifies every asset URL. |
 | `holistic-financial-advisor` | Institutional-grade personal finance, wealth accumulation, cashflow defense, income scaling, and portfolio advisory skill. Enforces the 4-stage Financial Waterfall, zero-raw-math execution via financial_calculator.py, Socratic… |
 | `human-technical-writing` | Write human-grade technical documentation, in-app UX microcopy, PR reviews, and developer communication without AI slop. Enforces Google/Apple/Microsoft style guides, bans sycophancy and statistical AI clichés, and applies… |
+| `humanizer-id` | Use when editing Indonesian prose. Preserves meaning while removing translationese, light verbs, formulaic rhetoric, and weak sentence rhythm. |
+| `humanizer-id-bisnis-korporat` | Use when editing Indonesian corporate, executive, proposal, memo, or press release prose. |
+| `humanizer-id-diksi-istilah` | Use when fixing Indonesian diction, pleonasm, and terminology equivalents. |
+| `humanizer-id-ejaan-morfologi` | Use when fixing Indonesian spelling, morphology, and standard word forms. |
+| `humanizer-id-esai-konten-digital` | Use when editing Indonesian essays, blogs, newsletters, social thought leadership, slides, or web content. |
+| `humanizer-id-hukum-regulasi` | Use when auditing Indonesian legal analyses, policy briefs, regulations, or product claims. |
+| `humanizer-id-jurnalistik-media` | Use when editing Indonesian news, opinion, features, or press releases. |
+| `humanizer-id-naskah-resmi` | Use when fixing Indonesian official documents, ceremony scripts, and journal metadata. |
+| `humanizer-id-pendidikan-ajar` | Use when auditing Indonesian textbooks, learning modules, worksheets, exams, teacher research, or BIPA materials. |
+| `humanizer-id-sintaksis` | Use when fixing Indonesian syntax and effective-sentence structure. |
+| `humanizer-id-skripsi-kampus` | Use when editing Indonesian theses, dissertations, or research proposals with campus presets. |
+| `humanizer-id-surat-dinas` | Use when auditing Indonesian official letters, government memos, circulars, notices, or protocol scripts. |
+| `humanizer-id-teknis-it` | Use when auditing Indonesian technical documentation, IT proposals, READMEs, RFCs, or engineering papers. |
+| `humanizer-id-terjemahan-lokalisasi` | Use when editing Indonesian translations, localized UI copy, bilingual documents, or terminology-heavy adaptations. |
+| `humanizer-id-wacana-retorika` | Use when fixing Indonesian paragraph cohesion, discourse, and rhetoric. |
 | `knowledge-ingestion` | Use when the user says "tolong pelajari", "simpan ke knowledge", "pelajari dan simpan", "masukkan ke knowledge", "update pengetahuan", or asks the agent to remember a source. Ingests a repository, URL, document, or concept into… |
 | `konoha-agentic-workflow` | Orchestrate multi-agent software engineering workflows using the Konoha Shinobi model (Sannin, Genin, Kage, Jonin, Anbu, Chunin, Tokubetsu-Jonin). Enforces bounded file reads (50-100 lines), token hygiene, Two-Step Zero-AI-Slop… |
 | `llm-weight-ablation-and-steering` | Decensor, unalign, steer behavior, or eliminate slop from local transformer LLMs without post-training using Heretic, Arbitrary-Rank Ablation (ARA), Magnitude-Preserving Orthogonal Ablation (MPOA), and Optuna Bayesian… |
@@ -348,6 +363,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `pre-trade-discipline-gate` | Evaluate a local pre-trade checklist before manual order entry, blocking planless, oversized, revenge-risk, market-regime-blocked, or circuit-breaker-blocked entries while journaling the decision for trader-memory-core review. |
 | `privacy-publish-gate` | Use before publishing, syncing, or pushing any private agent asset (skills, knowledge, tools, MCP config, plugin payload, memory) to a PUBLIC repository, and whenever asked to "make sure my personal data does not leak". Runs the… |
 | `repo-architecture-mentor` | Use when the user asks to learn, trace, teach, or safely refactor a codebase from Bitbucket/GitHub — onboarding to unfamiliar repositories, explaining request/data flows, mapping architecture, understanding the tech stack (Go… |
+| `reality-check` | Verify an app as a real user would experience it and return evidence for every finding, rather than relying only on code reads or unit tests. |
 | `reverse-engineer-anything` | Compare local software artifacts using file inventories, build metadata, version information, and hashes. |
 | `socratic-tutor` | Structured Socratic tutoring when the user explicitly asks to be taught, quizzed, or drilled to mastery: diagnostic placement, a skill map with levels 0-5, spaced review, and a final assessment. |
 | `software-qa-and-ui-testing` | Software testing standards, UI state synchronization verification, and multi-item test automation to deterministically detect functional and visual bugs using Playwright, CDP, and the SFDPOT heuristic. |
@@ -364,12 +380,13 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 </details>
 
 <details>
-<summary><b>Knowledge documents (38)</b> — click to expand</summary>
+<summary><b>Knowledge documents (40)</b> — click to expand</summary>
 
 | Document | What it covers |
 |---|---|
 | `affine_local_first_knowledge_base.md` | You are designing local-first sync or evaluating a self-hosted workspace. |
 | `agents_md_open_standard_specification.md` | You are writing or auditing AGENTS.md instructions. |
+| `anti_slop_rules_and_qoder_support.md` | You are applying or adapting the anti-slop rules in a Qoder workflow. |
 | `anti_vibe_coding_engineering_protocol.md` | You need deterministic engineering rules, blast-radius analysis, and evidence labels. |
 | `app_opportunity_lab_playbook.md` | You are validating or designing a new application. |
 | `app_store_compliance_ora_playbook.md` | You are preparing an iOS or Android release for store review. |
@@ -397,6 +414,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 | `paper_orchestra_research_writing_pipeline.md` | You are designing a multi-agent research or writing pipeline. |
 | `polyglot_architecture_and_graph_code_intelligence.md` | You are navigating a cross-language codebase or building an impact graph. |
 | `psychology_mental_health_and_modern_problems.md` | You need careful, non-diagnostic mental-health context. |
+| `qoder_harness_integration_and_privacy_gate.md` | You are integrating a private agent install with Qoder and must audit the worktree, history, and commit metadata before publishing. |
 | `reading_habit_psychology.md` | You need the evidence summary on reading habits. |
 | `ruview_wifi_csi_sensing.md` | You are working with WiFi CSI sensing or its simulation. |
 | `socratic_tutoring_method.md` | You are teaching, drilling, or assessing a learner to mastery with a Socratic protocol. |
@@ -452,7 +470,7 @@ Every skill, knowledge document, tool, memory surface, and plugin surface in thi
 |---|---|
 | `.qoder-plugin/plugin.json` | Qoder plugin manifest: skills path, MCP server, hooks, version, and license. |
 | `.agents/plugins/marketplace.json` | AllForOne marketplace with Minimal and Full editions for ChatGPT desktop and Codex CLI. |
-| `plugins/` | Generated Codex editions. Full contains 66 skills, 38 indexed documents, and local helper files; Minimal contains a generated quarter plus a reference library. |
+| `plugins/` | Generated Codex editions. Full contains 82 skills, 40 indexed documents, and local helper files; Minimal contains a generated quarter plus a reference library. |
 | `integrations/codex/` | Codex adaptations for shared skills, knowledge, and the local memory helper. |
 | `integrations/chatgpt/` | Workbench instructions used to build the ChatGPT web ZIP. |
 | `.mcp.json + bin/mcp-server.mjs` | Built-in stdio MCP server: status, knowledge search/read, skill list, memory search/add, update check, and policy. |
@@ -491,8 +509,8 @@ AllForOne/
 ├── .mcp.json                     built-in MCP server declaration
 ├── hooks/hooks.json              SessionStart bootstrap
 ├── commands/                     five user-invocable commands
-├── skills/                       66 skills, one folder per skill
-├── knowledge/                    38 public knowledge documents and INDEX.md
+├── skills/                       82 skills, one folder per skill
+├── knowledge/                    40 public knowledge documents and INDEX.md
 ├── tools/                        15 deterministic helpers
 ├── memory/                       empty local-memory templates
 ├── lib/                          installer, updater, Qoder registration

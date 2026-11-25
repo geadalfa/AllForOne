@@ -12,6 +12,8 @@ AllForOne's original code and prose are licensed under the PolyForm Noncommercia
 | `cli-hub-meta-skill` | Apache-2.0 | HKUDS / CLI-Anything. See `licenses/cli-anything-LICENSE.txt`. |
 | `autoclip` | MIT | Copyright (c) 2024 AutoClip Team. See `licenses/autoclip-LICENSE.txt`. |
 | `socratic-tutor` | MIT | Copyright (c) 2026 Jane Street Group, LLC. See `skills/socratic-tutor/LICENSE.md` and `licenses/janestreet-agent-skills-LICENSE.txt`. |
+| `humanizer-id` and 14 sub-skills | MIT | Copyright (c) 2026 Hafizh Muzani. See `skills/humanizer-id/LICENSE` and `licenses/humanizer-id-LICENSE.txt`. |
+| `reality-check` | MIT | Copyright (c) Microsoft Corporation. See `licenses/reality-check-LICENSE.txt`. |
 
 The defensive security subset is included for static review. Offensive-only classes and any material requiring a live target are not included.
 
@@ -26,9 +28,9 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) | MIT | Upstream tracking for the vendored subset. |
 | [elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) | MIT / CC BY 4.0 | Attribution for the earlier defensive review collection. The current guide is bundled locally. |
 | [garrytan/gbrain](https://github.com/garrytan/gbrain) | MIT | Reference clone; runtime is not installed. |
-| [apissaj/humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Skills installed when the writing profile is selected. |
+| [apissaj/humanizer-id](https://github.com/apissaj/humanizer-id) | MIT | Upstream tracking for the vendored Humanizer ID skill pack. See `licenses/humanizer-id-LICENSE.txt`. |
 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT | Reference clone; the Qoder Marketplace plugin is the supported runtime. |
-| [microsoft/amplifier-smart-tool-reality-check](https://github.com/microsoft/amplifier-smart-tool-reality-check) | MIT | Skills installed when the engineering profile is selected. |
+| [microsoft/amplifier-smart-tool-reality-check](https://github.com/microsoft/amplifier-smart-tool-reality-check) | MIT | Upstream tracking for the vendored `reality-check` skill. See `licenses/reality-check-LICENSE.txt`. |
 | [obra/superpowers](https://github.com/obra/superpowers) | MIT | Reference clone; the Qoder Marketplace plugin is the supported runtime. |
 | [homeassistant-ai/ha-mcp](https://github.com/homeassistant-ai/ha-mcp) | MIT | Reference clone only; requires Home Assistant and a token. |
 | [google-research/paper-orchestra](https://github.com/google-research/paper-orchestra) | Apache-2.0 | Reference clone only. |

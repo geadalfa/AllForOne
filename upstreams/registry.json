@@ -75,10 +75,10 @@
       "license": "MIT",
       "profiles": ["writing"],
       "description": "Indonesian human-writing rules across academic, business, legal, and technical registers.",
+      "vendored": true,
       "install": {
-        "type": "skills",
-        "root": "skills",
-        "all": true
+        "type": "reference",
+        "note": "The 15-skill Humanizer ID pack is vendored with attribution. The clone is kept for upstream tracking and licensing."
       }
     },
     {
@@ -99,11 +99,11 @@
       "branch": "main",
       "license": "MIT",
       "profiles": ["engineering", "research"],
-      "description": "Evidence-first tool evaluation: verify that a tool exists and works before proposing it.",
+      "description": "Evidence-first app verification: check behavior as a real user and return evidence for every finding.",
+      "vendored": true,
       "install": {
-        "type": "skills",
-        "root": "skills",
-        "all": true
+        "type": "reference",
+        "note": "The reality-check skill is vendored with attribution. The clone is kept for upstream tracking and licensing."
       }
     },
     {

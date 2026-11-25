@@ -46,6 +46,7 @@
   "profiles": {
     "engineering": [
       "repo-architecture-mentor",
+      "reality-check",
       "polyglot-code-intelligence",
       "zero-regression-refactoring",
       "software-qa-and-ui-testing",
@@ -81,10 +82,26 @@
       "weekly-performance-digest"
     ],
     "writing": [
-      "corporate-diplomacy-and-career-acceleration"
+      "corporate-diplomacy-and-career-acceleration",
+      "humanizer-id",
+      "humanizer-id-bisnis-korporat",
+      "humanizer-id-diksi-istilah",
+      "humanizer-id-ejaan-morfologi",
+      "humanizer-id-esai-konten-digital",
+      "humanizer-id-hukum-regulasi",
+      "humanizer-id-jurnalistik-media",
+      "humanizer-id-naskah-resmi",
+      "humanizer-id-pendidikan-ajar",
+      "humanizer-id-sintaksis",
+      "humanizer-id-skripsi-kampus",
+      "humanizer-id-surat-dinas",
+      "humanizer-id-teknis-it",
+      "humanizer-id-terjemahan-lokalisasi",
+      "humanizer-id-wacana-retorika"
     ],
     "research": [
       "app-opportunity-lab",
+      "reality-check",
       "noted-workspace-engine",
       "reverse-engineer-anything",
       "flashmind-persistent-memory",
@@ -140,16 +157,19 @@
     "engineering": [
       "polyglot_architecture_and_graph_code_intelligence.md",
       "pagesource_web_resource_capture.md",
-      "microsoft_reality_check_smart_tool_analysis.md"
+      "microsoft_reality_check_smart_tool_analysis.md",
+      "qoder_harness_integration_and_privacy_gate.md"
     ],
     "frontend": [
       "ui_ux_anti_slop_design_engineering.md",
       "ui_ux_pro_max_skill_analysis.md",
-      "cross_platform_uiux_qa_security_playbook.md"
+      "cross_platform_uiux_qa_security_playbook.md",
+      "anti_slop_rules_and_qoder_support.md"
     ],
     "security": [
       "cross_platform_uiux_qa_security_playbook.md",
-      "ghidra_software_reverse_engineering.md"
+      "ghidra_software_reverse_engineering.md",
+      "qoder_harness_integration_and_privacy_gate.md"
     ],
     "finance": [
       "finance_economics_macro_micro_map.md",
@@ -159,7 +179,8 @@
     ],
     "writing": [
       "corporate_communication_and_career_diplomacy.md",
-      "humanizer_id_indonesian_academic_editing.md"
+      "humanizer_id_indonesian_academic_editing.md",
+      "anti_slop_rules_and_qoder_support.md"
     ],
     "research": [
       "app_opportunity_lab_playbook.md",

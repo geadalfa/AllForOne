@@ -19,6 +19,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | Document | Use when |
 |---|---|
 | `ui_ux_anti_slop_design_engineering.md` | You are designing or reviewing a user interface. |
+| `anti_slop_rules_and_qoder_support.md` | You are applying or adapting the anti-slop rules in a Qoder workflow. |
 | `ui_ux_pro_max_skill_analysis.md` | You need the catalog of palettes, type pairings, and stack guidance. |
 | `cross_platform_uiux_qa_security_playbook.md` | You are reviewing UI, QA, and security together across platforms. |
 | `human_writing_and_technical_prose.md` | You are writing documentation, UX copy, or a review. |
@@ -41,6 +42,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `app_store_compliance_ora_playbook.md` | You are preparing an iOS or Android release for store review. |
 | `claude_trading_skills_toolkit.md` | You are reviewing the provenance and limits of the trading skill pack. |
 | `ghidra_software_reverse_engineering.md` | You are installing Ghidra or running authorized headless binary analysis. |
+| `qoder_harness_integration_and_privacy_gate.md` | You are integrating a private agent install with Qoder and must audit the worktree, history, and commit metadata before publishing. |
 
 ## Finance
 
