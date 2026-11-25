@@ -7,6 +7,7 @@ description: Consult the bundled AllForOne references for project instructions, 
 
 Read the relevant reference beside this skill and check its assumptions against the current project.
 
+- [affine_local_first_knowledge_base.md](references/affine_local_first_knowledge_base.md)
 - [agents_md_open_standard_specification.md](references/agents_md_open_standard_specification.md)
 - [anti_vibe_coding_engineering_protocol.md](references/anti_vibe_coding_engineering_protocol.md)
 - [disciplined_software_engineering_framework.md](references/disciplined_software_engineering_framework.md)

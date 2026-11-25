@@ -44,6 +44,8 @@ These are cloned into the AllForOne state directory when the matching profile or
 | [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) | Apache-2.0 | Reference clone only; the official release is downloaded by the user, not redistributed. |
 | [n8n-io/n8n](https://github.com/n8n-io/n8n) | Sustainable Use License (fair-code) | Reference clone only; never vendored. The license restricts use to internal, personal, or non-commercial purposes, and `.ee` files require an enterprise license. |
 | [janestreet/agent_skills](https://github.com/janestreet/agent_skills) | MIT | Upstream tracking for the vendored `socratic-tutor` skill. See `licenses/janestreet-agent-skills-LICENSE.txt`. |
+| [QoderAI/better-harness](https://github.com/QoderAI/better-harness) | MIT | Reference clone only. Qoder Desktop bundles an entry point; the standalone CLI is the npm package `@qoder-ai/better-harness`, not redistributed here. |
+| [QoderAI/Qoderian](https://github.com/QoderAI/Qoderian) | MIT (portions derived from Claudian, MIT) | Reference clone only. The Obsidian plugin is installed by the user from Obsidian's community list or a GitHub release, not redistributed here. |
 
 ## Media
 

@@ -262,6 +262,30 @@
         "type": "reference",
         "note": "The socratic-tutor skill is vendored with AllForOne under the MIT license. The clone is kept for attribution and update tracking."
       }
+    },
+    {
+      "id": "better-harness",
+      "repo": "https://github.com/QoderAI/better-harness.git",
+      "branch": "main",
+      "license": "MIT",
+      "profiles": ["engineering"],
+      "description": "Agent Work Loop review workflow with evidence-bound findings, scoped repair, and a CLI for coding-agent delivery.",
+      "install": {
+        "type": "reference",
+        "note": "Qoder Desktop ships a built-in entry point; the standalone CLI is the npm package @qoder-ai/better-harness. No runtime is vendored."
+      }
+    },
+    {
+      "id": "qoderian",
+      "repo": "https://github.com/QoderAI/Qoderian.git",
+      "branch": "main",
+      "license": "MIT (portions derived from Claudian, MIT)",
+      "profiles": ["documents", "research"],
+      "description": "Obsidian plugin that embeds qodercli in a vault, sharing the project's commands, skills, subagents, hooks, and MCP servers.",
+      "install": {
+        "type": "reference",
+        "note": "Install from Obsidian community plugins or the GitHub release; requires Obsidian 1.7.2+ desktop and a signed-in qodercli. No code is vendored."
+      }
     }
   ]
 }

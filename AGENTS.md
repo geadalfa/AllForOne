@@ -14,7 +14,7 @@ claude plugin install allforone-minimal@allforone
 claude plugin install allforone-full@allforone
 ```
 
-Minimal carries a curated quarter of the Full inventory; Full carries all 82 skills and 40 knowledge documents. Install one edition only. Verify with `claude plugin list` and report its real output. Tell the user to start a new session or run `/reload-plugins`. Updates run through `claude plugin marketplace update allforone` and `claude plugin update <edition>@allforone`; the plugin never self-updates a Claude-managed install. For Claude Desktop without the marketplace, use the MCP template in `integrations/claude/claude_desktop_config.example.json`.
+Minimal carries a curated quarter of the Full inventory; Full carries all 82 skills and 42 knowledge documents. Install one edition only. Verify with `claude plugin list` and report its real output. Tell the user to start a new session or run `/reload-plugins`. Updates run through `claude plugin marketplace update allforone` and `claude plugin update <edition>@allforone`; the plugin never self-updates a Claude-managed install. For Claude Desktop without the marketplace, use the MCP template in `integrations/claude/claude_desktop_config.example.json`.
 
 ## Qoder
 
@@ -28,16 +28,16 @@ Do not pick a mode silently. Do not install both.
 
 ```bash
 # Minimal
-npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal
+npx --yes github:geadalfa/AllForOne#v0.3.1 install --minimal
 
 # Full
-npx --yes github:geadalfa/AllForOne#v0.3.0 install --full
+npx --yes github:geadalfa/AllForOne#v0.3.1 install --full
 ```
 
 Minimal installs a curated quarter of the full inventory by default. The share is computed from the live counts (skills, knowledge, tools) and scales automatically when the inventory grows. Profiles are optional and add their skills, documents, tools, and upstream packs on top:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.3.0 install --minimal --profiles engineering,security --yes
+npx --yes github:geadalfa/AllForOne#v0.3.1 install --minimal --profiles engineering,security --yes
 ```
 
 Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `research`, `automation`, `gaming`, `documents`, `creative`, `llm`, `data`.
@@ -47,14 +47,14 @@ Valid profiles: `engineering`, `frontend`, `security`, `finance`, `writing`, `re
 Auto-update is on by default and checked once per day with a 24-hour cache. If the user wants it off, add `--no-auto-update`. Later:
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.3.0 config autoUpdate.self false
-npx --yes github:geadalfa/AllForOne#v0.3.0 config autoUpdate.upstreams false
+npx --yes github:geadalfa/AllForOne#v0.3.1 config autoUpdate.self false
+npx --yes github:geadalfa/AllForOne#v0.3.1 config autoUpdate.upstreams false
 ```
 
 ## 4. Verify
 
 ```bash
-npx --yes github:geadalfa/AllForOne#v0.3.0 status
+npx --yes github:geadalfa/AllForOne#v0.3.1 status
 ```
 
 Report the real version, plugin path, skill count, memory path, and update flags. Do not claim success without this output.

@@ -1,7 +1,7 @@
 {
   "name": "allforone-minimal",
   "displayName": "AllForOne Claude Minimal",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A curated quarter of the Full inventory for Claude Code: engineering, writing, QA, and security research, plus a reference library.",
   "author": {
     "name": "AllForOne Contributors"

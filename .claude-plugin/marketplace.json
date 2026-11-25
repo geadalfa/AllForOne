@@ -9,14 +9,14 @@
       "name": "allforone-minimal",
       "source": "./plugins/claude-minimal",
       "description": "A curated quarter of the Full inventory for Claude Code: engineering, writing, QA, and security research, plus a reference library.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "homepage": "https://github.com/geadalfa/AllForOne"
     },
     {
       "name": "allforone-full",
       "source": "./plugins/claude-full",
       "description": "The complete AllForOne skill and knowledge inventory for Claude Code.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "homepage": "https://github.com/geadalfa/AllForOne"
     }
   ]

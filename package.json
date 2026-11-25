@@ -1,6 +1,6 @@
 {
   "name": "allforone",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Qoder capability pack, Claude Code plugin, local Codex plugin, and portable ChatGPT workflows.",
   "type": "module",
   "bin": {

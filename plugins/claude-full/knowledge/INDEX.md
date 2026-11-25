@@ -13,6 +13,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `software_qa_and_testing_discipline.md` | You need a test plan, regression gates, or UI state verification. |
 | `polyglot_architecture_and_graph_code_intelligence.md` | You are navigating a cross-language codebase or building an impact graph. |
 | `hkuds_cli_anything_agent_native_cli.md` | You are finding or installing an agent-native CLI for desktop software. |
+| `better_harness_agent_work_loop.md` | You are auditing the coding-agent workflow, reading a harness report, or planning a scoped delivery repair. |
 
 ## UI, writing, and research
 
@@ -62,6 +63,7 @@ Read this file first. Open only the one to three documents the task needs. All d
 | `windows_desktop_app_engineering.md` | You are building or packaging a Windows desktop app. |
 | `macos_native_dmg_app_development.md` | You are building a macOS app or a signed DMG. |
 | `autoclip_video_repurposing.md` | You are clipping or repurposing long video into platform shorts. |
+| `qoderian_obsidian_qoder_cli.md` | You are setting up or evaluating Qoder CLI inside an Obsidian vault. |
 
 ## Automation and optional integrations
 
